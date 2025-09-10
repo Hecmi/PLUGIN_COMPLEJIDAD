@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="../../libs/fontawesome-free-6.7.2-web/css/all.min.css" />
+</header>
+<body>
+    <!-- Encabezado  -->
+    <div class="header-container">
+        <h1 class="header-title"><i class="fas fa-user"></i><span data-i18n="uP.userProfile" class="header-title-span">Perfil de usuario</span></h1>
+        <div class="button-container">
+            <button id="saveProfile" class="button save-button"><i class="fas fa-save"></i>  <span data-i18n="uP.save" class="save-profile-text">Guardar</span></button>
+            <button id="closeProfile" class="button close-button"><i class="fas fa-times"></i>  <span data-i18n="uP.close" class="close-profile-text">Cerrar</span></button>
+        </div>
+    </div>
+
+    <!-- Contenedor de pestañas -->
+    <div class="tab-container">
+        <ul class="tab-list" role="tablist">
+        </ul>
+    </div>
+    
+    <form id="form-container" role="form" aria-label="Formulario de perfil de usuario">
+        
+    </form>
+
+    <script src="./../../services/chrome_api_service.js"></script>
+    <script src="./../../services/user_info_service.js"></script>
+    <script src="./../../tools/translator/translator.js"></script>
+    <script src="./../../tools/constants/constants.js"></script>
+    <script src="./../../tools/DOM_generator/js/element_creator2.js"></script>
+    <script src="./../../tools/DOM_generator/js/prefabs.js"></script>
+    <script src="./../../tools/DOM_generator/js/generator.js"></script>
+    <script src="./../../tools/validator/validator.js"></script>
+    <script src="./../../tools/validator/form.js"></script>
+    
+    <script src="./profile.js"></script>
+</body>

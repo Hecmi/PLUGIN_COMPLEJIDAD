@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Example</title>
+    <style id="style-ext-modal">
+        :host {
+            --background-color: #F7FAFC;
+            --primary-color: #2756D6;
+            --primary-color-minor: #1E88E5;
+            --primary-dark: #1565C0;
+            --text-color: #1A202C;
+            --border-color: #E2E8F0;
+            --shadow-color: rgba(0, 0, 0, 0.15);
+            --primary-gray: #d5d5d5;
+            --focus-color: #90CAF9;
+            --button-save-bg: #2756D6;
+            --button-save-hover: #1565C0;
+            --button-close-bg: #D32F2F;
+            --button-close-hover: #B71C1C;
+            --error-color: #B71C1C;
+            --high-contrast-text: #000000;
+            --high-contrast-bg: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 2147483647;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            line-height: 1.5;
+            opacity: 0;
+            visibility: hidden;
+            color: var(--text-color);
+        }
+
+        .show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .modal.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1001;
+        }
+
+        .modal-dialog {
+            position: fixed;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #FFFFFF;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px var(--shadow-color);
+            z-index: 1002;
+        }
+
+        .modal-small .modal-dialog {
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .modal-medium .modal-dialog {
+            max-width: 800px;
+            width: 90%;
+        }
+
+        .modal-large .modal-dialog {
+            width: 95%;
+            height: 95%;
+        }
+
+        .modal-header {
+            padding: 0.5rem 1.25rem;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            font-size: 19.2px;
+            font-weight: 600;
+            margin: 0;
+            color: var(--text-color);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: var(--text-color);
+            transition: color 0.2s ease, transform 0.2s ease;
+            padding: 0.5rem;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            color: var(--button-close-bg);
+            transform: scale(1.1);
+        }
+
+        /* .modal-close:focus {
+            outline: 3px solid var(--primary-dark);
+            outline-offset: 2px;
+            box-shadow: 0 0 0 4px var(--focus-color);
+        } */
+
+        /* .modal-body {
+            padding: 1.25rem;
+            overflow-y: auto;
+            overflow-x: hidden;
+            word-wrap: break-word;
+            word-break: break-word;
+            flex: 1 1 auto;
+            max-height: calc(90vh - 120px);
+        } */
+
+        .modal-body-content {
+            padding: 1.25rem;
+            overflow-y: auto;
+            overflow-x: hidden;
+            word-wrap: break-word;
+            word-break: break-word;
+            flex: 1 1 auto;
+            border: none;
+            height: 500px;
+            /* height: calc(90vh - 120px); */
+            max-height: calc(90vh - 120px);
+        }
+
+        .modal-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .modal-body img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .modal-body p {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.4;
+            margin: 0;
+            color: var(--text-color);
+        }
+
+        .modal-footer {
+            padding: 1.25rem;
+            border-top: 2px solid var(--border-color);
+            text-align: right;
+            display: flex;
+            gap: 1.25rem;
+            justify-content: flex-end;
+        }
+
+        .modal-footer .button {
+            margin: 0;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.5;
+            cursor: pointer;
+            transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0.25rem 0.5rem var(--shadow-color);
+        }
+
+        .button:focus {
+            outline: 3px solid var(--primary-dark);
+            outline-offset: 2px;
+            box-shadow: 0 0 0 4px var(--focus-color);
+        }
+
+        .close-button {
+            background: var(--button-save-bg);
+            color: #FFFFFF;
+        }
+
+        .close-button:hover {
+            background: var(--button-save-hover);
+        }
+
+        @media (max-width: 600px) {
+            .modal-dialog {
+                width: 90vw;
+            }
+            .modal-header, .modal-body, .modal-footer {
+                padding: 0.625rem;
+            }
+            .modal-header h3 {
+                font-size: 16px; 
+            }
+            .modal-close {
+                font-size: 24px;
+                padding: 0.25rem;
+                min-width: 44px;
+                min-height: 44px;
+            }
+            .modal-body p {
+                font-size: 12px;
+            }
+            .modal-footer {
+                gap: 0.75rem;
+            }
+            .button {
+                padding: 0.5rem 0.75rem;
+                font-size: 12px;
+                min-height: 44px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .modal, .button, .modal-close {
+                transition: none !important;
+            }
+            .button:hover {
+                transform: none !important;
+            }
+            .modal {
+                transition: opacity 0.01ms ease !important;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            .modal-dialog {
+                background: var(--high-contrast-bg);
+                border: 2px solid var(--high-contrast-text) !important;
+            }
+            .modal-overlay {
+                background: rgba(0, 0, 0, 0.7);
+            }
+            .modal-header, .modal-footer {
+                border-color: var(--high-contrast-text) !important;
+            }
+            .modal-header h3 {
+                color: var(--high-contrast-text);
+            }
+            .modal-close {
+                color: var(--high-contrast-text);
+            }
+            .modal-close:hover {
+                color: var(--high-contrast-text);
+                background: rgba(255, 0, 0, 0.1);
+            }
+            .modal-body p {
+                color: var(--high-contrast-text);
+            }
+            .button {
+                background: var(--high-contrast-text);
+                color: var(--high-contrast-bg);
+                border: 2px solid var(--high-contrast-text) !important;
+            }
+            .save-button:hover {
+                background: var(--high-contrast-text);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="modal modal-large" tabindex="-1" role="dialog" id="extensionModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="modal-title" data-i18n="m.summary">Resumen</h3>
+                <button id="modal-header-close" class="modal-close">&times;</button>
+            </div>
+            <iframe id="modal-body-content" class="modal-body-content"></iframe>
+            <!-- <div id="modal-body" class="modal-body">
+                <iframe id="modal-body-content">
+
+                </iframe>
+            </div> -->
+            <!-- <div class="modal-interaction">
+                <input type="text"/>
+            </div> -->
+            <div class="modal-footer">
+                <button id="btnClose-modal" class="button close-button" data-i18n="uP.close">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traductor de Páginas</title>
+    <link rel="stylesheet" href="../../libs/fontawesome-free-6.7.2-web/css/all.min.css">
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="popup-container">
+        <div class="header">
+            <i class="fas fa-globe"></i>
+            <div>
+                <span data-i18n="pop.welcome" class="welcome">Bienvenido</span><span id="spn-welcome" class="welcome"></span>
+            </div>
+        </div>
+        <hr>
+        <!-- Contenedor de información de usuario (visible cuando hay sesión) -->
+        <div id="userInfoContainer">
+            <div class="user-field">
+                <label data-i18n="pop.name">Nombre</label>
+                <div class="user-info">
+                    <i class="fas fa-user"></i>
+                    <span id="userName">username</span>
+                </div>
+            </div>
+            <div class="user-field">
+                <label data-i18n="pop.mail">Correo</label>
+                <div class="user-info">
+                    <i class="fas fa-envelope"></i>
+                    <span id="userEmail">email@gmail.com</span>
+                </div>
+            </div>
+            <p data-i18n="pop.helpText" class="help-text">Información de cuenta. No editable.</p>
+        </div>
+        
+        <div id="loginFormContainer" class="">
+            <div class="form-group">
+                <label data-i18n="pop.email" for="loginEmail">Correo electrónico</label>
+                <input type="email" id="loginEmail" placeholder="email@gmail.com">
+            </div>
+            <div class="form-group">
+                <label data-i18n="pop.password" for="loginPassword">Contraseña</label>
+                <input type="password" id="loginPassword" placeholder="********">
+                <span data-i18n="pop.badCredentials" id="spn-badLogin" class="error-message hide">Las credenciales ingresadas son incorrectas</span>
+                <div class="show-password">
+                    <input type="checkbox" id="showPassword" aria-label="Mostrar contraseña">
+                    <label for="showPassword"
+                        id="lbl-showPassword"
+                        data-i18n-show="pop.showPassword"
+                        data-i18n-hide="pop.hidePassword"
+                        data-i18n-active="data-i18n-show"
+                    >
+                        Mostrar contraseña
+                    </label>
+                </div>
+            </div>
+            <button id="btnIniciarSesion" class="btn-login">
+                <i class="fas fa-sign-in-alt"></i>
+                <span data-i18n="pop.login">Iniciar sesión</span>
+            </button>
+        </div>
+        
+        <hr>
+        <div class="buttons-container">
+            <button id="btnTraducir" class="btn-primary">
+                <i class="fas fa-language"></i> <span data-i18n="pop.translatePage">Traducir página</span>
+            </button>
+            <button id="btnCuenta" class="btn-secondary">
+                <i class="fas fa-user-plus"></i> 
+                <span 
+                    id="spn-btnCrearCuenta"
+                    data-i18n-create="pop.createAccount"
+                    data-i18n-edit="pop.editAccount"
+                    data-i18n-active="data-i18n-create">
+                    Crear cuenta
+                </span>
+            </button>
+            <button id="btnCerrarSesion" class="btn-logout">
+                <i class="fas fa-sign-out-alt"></i> <span data-i18n="pop.logout">Cerrar sesión</span>
+            </button>
+        </div>
+    </div>
+    <script src="./../../tools/translator/translator.js"></script>
+    <script src="./../../tools/constants/constants.js"></script>
+    <script src="./../services/page_service.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>

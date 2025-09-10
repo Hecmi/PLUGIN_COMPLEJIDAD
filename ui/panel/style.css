@@ -1,0 +1,259 @@
+
+:root {
+    --black: #000000;
+    --dark-blue: #0D47A1;
+    --medium-blue: #2756D6;
+    --light-blue: #E3F2FD;
+    --white: #FFFFFF;
+    --off-white: #FAFAFA;
+    --light-gray: #EEEEEE;
+    --medium-gray: #9E9E9E;
+    --dark-gray: #212121;
+    
+    --orange-accent: #E65100;
+    --medium-orange: #FC8A4C;
+    --dark-orange: #CC4900;
+    --light-orange-bg: #FFF3E0;
+    
+    --panel-bg: var(--white);
+    --border-default: #BDBDBD;
+    --box-shadow: rgba(0, 0, 0, 0.1);
+    
+    --active-state: rgba(25, 118, 210, 0.1);
+    
+    --icon-default: var(--black);
+    --icon-modified: var(--orange-accent);
+    
+    --text-title: var(--dark-blue);
+    --text-value: var(--dark-gray);
+    --text-modified: var(--orange-accent);
+    
+    --dot-default: var(--medium-blue);
+    --dot-active: var(--dark-blue);
+    --dot-default-modified: var(--medium-orange);
+    --dot-active-modified: var(--dark-orange);
+    
+    --spacing-base: 0.0rem;
+    --border-radius: 0.5rem;
+    --border-width: 2px;
+    --active-border-width: 5px;
+    --active-overlay-overflow: 4px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background: var(--off-white);
+    color: var(--text-value);
+}
+
+
+.accessibility-panel {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 22.5rem;
+    max-width: 90vw;
+    max-height: 85vh;
+    background: var(--panel-bg);
+    border: var(--border-width) solid var(--dark-blue);
+    border-radius: var(--border-radius);
+    box-shadow: 0 0.25rem 0.75rem var(--box-shadow);
+    padding: 1.25rem;
+    z-index: 2147483647;
+    overflow-y: auto;
+}
+
+
+.panel-header {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-base);
+    margin-bottom: 1.5rem;
+    color: var(--black);
+}
+
+.panel-header i {
+    color: var(--black);
+}
+
+.options-group {
+    margin: 1.5rem 0 0.5rem;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 0.25rem;
+    color: var(--black);
+}
+
+.options-box {
+    border: var(--border-width) solid var(--dark-blue);
+    border-radius: var(--border-radius);
+    overflow: visible; /* Allow active-overlay to overflow */
+    margin-bottom: 0.5rem;
+    position: relative; /* Ensure proper layering */
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: var(--white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.option-column {
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    position: relative;
+    transition: background-color 0.2s ease;
+}
+
+.option-column.vertical-divider::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--black);
+    opacity: 0.5;
+    z-index: 5;
+}
+
+.option-column.active.vertical-divider::after {
+    background: transparent;
+}
+
+.active-overlay {
+    position: absolute;
+    border: var(--active-border-width) solid var(--dark-blue);
+    border-radius: calc(var(--border-radius) + var(--active-overlay-overflow));
+    background: transparent;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.option-button {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 0.5rem;
+    background: transparent;
+    border: none;
+    font-size: 0.7rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 6rem;
+    position: relative;
+    margin: 0;
+}
+
+.option-button.active {
+    background: var(--active-state);
+}
+
+.option-button.no-dots {
+    justify-content: center;
+    padding-bottom: 0.75rem;
+}
+
+.option-button.modified {
+    background-color: var(--light-orange-bg);
+}
+
+.option-button:hover {
+    /* background: var(--light-gray); */
+    background: var(--active-state);
+}
+
+/* Icons */
+.option-button i {
+    font-size: 1.5rem;
+    color: var(--icon-default);
+    margin-bottom: 0.25rem;
+    transition: color 0.2s ease;
+}
+
+.option-button.modified i {
+    color: var(--icon-modified);
+}
+
+/* Text */
+.option-name {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-title);
+    margin-bottom: 0.1rem;
+    text-align: center;
+    transition: color 0.2s ease;
+}
+
+.option-button.modified .option-name {
+    color: var(--text-modified);
+}
+
+.option-value {
+    font-size: 0.6rem;
+    font-weight: 500;
+    color: var(--text-value);
+    margin-bottom: 0.25rem;
+    text-align: center;
+}
+
+/* Status Dots */
+.dots {
+    display: flex;
+    gap: 0.25rem;
+    margin-top: 0.25rem;
+}
+
+.dot {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: var(--dot-default);
+    opacity: 0.5;
+    transition: all 0.2s ease;
+}
+
+.option-button.modified .dot {
+    background: var(--dot-default-modified);
+    opacity: 0.8;
+}
+
+.option-button.modified .dot.active {
+    background: var(--dot-active-modified);
+    opacity: 0.8;
+}
+
+.dot.active {
+    opacity: 1;
+    background: var(--dot-active);
+}
+
+.row-divider {
+    grid-column: 1 / -1;
+    height: 1px;
+    background: var(--black);
+    opacity: 0.5;
+    margin: 0;
+    position: relative;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 5;
+}

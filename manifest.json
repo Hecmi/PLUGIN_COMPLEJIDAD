@@ -1,0 +1,104 @@
+{
+    "manifest_version": 3,
+    "name": "Complejidad",
+    "version": "1.0",
+    "description": "...",
+    "permissions": [
+      "activeTab",
+      "tabCapture",
+      "tabs",
+      "downloads",
+      "scripting",
+      "storage",
+      "devtools"
+    ],
+    "host_permissions": [
+      "devtools://*",
+      "<all_urls>"
+    ],
+    "background": {
+      "service_worker": "background.js",
+      "type": "module"
+    },
+    "action": {
+      "default_popup": "popup/popup.html"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": [
+          "libs/arc90/arc90.js",
+          "libs/tesseract/tesseract.js",
+          "libs/textrank/textrank.js",
+
+          "tools/translator/translator.js",
+          "tools/constants/constants.js",
+          "tools/CSS_tracker/css_tracker.js",
+
+          "services/page_service.js",
+          "services/user_info_service.js",
+          "services/chrome_api_service.js",
+          
+          "accessibilityCenter/option_config.js",
+          "accessibilityCenter/accessibility_panel.js",
+          "accessibilityCenter/managers/style_manager.js",
+          "accessibilityCenter/managers/option_manager.js",
+          "accessibilityCenter/managers/guide_manager.js",
+          "accessibilityCenter/managers/alt_text_manager.js",
+          "accessibilityCenter/managers/speech_manager.js",
+          "accessibilityCenter/managers/zoom_manager.js",
+          "accessibilityCenter/managers/event_manager.js",
+
+          "AST/tokenizer.js",
+          "AST/AST_nodes.js",
+          "AST/parser.js",
+          "AST/exceptions.js",
+          "AST/scope.js",
+          "AST/evaluator.js",
+          "AST/Expression_engine.js",
+
+          "adaptation/ECA_rule.js",
+          "adaptation/ECA_executer.js",
+          "adaptation/Metric_executer.js",
+          
+          "ui/loader/loader.js",
+          "ui/modal/modal.js",
+          "ui/panel/toggle_notifications.js",
+          "ui/notifications/notifications.js",
+
+          "adaptation/main.js"
+      ],
+      "type": "module",
+      "run_at": "document_idle"
+      }
+    ],
+    "web_accessible_resources": [
+    {
+      "resources": [
+        "fonts/OpenDyslexic-Regular.woff",
+        "fonts/OpenDyslexic-BoldItalic.woff",
+        "fonts/OpenDyslexic-Bold.woff",
+        "fonts/OpenDyslexic-Italic.woff",
+
+        "libs/fontawesome-free-6.7.2-web/css/all.min.css",
+        "libs/fontawesome-free-6.7.2-web/webfonts/fa-brands-400.ttf",
+        "libs/fontawesome-free-6.7.2-web/webfonts/fa-brands-400.woff2",
+        "libs/fontawesome-free-6.7.2-web/webfonts/fa-regular-400.ttf",
+        "libs/fontawesome-free-6.7.2-web/webfonts/fa-regular-400.woff2",
+        "libs/fontawesome-free-6.7.2-web/webfonts/fa-solid-900.ttf",
+        "libs/fontawesome-free-6.7.2-web/webfonts/fa-solid-900.woff2",
+        "libs/fontawesome-free-6.7.2-web/webfonts/fa-v4compatibility.woff2",
+
+        "html2canvas.js",
+
+        "ui/profile/profile.html",
+
+        "ui/loader/loader.html",
+        "ui/modal/modal.html",
+        "ui/panel/panel.html",
+        "ui/notifications/notifications.html"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

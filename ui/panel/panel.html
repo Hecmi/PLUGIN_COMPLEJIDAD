@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessibility Panel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style id="style-container-ext">
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+      box-sizing: border-box;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    [class*="col-"] {
+      box-sizing: border-box;
+    }
+    .col-1 { flex: 0 0 8.3333%; max-width: 8.3333%; }
+    .col-2 { flex: 0 0 16.6667%; max-width: 16.6667%; }
+    .col-3 { flex: 0 0 25%; max-width: 25%; }
+    .col-4 { flex: 0 0 33.3333%; max-width: 33.3333%; }
+    .col-5 { flex: 0 0 41.6667%; max-width: 41.6667%; }
+    .col-6 { flex: 0 0 50%; max-width: 50%; }
+    .col-12 { flex: 0 0 100%; max-width: 100%; }
+    .col-gap { padding-left: 0.5rem; padding-right: 0.5rem; }
+    .p-1 { padding: 0.15rem; }
+    .p-2 { padding: 0.5rem; }
+    .ml-1 { margin-left: 0.25rem; }
+    .ml-2 { margin-left: 0.50rem; }
+    .ml-3 { margin-left: 0.75rem; }
+    .ml-4 { margin-left: 1rem; }
+    .m-1 { margin: 0.25rem; }
+    .m-2 { margin: 0.5rem; }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border: 1px solid #007bff;
+      border-radius: 0.25rem;
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn:hover { background-color: #0056b3; }
+    @media (max-width: 576px) {
+      .col-xs-12 { flex: 0 0 100%; max-width: 100%; }
+    }
+    @media (min-width: 576px) {
+      .col-sm-1 { flex: 0 0 8.3333%; max-width: 8.3333%; }
+      .col-sm-2 { flex: 0 0 16.6667%; max-width: 16.6667%; }
+      .col-sm-3 { flex: 0 0 25%; max-width: 25%; }
+      .col-sm-4 { flex: 0 0 33.3333%; max-width: 33.3333%; }
+      .col-sm-5 { flex: 0 0 41.6667%; max-width: 41.6667%; }
+      .col-sm-6 { flex: 0 0 50%; max-width: 50%; }
+      .col-sm-12 { flex: 0 0 100%; max-width: 100%; }
+    }
+    @media (min-width: 768px) {
+      .col-md-1 { flex: 0 0 8.3333%; max-width: 8.3333%; }
+      .col-md-2 { flex: 0 0 16.6667%; max-width: 16.6667%; }
+      .col-md-3 { flex: 0 0 25%; max-width: 25%; }
+      .col-md-4 { flex: 0 0 33.3333%; max-width: 33.3333%; }
+      .col-md-5 { flex: 0 0 41.6667%; max-width: 41.6667%; }
+      .col-md-6 { flex: 0 0 50%; max-width: 50%; }
+      .col-md-12 { flex: 0 0 100%; max-width: 100%; }
+    }
+    @media (min-width: 992px) {
+      .col-lg-1 { flex: 0 0 8.3333%; max-width: 8.3333%; }
+      .col-lg-2 { flex: 0 0 16.6667%; max-width: 16.6667%; }
+      .col-lg-3 { flex: 0 0 25%; max-width: 25%; }
+      .col-lg-4 { flex: 0 0 33.3333%; max-width: 33.3333%; }
+      .col-lg-5 { flex: 0 0 41.6667%; max-width: 41.6667%; }
+      .col-lg-6 { flex: 0 0 50%; max-width: 50%; }
+      .col-lg-12 { flex: 0 0 100%; max-width: 100%; }
+    }
+    @media (min-width: 1200px) {
+      .col-xl-1 { flex: 0 0 8.3333%; max-width: 8.3333%; }
+      .col-xl-2 { flex: 0 0 16.6667%; max-width: 16.6667%; }
+      .col-xl-3 { flex: 0 0 25%; max-width: 25%; }
+      .col-xl-4 { flex: 0 0 33.3333%; max-width: 33.3333%; }
+      .col-xl-5 { flex: 0 0 41.6667%; max-width: 41.6667%; }
+      .col-xl-6 { flex: 0 0 50%; max-width: 50%; }
+      .col-xl-12 { flex: 0 0 100%; max-width: 100%; }
+    }
+  </style>
+  <style id="style-panel-ext">
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    }
+
+    :host {
+      --black: #000000;
+      --dark-blue: #0D47A1;
+      --medium-blue: #2756D6;
+      --light-blue: #E3F2FD;
+      --white: #FFFFFF;
+      --off-white: #FAFAFA;
+      --light-gray: #EEEEEE;
+      --medium-gray: #D6D2D2;
+      --dark-gray: #212121;
+      --orange-accent: #E65100;
+      --medium-orange: #FC8A4C;
+      --dark-orange: #CC4900;
+      --light-orange-bg: #FFF3E0;
+      --panel-bg: var(--white);
+      --border-default: #BDBDBD;
+      --box-shadow: rgba(0, 0, 0, 0.1);
+      --active-state: rgba(25, 118, 210, 0.1);
+      --icon-default: var(--black);
+      --icon-modified: var(--orange-accent);
+      --text-title: var(--dark-blue);
+      --text-value: var(--dark-gray);
+      --text-modified: var(--orange-accent);
+      --dot-default: var(--medium-blue);
+      --dot-active: var(--dark-blue);
+      --dot-default-modified: var(--medium-orange);
+      --dot-active-modified: var(--dark-orange);
+      --spacing-base: 0px;
+      --border-radius: 8px;
+      --border-width: 2px;
+      --active-border-width: 5px;
+      --active-overlay-overflow: 4px;
+      --accordion-bg: linear-gradient(135deg, var(--medium-blue), var(--dark-blue));
+      --accordion-content-bg: #F5F7FA;
+      --tab-inactive: #E0E0E0;
+      --tab-active: var(--medium-blue);
+    }
+
+    .accessibility-panel {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 360px;
+      max-width: 90vw;
+      max-height: 83.4vh;
+      height: 83.4vh;
+      background: var(--panel-bg);
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 12px var(--box-shadow);
+      padding: 0;
+      z-index: 2147483646;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      cursor: default;
+      overflow: hidden;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--dark-gray);
+    }
+
+    .accessibility-panel.top-left {
+      top: 20px;
+      left: 20px;
+      right: auto;
+      bottom: auto;
+    }
+
+    .accessibility-panel.bottom-left {
+      bottom: 20px;
+      left: 20px;
+      top: auto;
+      right: auto;
+    }
+
+    .accessibility-panel.top-right {
+      top: 20px;
+      right: 20px;
+      left: auto;
+      bottom: auto;
+    }
+
+    .accessibility-panel.bottom-right {
+      bottom: 20px;
+      right: 20px;
+      top: auto;
+      left: auto;
+    }
+
+    .accessibility-panel.minimized {
+      width: 48px;
+      height: 48px;
+      min-height: 0px;
+      border-radius: 50%;
+      padding: 0;
+      background: var(--dark-blue);
+      border: none;
+      box-shadow: 0 4px 8px var(--box-shadow);
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .accessibility-panel.minimized.top-left {
+      top: 20px;
+      left: 20px;
+      right: auto;
+      bottom: auto;
+    }
+
+    .accessibility-panel.minimized.top-right {
+      top: 20px;
+      right: 20px;
+      left: auto;
+      bottom: auto;
+    }
+
+    .accessibility-panel.minimized.bottom-left {
+      bottom: 20px;
+      left: 20px;
+      top: auto;
+      right: auto;
+    }
+
+    .accessibility-panel.minimized.bottom-right {
+      bottom: 20px;
+      right: 20px;
+      top: auto;
+      left: auto;
+    }
+
+    .accessibility-panel.minimized > *:not(.minimize-icon) {
+      display: none !important;
+      visibility: hidden !important;
+    }
+
+    .minimize-icon {
+      display: none;
+      font-size: 24px;
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    .accessibility-panel.minimized .minimize-icon {
+      display: block;
+      visibility: visible;
+    }
+
+    .panel-body {
+      flex: 1;
+      overflow-y: auto;
+      width: 100%;
+      margin: 0;
+      padding: 0px 20px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--medium-blue) var(--light-gray);
+    }
+
+    .panel-body::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .panel-body::-webkit-scrollbar-track {
+      background: var(--light-gray);
+      border-radius: 0;
+      margin: 0;
+    }
+
+    .panel-body::-webkit-scrollbar-thumb {
+      background: var(--medium-blue);
+      border-radius: 0;
+    }
+
+    .accessibility-panel.minimized .panel-body::-webkit-scrollbar {
+      display: none;
+    }
+
+    .accessibility-panel.minimized .panel-body {
+      scrollbar-width: none;
+    }
+
+    .accessibility-panel .panel-body .tab-content {
+      padding: 0;
+    }
+
+    .accessibility-panel .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 19.2px;
+      font-weight: 600;
+      color: var(--white);
+      background: var(--medium-blue);
+      padding: 8px 20px;
+      margin: 0;
+      border-top-left-radius: var(--border-radius);
+      border-top-right-radius: var(--border-radius);
+      width: 100%;
+      line-height: 16px;
+    }
+
+    .accessibility-panel hr {
+      border: none;
+      height: 1px;
+      background: var(--black);
+      opacity: 0.5;
+      margin: 0;
+      width: 100%;
+    }
+
+    .accessibility-panel .panel-header .header-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .accessibility-panel .panel-header i {
+      color: var(--white);
+    }
+
+    .accessibility-panel .panel-header .close-button {
+      background: none;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      color: var(--white);
+      padding: 4px;
+      min-width: 0px;
+    }
+
+    .accessibility-panel .panel-header .close-button:hover {
+      color: var(--light-gray);
+    }
+
+    .accessibility-panel .panel-header .close-button:focus {
+      outline: none;
+      box-shadow: none;
+      background: rgba(39, 86, 214, 0.3);
+    }
+
+    .accessibility-panel .intro-message {
+      margin: 12px 0;
+      text-align: left;
+      line-height: 18px;
+    }
+
+    .accessibility-panel .intro-message h2 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--dark-blue);
+      margin-bottom: 4px;
+      line-height: 24px;
+      margin: 0;
+    }
+
+    .accessibility-panel .intro-message p {
+      font-size: 12.8px;
+      font-weight: 400;
+      color: var(--dark-gray);
+      line-height: 1.4;
+      margin: 0;
+    }
+
+     .accessibility-panel .intro-message span {
+      font-size: 12.4px;
+      font-weight: 400;
+      color: var(--dark-gray);
+      line-height: 1;
+      margin: 0;
+    }
+
+    .accessibility-panel .intro-message span.complexity {
+      color: var(--dark-blue);
+      font-weight: 600;
+    }
+
+    .accessibility-panel .accordion {
+      margin: 16px 0 !important;
+      border-radius: var(--border-radius) !important;
+      overflow: hidden !important;
+    }
+
+    .accessibility-panel .accordion-header {
+      background: var(--accordion-bg) !important;
+      color: var(--white) !important;
+      padding: 10px 16px !important;
+      font-size: 15.2px !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      transition: transform 0.2s ease, background 0.2s ease !important;
+    }
+
+    .accessibility-panel .accordion-header:hover {
+      transform: scale(1.02);
+      background: linear-gradient(135deg, var(--dark-blue), #1e3a8a);
+    }
+
+    .accessibility-panel .accordion-header:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    .accessibility-panel .accordion-header i {
+      color: var(--white);
+      transition: transform 0.3s ease;
+    }
+
+    .accessibility-panel .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      background: var(--accordion-content-bg);
+      padding: 0 8px;
+      transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    }
+
+    .accessibility-panel .accordion-content.open {
+      max-height: 500px;
+      padding: 8px 8px;
+    }
+
+    .accessibility-panel .options-box {
+      border: var(--border-width) solid var(--black);
+      border-radius: var(--border-radius);
+      overflow: visible;
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    .accessibility-panel .button-container {
+      padding: 10px 0px;
+    }
+
+    .accessibility-panel .adaptation-button {
+      background-color: var(--medium-blue);
+      color: var(--white);
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      text-align: center;
+      border: none;
+      min-height: 25px;
+      align-items: center;
+      justify-content: center;
+      transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    }
+
+    .accessibility-panel .adaptation-button:hover {
+      transform: scale(1.02);
+      background: linear-gradient(135deg, var(--dark-blue), #1e3a8a);
+    }
+
+    .accessibility-panel .reset-button-container {
+      margin: 14px 0;
+    }
+
+    .accessibility-panel .options-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: var(--white);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+    }
+
+    .accessibility-panel .reset-button-container .options-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .accessibility-panel .position-options-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      background: var(--white);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+    }
+
+    .accessibility-panel .option-column {
+      display: flex;
+      flex-direction: column;
+      background: transparent;
+      position: relative;
+      transition: background-color 0.2s ease;
+    }
+
+    .accessibility-panel .option-column.vertical-divider::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--black);
+      opacity: 0.5;
+      z-index: 5;
+    }
+
+    .accessibility-panel .option-column.active.vertical-divider::after {
+      background: transparent;
+    }
+
+    .accessibility-panel .active-overlay {
+      position: absolute;
+      border: var(--active-border-width) solid var(--dark-blue);
+      border-radius: calc(var(--border-radius) + var(--active-overlay-overflow));
+      background: transparent;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .accessibility-panel .option-button {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 8px;
+      background: transparent;
+      border: none;
+      font-size: 11.2px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 96px;
+      position: relative;
+      margin: 0;
+      line-height: 16px;
+    }
+
+    .accessibility-panel .option-button.active {
+      background: var(--active-state);
+    }
+
+    .accessibility-panel .option-button.no-dots {
+      justify-content: center;
+      padding-bottom: 12px;
+    }
+
+    .accessibility-panel .option-button.modified {
+      background-color: var(--light-orange-bg);
+    }
+
+    .accessibility-panel .option-button:hover {
+      background: var(--active-state);
+    }
+
+    .accessibility-panel .option-button:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    .accessibility-panel .option-button i {
+      font-size: 24px;
+      color: var(--icon-default);
+      margin-bottom: 4px;
+      transition: color 0.2s ease;
+    }
+
+    .accessibility-panel .option-button.modified i {
+      color: var(--icon-modified);
+    }
+
+    .accessibility-panel .option-name {
+      font-size: 10.4px;
+      letter-spacing: 0.5px;
+      color: var(--text-title);
+      margin-bottom: 1.6px;
+      text-align: center;
+      transition: color 0.2s ease;
+    }
+
+    .accessibility-panel .option-button.modified .option-name {
+      color: var(--text-modified);
+    }
+
+    .accessibility-panel .option-value {
+      font-size: 9.6px;
+      font-weight: 500;
+      color: var(--text-value);
+      margin-bottom: 4px;
+      text-align: center;
+    }
+
+    .accessibility-panel .dots {
+      display: flex;
+      gap: 4px;
+      margin-top: 4px;
+    }
+
+    .accessibility-panel .dot {
+      width: 7.2px;
+      height: 7.2px;
+      border-radius: 50%;
+      background: var(--dot-default);
+      opacity: 0.5;
+      transition: all 0.2s ease;
+    }
+
+    .accessibility-panel .option-button.modified .dot {
+      background: var(--dot-default-modified);
+      opacity: 0.8;
+    }
+
+    .accessibility-panel .option-button.modified .dot.active {
+      background: var(--dot-active-modified);
+      opacity: 0.8;
+    }
+
+    .accessibility-panel .dot.active {
+      opacity: 1;
+      background: var(--dot-active);
+    }
+
+    .accessibility-panel .row-divider {
+      grid-column: 1 / -1;
+      height: 1px;
+      background: var(--black);
+      opacity: 0.5;
+      margin: 0;
+      position: relative;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 5;
+    }
+
+    .accessibility-panel footer {
+      margin-top: auto;
+      padding: 10px 0px 10px 0px;
+      text-align: left;
+      width: 100%;
+      display: flex;
+      flex-direction: column; 
+      justify-content: center;
+    }
+
+    .accessibility-panel footer hr {
+      border: none;
+      height: 1px;
+      background: var(--black);
+      opacity: 0.5;
+      width: 100%;
+    }
+
+    .accessibility-panel .footer-message {
+      font-size: 13.6px;
+      font-weight: 400;
+      color: var(--dark-gray);
+      line-height: 1.4;
+      text-align: left;
+    }
+
+    .footer-content {
+      padding: 0 20px;
+    }
+
+    .accessibility-panel .footer-message a {
+      color: var(--medium-blue);
+    }
+
+    .accessibility-panel .reset-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--white);
+      color: var(--black);
+      border: 2px solid;
+      border-radius: var(--border-radius);
+      padding: 8px 16px;
+      font-size: 14.4px;
+      font-weight: 400;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+      width: 100%;
+    }
+
+    .accessibility-panel .reset-button .reset-content {
+      display: inline-flex;
+      align-items: center;
+      transition: transform 0.2s ease;
+    }
+
+    .accessibility-panel .reset-button:hover {
+      background: var(--light-gray);
+    }
+
+    .accessibility-panel .reset-button:hover .reset-content {
+      transform: scale(1.05);
+    }
+
+    .accessibility-panel .reset-button i {
+      margin-right: 8px;
+      font-size: 16px;
+    }
+
+    .accessibility-panel .rotate-90 {
+      rotate: 90deg;
+    }
+
+    .accessibility-panel .rotate-180 {
+      rotate: 180deg;
+    }
+
+    .accessibility-panel .rotate-270 {
+      rotate: 270deg;
+    }
+
+    .accessibility-panel .tabs-container {
+      display: flex;
+      width: 100%;
+      border-color: var(--tab-inactive);
+      padding: 0 20px;
+    }
+
+    .accessibility-panel .tab.icon-tab {
+      flex: 0.1;
+      /* margin-left: auto; */
+      text-align: center;
+      padding: 10px 2px;
+    }
+
+    .accessibility-panel .tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px 0;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--dark-gray);
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .accessibility-panel .tab.active {
+      color: var(--dark-blue);
+      border-bottom: 3px solid var(--tab-active);
+      font-weight: 700;
+    }
+
+    .accessibility-panel .tab-content {
+      display: none;
+    }
+
+    .accessibility-panel .tab-content.active {
+      display: block;
+    }
+
+    .accessibility-panel .language-selector {
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    .accessibility-panel .language-selector label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--dark-gray);
+    }
+
+    .accessibility-panel .language-selector select {
+      flex: 1;
+      padding: 6px;
+      font-size: 14px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--border-radius);
+      background: var(--white);
+      color: var(--dark-gray);
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+
+    .accessibility-panel .language-selector select:focus {
+      outline: none;
+      border-color: var(--medium-blue);
+      box-shadow: 0 0 0 2px rgba(39, 86, 214, 0.2);
+    }
+
+    .accessibility-panel .language-selector select:hover {
+      border-color: var(--medium-blue);
+    }
+
+    @media (max-width: 600px) {
+      .accessibility-panel {
+        width: 90vw;
+        min-width: 300px;
+        right: calc(50% - 45vw);
+        top: 15px;
+      }
+      .accessibility-panel.minimized {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        border-radius: 50%;
+        padding: 0;
+        background: var(--dark-blue);
+        border: none;
+        box-shadow: 0 4px 8px var(--box-shadow);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .accessibility-panel .options-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .accessibility-panel .position-options-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .reset-button-container .options-grid {
+        grid-template-columns: 1fr;
+      }
+      .accessibility-panel .option-column:nth-child(2n)::after {
+        content: none;
+      }
+      .accessibility-panel .language-selector {
+        padding: 8px 15px;
+      }
+      .accessibility-panel .language-selector select {
+        font-size: 12px;
+        padding: 4px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .accessibility-panel,
+      .accessibility-panel .option-button,
+      .accessibility-panel .highlight-element,
+      .accessibility-panel .accordion-header,
+      .accessibility-panel .accordion-content,
+      .accessibility-panel .reset-button,
+      .accessibility-panel .language-selector select {
+        transition: none;
+      }
+      .accessibility-panel .accordion-header:hover,
+      .accessibility-panel .reset-button:hover {
+        transform: none;
+      }
+    }
+  </style>
+  <style id="style-notification-ext">
+    .notification,
+    .notification *,
+    .notification *::before,
+    .notification *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    }
+
+    :host {
+      --black: #000000;
+      --dark-blue: #0D47A1;
+      --medium-blue: #2756D6;
+      --light-blue: #E3F2FD;
+      --white: #FFFFFF;
+      --off-white: #FAFAFA;
+      --light-gray: #D3D3D3;
+      --medium-gray: #B0B0B0;
+      --dark-gray: #212121;
+      --orange-accent: #E65100;
+      --panel-bg: var(--white);
+      --box-shadow: rgba(0, 0, 0, 0.1);
+      --border-radius: 6px;
+      --base-font-size: 10px;
+      --line-height: 1.5;
+      --margin-right: 12px;
+      --z-index-high: 1000;
+      --stack-margin: 8px;
+    }
+
+    .notification {
+      display: flex;
+      align-items: center;
+      background-color: var(--white);
+      padding: 10px 15px;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 6px var(--box-shadow);
+      margin: 10px 0px;
+      font-size: 14px;
+      color: var(--dark-gray);
+      border: 1px solid var(--light-gray);
+      width: 100%;
+      position: relative;
+      z-index: var(--z-index-high);
+    }
+
+    .notification .check {
+      color: var(--white);
+      background-color: var(--medium-blue);
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 8px;
+      font-size: 0.9em;
+      flex-shrink: 0;
+    }
+
+    .notification.fade-out {
+      animation: fadeOut 0.3s ease-out forwards;
+    }
+
+    .notification .content {
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+    }
+
+    .notification .description {
+      text-align: left;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      hyphens: auto;
+      padding-right: var(--margin-right);
+      font-weight: 500;
+      flex-grow: 1;
+      font-size: 12px;
+    }
+
+    .notification .button-group {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .notification .toggle-button {
+      position: relative;
+      display: inline-block;
+      width: 36px;
+      height: 20px;
+    }
+
+    .notification .toggle-button input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .notification .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, var(--light-gray), var(--medium-gray));
+      border-radius: 20px;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+      transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .notification .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 14px;
+      width: 14px;
+      left: 3px;
+      bottom: 3px;
+      background: var(--white);
+      border-radius: 50%;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .notification .toggle-button input:checked + .toggle-slider {
+      background: linear-gradient(135deg, var(--medium-blue), var(--dark-blue));
+    }
+
+    .notification .toggle-button input:checked + .toggle-slider:before {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--white);
+      transform: translateX(16px);
+    }
+
+    .notification .toggle-button input:focus + .toggle-slider {
+      box-shadow: 0 0 0 2px var(--orange-accent);
+    }
+
+    .notification .toggle-button input:hover + .toggle-slider {
+      background: linear-gradient(135deg, var(--medium-gray), var(--light-gray));
+    }
+
+    .notification .toggle-button input:checked:hover + .toggle-slider {
+      background: linear-gradient(135deg, var(--dark-blue), var(--medium-blue));
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    :root {
+      --min-contrast-ratio: #000000;
+    }
+    .notification-container {
+      position: fixed;
+      z-index: var(--z-index-high);
+    }
+
+    .notification-container .notification {
+      position: relative;
+      margin-top: var(--stack-margin);
+    }
+
+    .notification-container .notification:first-child {
+      margin-top: 0;
+    }
+
+    @media (max-width: 480px) {
+      .notification {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px;
+        max-width: 90vw;
+      }
+
+      .notification .check {
+        margin-bottom: 8px;
+      }
+
+      .notification .content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .notification .description {
+        margin-bottom: 8px;
+        padding-right: 0;
+      }
+
+      .notification .button-group {
+        width: 100%;
+        justify-content: flex-end;
+      }
+
+      .notification .toggle-button {
+        width: 44px;
+        height: 24px;
+      }
+
+      .notification .toggle-slider:before {
+        height: 18px;
+        width: 18px;
+        left: 3px;
+        bottom: 3px;
+        font-size: 12px;
+      }
+
+      .notification .toggle-button input:checked + .toggle-slider:before {
+        transform: translateX(20px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .notification .toggle-button,
+      .notification .toggle-slider,
+      .notification .toggle-slider:before {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="accessibility-panel minimized bottom-left" role="dialog" aria-labelledby="panel-title">
+    <div class="panel-header" id="panel-title">
+      <div class="header-title">
+        <i class="fas fa-universal-access" aria-hidden="true"></i>
+        <span data-i18n="aP.panelName">Centro de accesibilidad</span>
+      </div>
+      <button class="close-button" aria-label="Minimize panel">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <i class="fas fa-universal-access minimize-icon" aria-hidden="true"></i>
+    
+    <div class="tabs-container">
+      <div class="tab active" data-tab="options" data-i18n="aP.optionsTab">Opciones</div>
+      <div class="tab" data-tab="adaptations" data-i18n="aP.recommendations">Recomendaciones</div>
+      <div class="tab icon-tab ml-4" data-tab="configuration"><span class="fa fa-gear"></span></div>
+    </div>
+    <hr>
+    <div class="language-selector">
+      <label for="language-select" data-i18n="aP.language">Idioma:</label>
+      <select id="language-select" aria-label="Select language">
+        <option value="es" data-i18n="lan.spanish" selected>Español</option>
+        <option value="en" data-i18n="lan.english">Inglés</option>
+      </select>
+    </div>
+    <div class="panel-body">
+      <div class="tab-content active" data-tab-content="options" id="options-content">
+        <div class="intro-message">
+          <h2 data-i18n="aP.titleIntroOptions">Personaliza tu experiencia de navegación</h2>
+          <p data-i18n="aP.descriptionIntroOptions">Despliega las siguientes categorías y ajusta las opciones para que el contenido se adapte mejor a tus necesidades.</p>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header" id="presentation-header" aria-expanded="false" aria-controls="presentation-content" role="button" tabindex="0">
+            <span data-i18n="aP.adaptationPresentation">Adaptación de la presentación</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content" id="presentation-content">
+            <div class="options-box">
+              <div class="options-grid">
+                <div class="option-column vertical-divider">
+                  <button class="option-button" id="fontSize" aria-label="Font size options">
+                    <i class="fas fa-text-height"></i>
+                    <span data-i18n="aP.size" class="option-name">Tamaño</span>
+                    <span 
+                      data-i18n-any="aP.any"
+                      data-i18n-small="aP.small"
+                      data-i18n-medium="aP.medium"
+                      data-i18n-big="aP.big"
+                      data-i18n-extraBig="aP.extraBig"
+                      data-i18n-active="data-i18n-any"
+                      class="option-value">Ninguno</span>
+                    <div class="dots">
+                      <span class="dot active" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                    </div>
+                  </button>
+                </div>
+                <div class="option-column vertical-divider">
+                  <button class="option-button" id="fontFamily" aria-label="Font family options">
+                    <i class="fas fa-font"></i>
+                    <span data-i18n="aP.typography" class="option-name">Tipografía</span>
+                    <span 
+                      data-i18n-any="aP.any"
+                      data-i18n-arial="Arial"
+                      data-i18n-openDyslexic="OpenDyslexic"
+                      data-i18n-verdana="Verdana"
+                      data-i18n-timesNewRoman="Times New Roman"
+                      data-i18n-active="data-i18n-any"
+                      class="option-value">Ninguna</span>
+                    <div class="dots">
+                      <span class="dot active" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                    </div>
+                  </button>
+                </div>
+                <div class="option-column">
+                  <button class="option-button" id="colorblind" aria-label="Colorblind mode options">
+                    <i class="fas fa-eye"></i>
+                    <span data-i18n="aP.colorBlindness" class="option-name">Daltonismo</span>
+                    <span 
+                      data-i18n-none="aP.none"
+                      data-i18n-protanopia="aP.protanopia"
+                      data-i18n-deuteranopia="aP.deuteranopia"
+                      data-i18n-tritanopia="aP.tritanopia"
+                      data-i18n-active="data-i18n-none"
+                      class="option-value">Ninguno</span>
+                    <div class="dots">
+                      <span class="dot active" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                    </div>
+                  </button>
+                </div>
+                <div class="row-divider"></div>
+                <div class="option-column vertical-divider">
+                  <button class="option-button" id="contrast" aria-label="Contrast options">
+                    <i class="fas fa-adjust"></i>
+                    <span data-i18n="aP.colors" class="option-name">Colores</span>
+                    <span 
+                      data-i18n-normal="aP.normal"
+                      data-i18n-highContrast="aP.highContrast"
+                      data-i18n-inverted="aP.inverted"
+                      data-i18n-active="data-i18n-normal"
+                      class="option-value">Normal</span>
+                    <div class="dots">
+                      <span class="dot active" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                    </div>
+                  </button>
+                </div>
+                <div class="option-column vertical-divider">
+                  <button class="option-button" id="colorShift" aria-label="Color filter options">
+                    <i class="fas fa-palette"></i>
+                    <span data-i18n="aP.colorFilter" class="option-name">Filtro color</span>
+                    <span 
+                      data-i18n-normal="aP.normal"
+                      data-i18n-gray="aP.gray"
+                      data-i18n-sepia="aP.sepia"
+                      data-i18n-active="data-i18n-normal"
+                      class="option-value">Normal</span>
+                    <div class="dots">
+                      <span class="dot active" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" id="content-header" aria-expanded="false" aria-controls="content-content" role="button" tabindex="0">
+            <span data-i18n="aP.adaptationContent">Adaptación del contenido</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content" id="content-content">
+            <div class="options-box">
+              <div class="options-grid">
+                <div class="option-column vertical-divider">
+                  <button class="option-button" id="highlight" aria-label="Highlight elements options">
+                    <i class="fas fa-highlighter"></i>
+                    <span data-i18n="aP.highlight" class="option-name">Resaltar</span>
+                    <span 
+                      data-i18n-any="aP.any"
+                      data-i18n-buttons="aP.buttons"
+                      data-i18n-links="aP.links"
+                      data-i18n-titles="aP.titles"
+                      data-i18n-all="aP.all"
+                      data-i18n-active="data-i18n-any"
+                      class="option-value">Ninguno</span>
+                    <div class="dots">
+                      <span class="dot active" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                    </div>
+                  </button>
+                </div>
+                <div class="option-column vertical-divider">
+                  <button class="option-button no-dots" id="toggleMedia" aria-label="Toggle media">
+                    <i class="fas fa-eye-slash"></i>
+                    <span class="option-name">Imágenes</span>
+                    <span
+                      data-i18n-hide="aP.hide"
+                      data-i18n-show="aP.show"
+                      data-i18n-active="data-i18n-hide"
+                      class="option-value">Ocultar</span>
+                  </button>
+                </div>
+                <div class="option-column">
+                  <button class="option-button no-dots" id="toggleAnimations" aria-label="Toggle animations" data-active="true">
+                    <i class="fas fa-stop-circle"></i>
+                    <span data-i18n="aP.animations" class="option-name">Animaciones</span>
+                    <span 
+                      data-i18n-continue="aP.continue"
+                      data-i18n-stop="aP.stop"
+                      data-i18n-active="data-i18n-stop"
+                      class="option-value">Parar</span>
+                  </button>
+                </div>
+                <div class="row-divider"></div>
+                <div class="option-column vertical-divider">
+                  <button class="option-button no-dots" id="abstractiveSummary" aria-label="Abstractive summary" data-active="true">
+                    <i class="fas fa-file-code"></i>
+                    <span data-i18n="aP.abstractiveSummary" class="option-name">Resumen abstractivo</span>
+                     <span 
+                      data-i18n-summarize="aP.summarize"
+                      data-i18n-active="data-i18n-summarize"
+                      class="option-value">Resumir</span>
+                  </button>
+                </div>
+                <div class="option-column vertical-divider">
+                  <button class="option-button no-dots" id="extractiveSummary" aria-label="Extractive summary" data-active="true">
+                    <i class="fas fa-file-lines"></i>
+                    <span data-i18n="aP.extractiveSummary" class="option-name">Resumen extractivo</span>
+                     <span 
+                      data-i18n-summarize="aP.summarize"
+                      data-i18n-active="data-i18n-summarize"
+                      class="option-value">Resumir</span>
+                  </button>
+                </div>
+                <div class="option-column">
+                  <button class="option-button no-dots" id="simplifyPage" aria-label="Simplify page" data-active="true">
+                    <i class="fas fa-file-fragment"></i>
+                    <span data-i18n="aP.simplifyPage" class="option-name">Simplificar página</span>
+                     <span 
+                      data-i18n-summarize="aP.summarize"
+                      data-i18n-active="data-i18n-summarize"
+                      class="option-value">Simplificar</span>
+                  </button>
+                </div>
+                <div class="row-divider"></div>
+                <div class="option-column vertical-divider">
+                  <button class="option-button" id="altText" aria-label="Alternative text options" data-active="true">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="aP.altText" class="option-name">Texto alternativo (imágenes)</span>
+                     <span 
+                      data-i18n-none="aP.none"
+                      data-i18n-overImage="aP.overImage"
+                      data-i18n-followCursor="aP.followCursor"
+                      data-i18n-active="data-i18n-none"
+                      class="option-value">Ninguno</span>
+                    <div class="dots">
+                      <span class="dot active" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" id="structure-header" aria-expanded="false" aria-controls="structure-content" role="button" tabindex="0">
+            <span data-i18n="aP.adaptationStructure">Adaptación de la estructura</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content" id="structure-content">
+            <div class="options-box">
+              <div class="options-grid">
+                <div class="option-column vertical-divider">
+                  <button class="option-button" id="paragraphSpacing" aria-label="Paragraph spacing options">
+                    <i class="fas fa-text-height"></i>
+                    <span data-i18n="aP.paragraphSpacing" class="option-name"></span>
+                    <span 
+                      data-i18n-none="aP.none"
+                      data-i18n-small="aP.small"
+                      data-i18n-medium="aP.medium"
+                      data-i18n-wide="aP.wide"
+                      data-i18n-active="data-i18n-none"
+                      class="option-value">Ninguno</span>
+                    <div class="dots">
+                      <span class="dot active" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                    </div>
+                  </button>
+                </div>
+                <div class="option-column vertical-divider">
+                  <button class="option-button" id="lineHeight" aria-label="Line height options">
+                    <i class="fas fa-text-height"></i>
+                    <span data-i18n="aP.lineSpacing" class="option-name">Interlineado</span>
+                    <span 
+                      data-i18n-any="aP.any"
+                      data-i18n-normal="aP.normal"
+                      data-i18n-medium="aP.medium"
+                      data-i18n-wide="aP.wide"
+                      data-i18n-active="data-i18n-any"
+                      class="option-value">Ninguno</span>
+                    <div class="dots">
+                      <span class="dot active" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                    </div>
+                  </button>
+                </div>
+                <div class="option-column vertical-divider">
+                  <button class="option-button" id="textAlign" aria-label="Text align options">
+                    <i class="fas fa-align-justify"></i>
+                    <span data-i18n="aP.textAlign" class="option-name"></span>
+                    <span 
+                      data-i18n-none="aP.none"
+                      data-i18n-left="aP.left"
+                      data-i18n-center="aP.center"
+                      data-i18n-right="aP.right"
+                      data-i18n-justify="aP.justify"
+                      data-i18n-active="data-i18n-none"
+                      class="option-value">Ninguno</span>
+                    <div class="dots">
+                      <span class="dot active" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                    </div>
+                  </button>
+                </div>
+                <div class="row-divider"></div>
+                <div class="option-column vertical-divider">
+                  <button class="option-button" id="letterSpacing" aria-label="Letter spacing options">
+                    <i class="fas fa-text-width"></i>
+                    <span class="option-name">Esp. letras</span>
+                    <span 
+                      data-i18n-normal="aP.normal"
+                      data-i18n-medium="aP.medium"
+                      data-i18n-wide="aP.wide"
+                      data-i18n-active="data-i18n-normal"
+                      class="option-value">Normal</span>
+                    <div class="dots">
+                      <span class="dot active" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                    </div>
+                  </button>
+                </div>
+                <div class="option-column vertical-divider">
+                  <button class="option-button" id="wordSpacing" aria-label="Word spacing options">
+                    <i class="fas fa-text-width"></i>
+                    <span data-i18n="aP.wordSpace" class="option-name">Esp. palabras</span>
+                    <span 
+                      data-i18n-normal="aP.normal"
+                      data-i18n-medium="aP.medium"
+                      data-i18n-wide="aP.wide"
+                      data-i18n-active="data-i18n-normal"
+                      class="option-value">Normal</span>
+                    <div class="dots">
+                      <span class="dot active" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" id="interaction-header" aria-expanded="false" aria-controls="interaction-content" role="button" tabindex="0">
+            <span data-i18n="aP.adaptationInteraction">Adaptación de la interacción</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content" id="interaction-content">
+            <div class="options-box">
+              <div class="options-grid">
+                <div class="option-column vertical-divider">
+                  <button class="option-button" id="cursorSize" aria-label="Cursor size options">
+                    <i class="fas fa-mouse-pointer"></i>
+                    <span data-i18n="aP.cursor" class="option-name">Cursor</span>
+                    <span
+                      data-i18n-normal="aP.normal"
+                      data-i18n-big="aP.big"
+                      data-i18n-extraBig="aP.extraBig"
+                      data-i18n-active="data-i18n-normal"
+                      class="option-value">Normal</span>
+                    <div class="dots">
+                      <span class="dot active" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span class="dot" aria-hidden="true"></span>
+                    </div>
+                  </button>
+                </div>
+                <div class="option-column vertical-divider">
+                  <button class="option-button no-dots" id="toggleGuideLine" aria-label="Toggle guide line">
+                    <i class="fas fa-ruler-horizontal"></i>
+                    <span data-i18n="aP.guideLine" class="option-name">Línea guía</span>
+                    <span 
+                      data-i18n-show="aP.show"
+                      data-i18n-hide="aP.hide"
+                      data-i18n-active="data-i18n-show"
+                      class="option-value">Mostrar</span>
+                  </button>
+                </div>
+                <div class="option-column">
+                  <button class="option-button no-dots" id="toggleGuideWindow" aria-label="Toggle guide window">
+                    <i class="fas fa-window-maximize"></i>
+                    <span data-i18n="aP.guideWindow" class="option-name">Ventana guía</span>
+                    <span 
+                      data-i18n-show="aP.show"
+                      data-i18n-hide="aP.hide"
+                      data-i18n-active="data-i18n-show"
+                      class="option-value">Mostrar</span>
+                  </button>
+                </div>
+                <div class="row-divider"></div>
+                <div class="option-column vertical-divider">
+                  <button class="option-button no-dots" id="toggleZoom" aria-label="Toggle zoom">
+                    <i class="fas fa-search"></i>
+                    <span data-i18n="aP.lens" class="option-name">Lupa</span>
+                    <span 
+                      data-i18n-enable="aP.active"
+                      data-i18n-deactive="aP.deactive"
+                      data-i18n-active="data-i18n-active"
+                      class="option-value">Activar</span>
+                  </button>
+                </div>
+                <div class="option-column vertical-divider">
+                  <button class="option-button no-dots" id="toggleElementHighlight" aria-label="Toggle element highlight">
+                    <i class="fas fa-star"></i>
+                    <span data-i18n="aP.highlightSelection" class="option-name">Resaltar elección</span>
+                    <span 
+                      data-i18n-enable="aP.active"
+                      data-i18n-deactive="aP.deactive"
+                      data-i18n-active="data-i18n-active"
+                      class="option-value">Activar</span>
+                  </button>
+                </div>
+                 <div class="option-column">
+                  <button class="option-button no-dots" id="toggleIncrementSizeElementHover" aria-label="Toggle increment size of interactive element on hover">
+                    <i class="fas fa-square-plus"></i>
+                    <span data-i18n="aP.incrementSizeOnHover" class="option-name">Expandir al pasar</span>
+                    <span 
+                      data-i18n-enable="aP.active"
+                      data-i18n-deactive="aP.deactive"
+                      data-i18n-active="data-i18n-active"
+                      class="option-value">Activar</span>
+                  </button>
+                </div>
+                <div class="row-divider"></div>
+                <div class="option-column vertical-divider">
+                  <button class="option-button no-dots" id="toggleReadSelected" aria-label="Read selected text">
+                    <i class="fas fa-book-reader"></i>
+                    <span data-i18n="aP.readSelection" class="option-name">Leer selección</span>
+                    <span 
+                      data-i18n-read="aP.read"
+                      data-i18n-stop="aP.stop"
+                      data-i18n-active="data-i18n-read"
+                      class="option-value">Leer</span>
+                  </button>
+                </div>
+                <div class="option-column vertical-divider">
+                  <button class="option-button no-dots" id="toggleReadFullPage" aria-label="Read full page">
+                    <i class="fas fa-file-audio"></i>
+                    <span data-i18n="aP.readAll" class="option-name">Leer todo</span>
+                    <span 
+                      data-i18n-read="aP.read"
+                      data-i18n-stop="aP.stop"
+                      data-i18n-active="data-i18n-read"
+                      class="option-value">Leer</span>
+                  </button>
+                </div>
+                <div class="option-column" id="voiceSelect-container">
+                  <button class="option-button" id="voiceSelect" aria-label="Voice selection options">
+                    <i class="fas fa-microphone"></i>
+                    <span data-i18n="aP.voice" class="option-name">Voz</span>
+                    <span data-i18n="aP.loading" class="option-value">Cargando...</span>
+                    <div class="dots">
+                      <span class="dot active" aria-hidden="true"></span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="accordion">
+          <div class="accordion-header" id="position-header" aria-expanded="false" aria-controls="position-content" role="button" tabindex="0">
+            <span data-i18n="aP.adaptationLocation">Ubicación del panel</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content" id="position-content">
+            <div class="options-box">
+              <div class="position-options-grid">
+                <div class="option-column vertical-divider">
+                  <button class="option-button no-dots position-button" data-position="top-left" aria-label="Position panel at top left">
+                    <i class="fas fa-arrow-up-right-from-square rotate-270"></i>
+                    <span data-i18n="aP.topLeft" class="option-name">Superior izquierda</span>
+                  </button>
+                </div>
+                <div class="option-column">
+                  <button class="option-button no-dots position-button" data-position="top-right" aria-label="Position panel at top right">
+                    <i class="fas fa-arrow-up-right-from-square rotate"></i>
+                    <span data-i18n="aP.topRight" class="option-name">Superior derecha</span>
+                  </button>
+                </div>
+                <div class="row-divider"></div>
+                <div class="option-column vertical-divider">
+                  <button class="option-button no-dots position-button" data-position="bottom-left" aria-label="Position panel at bottom left">
+                    <i class="fas fa-arrow-up-right-from-square rotate-180"></i>
+                    <span  data-i18n="aP.bottomLeft" class="option-name">Inferior izquierda</span>
+                  </button>
+                </div>
+                <div class="option-column">
+                  <button class="option-button no-dots position-button" data-position="bottom-right" aria-label="Position panel at bottom right">
+                    <i class="fas fa-arrow-up-right-from-square rotate-90"></i>
+                    <span  data-i18n="aP.bottomRight" class="option-name">Inferior derecha</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <div class="reset-button-container">
+            <button class="reset-button" id="resetAll" aria-label="Reset all options">
+              <div class="reset-content">
+                <i class="fas fa-undo"></i>
+                <span data-i18n="aP.reset">Reiniciar</span>
+              </div>
+            </button>
+        </div>
+      </div>
+
+      <div class="tab-content" data-tab-content="adaptations" id="adaptations-content">
+        <div class="intro-message">
+          <h2 data-i18n="aP.recommendations">Recomendaciones</h2>
+          <span data-i18n="aP.recommendationsDescription">Se recomienda aplicar las adaptaciones sugeridas según su perfil de usuario y la evaluación de la página web (</span><span class="complexity" id="span-complexity-level">0%</span> <span data-i18n="aP.complex">compleja)</span>
+        </div>
+        
+        <div class="row">
+          <!-- <div class="col-12 col-lg-12 col-xl-12 p-1">
+            <button data-i18n="aP.showNotifications" id="btn-show-notifications" class="adaptation-button">Mostrar notificaciones</button>
+          </div>
+          <div class="col-6 col-lg-6 col-xl-6 p-1">
+            <button data-i18n="aP.dontShowAccept" id="btn-not-show-accept-notifications" class="adaptation-button">No mostrar y aceptar</button>
+          </div>
+          <div class="col-6 col-lg-6 col-xl-6 p-1">
+            <button data-i18n="aP.dontShowReject" id="btn-not-show-reject-notifications" class="adaptation-button">No mostrar y rechazar</button>
+          </div> -->
+          <div class="col-6 col-lg-6 col-xl-6 p-1">
+            <button data-i18n="aP.acceptAll" id="btn-accept-all-notifications" class="adaptation-button">Aceptar todas</button>
+          </div>
+          <div class="col-6 col-lg-6 col-xl-6 p-1">
+            <button data-i18n="aP.rejectAll" id="btn-reject-all-notifications" class="adaptation-button">Rechazar todas</button>
+          </div>
+        </div>
+    
+      </div>
+
+      <div class="tab-content" data-tab-content="configuration" id="configuration-content">
+        <div class="intro-message">
+          <h2 data-i18n="aP.configuration">Configuración</h2>
+          <span data-i18n="aP.configurationDescription">Configura las notificaciones y ubicación del centro de accesibiidad acorde a tus preferencias.</span>
+        </div>
+        
+        <!-- <div class="row">
+          <div class="col-12 col-lg-12 col-xl-12 p-1">
+            <button data-i18n="aP.showNotifications" id="btn-show-notifications" class="adaptation-button">Mostrar notificaciones</button>
+          </div>
+          <div class="col-6 col-lg-6 col-xl-6 p-1">
+            <button data-i18n="aP.dontShowAccept" id="btn-not-show-accept-notifications" class="adaptation-button">No mostrar y aceptar</button>
+          </div>
+          <div class="col-6 col-lg-6 col-xl-6 p-1">
+            <button data-i18n="aP.dontShowReject" id="btn-not-show-reject-notifications" class="adaptation-button">No mostrar y rechazar</button>
+          </div>
+        </div> -->
+
+        <div class="accordion">
+          <div class="accordion-header" id="interaction-header" aria-expanded="false" aria-controls="interaction-content" role="button" tabindex="0">
+            <span data-i18n="aP.notificationConfiguration">Notificaciones</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content" id="interaction-content">
+            <div class="options-box">
+              <div class="options-grid">
+                <div class="option-column vertical-divider">
+                  <button class="option-button no-dots" id="btn-show-notifications" aria-label="Cursor size options">
+                    <i class="fas fa-bell"></i>
+                    <span data-i18n="aP.showNotifications" class="option-name">Mostrar</span>
+                    <span
+                      data-i18n="aP.apply"
+                      class="option-value">Aplicar</span>
+                  </button>
+                </div>
+                <div class="option-column vertical-divider">
+                  <button class="option-button no-dots" id="btn-not-show-accept-notifications" aria-label="Cursor size options">
+                    <i class="fas fa-bell-slash"></i>
+                    <span data-i18n="aP.dontShowAccept" class="option-name">No mostrar y aplicar</span>
+                    <span
+                      data-i18n="aP.apply"
+                      class="option-value">Aplicar</span>
+                  </button>
+                </div>
+                 <div class="option-column vertical-divider">
+                  <button class="option-button no-dots" id="btn-not-show-reject-notifications" aria-label="Cursor size options">
+                    <i class="fas fa-ban"></i>
+                    <span data-i18n="aP.dontShowReject" class="option-name">No mostrar y no aplicar</span>
+                    <span
+                      data-i18n="aP.apply"
+                      class="option-value">Aplicar</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" id="position-header" aria-expanded="false" aria-controls="position-content" role="button" tabindex="0">
+            <span data-i18n="aP.adaptationLocation">Ubicación del panel</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content" id="presentation-content">
+            <div class="options-box">
+              <div class="position-options-grid">
+                <div class="option-column vertical-divider">
+                  <button class="option-button no-dots position-button" data-position="top-left" aria-label="Position panel at top left">
+                    <i class="fas fa-arrow-up-right-from-square rotate-270"></i>
+                    <span data-i18n="aP.topLeft" class="option-name">Superior izquierda</span>
+                  </button>
+                </div>
+                <div class="option-column">
+                  <button class="option-button no-dots position-button" data-position="top-right" aria-label="Position panel at top right">
+                    <i class="fas fa-arrow-up-right-from-square rotate"></i>
+                    <span data-i18n="aP.topRight" class="option-name">Superior derecha</span>
+                  </button>
+                </div>
+                <div class="row-divider"></div>
+                <div class="option-column vertical-divider">
+                  <button class="option-button no-dots position-button" data-position="bottom-left" aria-label="Position panel at bottom left">
+                    <i class="fas fa-arrow-up-right-from-square rotate-180"></i>
+                    <span  data-i18n="aP.bottomLeft" class="option-name">Inferior izquierda</span>
+                  </button>
+                </div>
+                <div class="option-column">
+                  <button class="option-button no-dots position-button" data-position="bottom-right" aria-label="Position panel at bottom right">
+                    <i class="fas fa-arrow-up-right-from-square rotate-90"></i>
+                    <span  data-i18n="aP.bottomRight" class="option-name">Inferior derecha</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <footer>
+      <div class="footer-content">
+        <div class="footer-message">
+          <span data-i18n="aP.needAditionalHelp">¿Necesita ayuda adicional?</span> 
+          <a href="mailto:hcasanovam@uteq.edu.ec" data-i18n="aP.contactUs">Contáctanos</a>.
+        </div>
+      </div>
+    </footer>
+  </div>
+
+</body>
+</html>

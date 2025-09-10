@@ -1,0 +1,279 @@
+class ElementCreator {
+  constructor() {
+    
+  }
+
+  /**
+   * Crea un campo de entrada genérico (input)
+   * @param {Object} options - Opciones de configuración
+   * @returns {HTMLElement} El contenedor que incluye el label y el input
+   */
+  createInput(wrapperOptions = {}, options = {}) {
+    //const wrapper = document.createElement("div");
+    const wrapper = this.createDiv(wrapperOptions);
+
+    const label = this.createLabel(options);
+    const input = this.createInputField(options);
+
+    wrapper.appendChild(label);
+    wrapper.appendChild(input);
+
+    return wrapper;
+  }
+
+  /**
+   * Crea el label para el campo de entrada.
+   * @param {Object} options - Opciones para el label
+   * @returns {HTMLElement} El elemento label
+   */
+  createLabel(options) {
+    const label = document.createElement("label");
+    label.textContent = options.label || "Campo:";
+    label.htmlFor = options.name;
+
+    if (options.required) label.classList.add("required");    
+
+    return label;
+  }
+
+  createSpan(options) {
+    const span = document.createElement("span");
+    span.textContent = options.text;
+    
+    return label;
+  }
+
+  /**
+   * Crea el input (campo de entrada) según el tipo especificado.
+   * @param {Object} options - Opciones para el input
+   * @returns {HTMLElement} El campo de entrada
+   */
+  createInputField(options) {
+    const input = document.createElement("input");
+    input.type = options.type || "text";
+    input.id = options.id;
+    input.name = options.name;
+    input.className = options.class || "";
+    input.placeholder = options.placeholder || "";
+
+    this.applyExtraOptions(input, options);
+
+    return input;
+  }
+
+  /**
+   * Crea un campo select con opciones.
+   * @param {Object} options - Opciones de configuración del select
+   * @param {Array} options.options - Array de opciones para el select
+   * @returns {HTMLElement} El campo select
+   */
+  createSelect(wrapperOptions = {}, options = {}, listedData = {}) {
+    //const wrapper = document.createElement("div");
+    const wrapper = this.createDiv(wrapperOptions);
+
+    const label = this.createLabel(options);
+    const select = this.createSelectField(options, listedData);
+
+    wrapper.appendChild(label);
+    wrapper.appendChild(select);
+
+    return wrapper;
+  }
+
+  /**
+   * Crea el elemento select (dropdown).
+   * @param {Object} options - Opciones para el select
+   * @returns {HTMLElement} El campo select
+   */
+  createSelectField(options, listedData) {
+    const select = document.createElement("select");
+    select.id = options.id;
+    select.name = options.name;
+
+    // Crear las opciones del select
+    if (options.options) {
+      options.options.forEach(option =>  {
+        const opt = document.createElement("option");
+        opt.value = option.value;
+        opt.textContent = option.textContent;
+        select.appendChild(opt);
+      });
+    }
+
+    return select;
+  }
+
+  /**
+   * Crea una tabla con encabezados y filas.
+   * @param {Object} options - Opciones para la tabla
+   * @param {Array} options.headers - Array con los encabezados de la tabla
+   * @param {Array} options.rows - Array con las filas de la tabla
+   * @returns {HTMLElement} La tabla creada
+   */
+  createTable(options = {}) {
+    const table = document.createElement("table");
+    table.classList.add("table");
+
+    // Crear el encabezado
+    const thead = document.createElement("thead");
+    const headerRow = document.createElement("tr");
+    options.headers.forEach(header => {
+      const th = document.createElement("th");
+      th.textContent = header;
+      headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    // Crear las filas
+    const tbody = document.createElement("tbody");
+    options.rows.forEach(row => {
+      const tr = document.createElement("tr");
+      row.forEach(cell => {
+        const td = document.createElement("td");
+        td.textContent = cell;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+
+    return table;
+  }
+
+  /**
+   * Crea un encabezado h(N), donde N puede ser 1, 2, 3, etc.
+   * @param {Object} options - Opciones para el encabezado
+   * @param {string} options.level - Nivel del encabezado (h1, h2, h3, etc.)
+   * @param {string} options.text - El texto que llevará el encabezado
+   * @returns {HTMLElement} El encabezado
+   */
+  createHeader(options = {}) {
+    const level = options.level || 1;
+    const header = document.createElement(`h${level}`);
+    header.textContent = options.text || `Encabezado h${level}`;
+
+    return header;
+  }
+
+  /**
+   * Crea una lista sin orden.
+   * @param {Object} options - Opciones para el encabezado
+   * @returns {HTMLElement} La lista sin orden
+   */
+  createUL(options = {}) {
+    const ul = document.createElement('ul');
+
+    // Asignar propiedades al ul
+    if (options.id) ul.id = options.id;
+    if (options.class) ul.className = options.class;
+    if (options.style) ul.style.cssText = options.style;
+
+    // Si se especifican elementos li, añadirlos al ul
+    if (options.items) {
+      options.items.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        ul.appendChild(li);
+      });
+    }
+
+    return ul;
+  }
+
+  /**
+   * Crea un div para actuar como wrapper
+   * @param {Object} options - Opciones para el encabezado
+   * @returns {HTMLElement} La lista sin orden
+   */
+  createDiv(options = {}) {
+    const div = document.createElement('div');
+
+    // Asignar propiedades
+    if (options.id) ul.id = options.id;
+    if (options.class) ul.className = options.class;
+    if (options.style) ul.style.cssText = options.style;
+
+    if (options.attributes && typeof options.attributes === "object") {
+      this.applyAttributes(div, options.attributes);
+    }
+
+    return div;
+  }
+
+  createLi(options = {}) {
+    const li = document.createElement('li');
+
+    // Asignar propiedades al li
+    if (options.id) li.id = options.id;
+    if (options.class) li.className = options.class;
+    if (options.style) li.style.cssText = options.style;
+    if (options.textContent) li.textContent = options.textContent;
+
+    if (options.attributes && typeof options.attributes === "object") {
+      this.applyAttributes(li, options.attributes);
+    }
+
+    return li;
+  }
+
+  createDiv(options = {}) {
+    const div = document.createElement('div');
+    
+    // Asignar propiedades al div
+    if (options.id) div.id = options.id;
+    if (options.class) div.className = options.class;
+    if (options.style) div.style.cssText = options.style;
+    if (options.textContent) div.textContent = options.textContent;
+
+    // Si se especifican hijos, añadirlos al div
+    if (options.children) {
+      options.children.forEach(child => {
+        div.appendChild(child);
+      });
+    }
+
+    if (options.attributes && typeof options.attributes === "object") {
+      this.applyAttributes(div, options.attributes);
+    }
+
+    return div;
+  }
+
+   /**
+   * Aplica atributos adicionales al campo de entrada.
+   * @param {HTMLElement} input - El input al que se le aplicarán los atributos
+   * @param {Object} options - Opciones adicionales (ej. min, max, readonly)
+   */
+  applyExtraOptions(input, options) {
+    if (options.required) {
+      input.required = true;
+    }
+    if (options.min) {
+      input.min = options.min;
+    }
+    if (options.max) {
+      input.max = options.max;
+    }
+    if (options.step) {
+      input.step = options.step;
+    }
+    if (options.pattern) {
+      input.pattern = options.pattern;
+    }
+    if (options.readonly) {
+      input.readOnly = options.readonly;
+    }
+
+    // Si hay atributos personalizados
+    if (options.attributes && typeof options.attributes === "object") {
+      this.applyAttributes(input, options.attributes);
+    }
+  }
+
+  applyAttributes(element, attributes) {
+    for (let attr in attributes) {
+      element.setAttribute(attr, attributes[attr]);
+    }
+  }
+}

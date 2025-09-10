@@ -1,0 +1,209 @@
+:root {
+    --background-color: #f7f7f7;
+    --header-bg-gradient: linear-gradient(to right, #e0e0e0, #cfcfcf);
+    --header-shadow-color: rgba(0, 0, 0, 0.3);
+    --header-title-color: #2E2E2E;
+    --button-save-bg-color: #4CAF50;
+    --button-save-hover-bg-color: #45a049;
+    --button-close-bg-color: #d9534f;
+    --button-close-hover-bg-color: #c9302c;
+    --form-bg-color: #ffffff;
+    --form-border-color: #ccc;
+    --input-focus-border-color: #003366;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 16px;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, label, input, select, button, .tab-item {
+    font-family: sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background: var(--header-bg-gradient);
+    padding: 25px;
+    box-shadow: 0 4px 10px var(--header-shadow-color);
+    z-index: 100;
+}
+
+.header-title {
+    margin: 0;
+    font-size: 1.5em;
+    color: var(--header-title-color);
+    flex-grow: 1;
+    text-align: center;
+    text-shadow: none;
+}
+
+.button-container {
+    position: absolute;
+    right: 20px;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    margin-left: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button:hover {
+    transform: translateY(-2px) scale(1.2); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+}
+
+.button:active {
+    transform: translateY(1px) scale(0.95); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+
+.save-button {
+    background-color: var(--button-save-bg-color);
+    color: white;
+}
+
+.save-button:hover {
+    background-color: var(--button-save-hover-bg-color);
+}
+
+.close-button {
+    background-color: var(--button-close-bg-color);
+    color: white;
+}
+
+.close-button:hover {
+    background-color: var(--button-close-hover-bg-color);
+}
+
+/* Centrar y ajustar el ancho del formulario */
+form {
+    max-width: 800px; 
+    margin: 0 auto; 
+    background-color: var(--form-bg-color);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px var(--header-shadow-color);
+    margin-top: 20px;
+}
+
+.tab-container {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.tab-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    border-bottom: 2px solid #ccc;
+}
+
+.tab-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: normal;
+    background-color: #e0e0e0;
+    color: #666666;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-right: 5px;
+    user-select: none;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    font-size: 16px;
+}
+
+.tab-item:hover {
+    background-color: #d5d5d5;
+    transform: translateY(-2px) scale(1.1); 
+}
+
+.tab-item.active {
+    background-color: #ffffff;
+    color: #333333;
+    font-weight: bold;
+    border-bottom: 4px solid #4CAF50;
+}
+
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    width: 95%; 
+}
+
+.tab-content.active {
+    display: block;
+}
+
+h2 {
+    font-size: 16px;
+    color: var(--header-title-color);
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid var(--form-border-color);
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: var(--input-focus-border-color);
+    box-shadow: 0 0 8px rgba(0, 51, 102, 0.5); 
+    outline: none;
+}
+
+button[type="submit"] {
+    background-color: var(--button-save-bg-color);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--button-save-hover-bg-color);
+}
+
+.required::after {
+  content: ' *';
+  color: red;
+}
