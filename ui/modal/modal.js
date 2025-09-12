@@ -97,7 +97,6 @@ class ExtensionModal {
     }
 
     async init() {
-        console.log("INICIANDO MODAL DE LA EXTENSIÓN")
         // Verificar que chrome.runtime.getURL está disponible
         if (!chrome.runtime || !chrome.runtime.getURL) {
             console.error('chrome.runtime.getURL no está disponible');
@@ -130,7 +129,6 @@ class ExtensionModal {
             ${this.doc.querySelector('body').innerHTML}
             `;
 
-            console.log("Loading the modal", this.shadowRoot);
 
             this.setEvents();
         } catch (error) {
@@ -139,7 +137,6 @@ class ExtensionModal {
     }
 
     setEvents() {
-        console.log(this.shadowRoot)
         const btnCloseModal = this.shadowRoot.getElementById("btnClose-modal");
         const btnHeaderCloseModal = this.shadowRoot.getElementById("modal-header-close");
         const modalContainer = this.shadowRoot.getElementById("extensionModal");
@@ -268,7 +265,6 @@ class ExtensionModal {
 
     
     t(language) {
-        console.log("Traduciendo modal", language)
         Translator.tPage(this.shadowRoot, language);
     }
 }

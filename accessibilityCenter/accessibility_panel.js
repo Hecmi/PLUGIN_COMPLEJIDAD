@@ -54,7 +54,6 @@ class AccessibilityPanel {
   async init(optionPanelConfiguration = null) {
     // Evitar ejecución múltiple del script
     if (document.getElementById('accessibility-panel')) {
-      console.log('Panel ya existe, evitando ejecución múltiple');
       return;
     }
 
@@ -128,7 +127,6 @@ class AccessibilityPanel {
     // Inicializar el tracker CSS
     // this.tracker = new CSSTracker(document.head.querySelector('#page-dynamic-styles-ext'));
     this.tracker = Constants.STYLES[Constants.APP.panelTracker];
-    console.log("TRACKER PARA EL PANEL DE ACCESIBILIDAD", this.tracker)
     
     // Cargar estilos iniciales
     this.styleManager.initialize(this.tracker);
@@ -244,7 +242,6 @@ class AccessibilityPanel {
     const left = columnRect.left - optionsBoxRect.left - borderWidth - overflow;
     const width = columnRect.width + 2 * overflow;
     const height = columnRect.height + 2 * overflow;
-    console.log("column", columnRect, { top, left, width, height })
     
     this.activeOverlay.style.top = `${top}px`;
     this.activeOverlay.style.left = `${left}px`;

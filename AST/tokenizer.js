@@ -1,4 +1,3 @@
-console.log("INICIANDO TOKENIZER")
 const linkPageStylePanel = document.createElement('style');
 linkPageStylePanel.id = "page-panel-styles-ext";
 document.head.appendChild(linkPageStylePanel);
@@ -273,7 +272,6 @@ const CSS_FUNCTIONS = {
     getSpecialStyles: () => tracker.specialStyles,
 }
 
-console.log("EL RACKER TRACKER ES: ", tracker)
 
 const BUILTIN_FUNCTIONS = {
     tracker: tracker,

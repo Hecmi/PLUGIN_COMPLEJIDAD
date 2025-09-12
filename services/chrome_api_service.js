@@ -72,7 +72,6 @@ class ChromeApiService {
                 }
                 
                 try {
-                    console.log("get session", response.sessionData)
                     resolve(response.sessionData);
                 } catch (parseError) {
                     reject(new Error(`Failed to get user session: ${parseError.message}`));
@@ -83,13 +82,10 @@ class ChromeApiService {
 
     static getUserModelAttributes() {
         return new Promise((resolve, reject) => {
-            console.log("get user moedl");
             chrome.runtime.sendMessage({ type: "GET_USER_MODEL_ATTRIBUTES" }, (response) => {
-                console.log("get user moedl", response);
                 // Verificar errores de Chrome Runtime
                 if (chrome.runtime.lastError) {
                     reject(new Error(`Chrome runtime error: ${chrome.runtime.lastError.message}`));
-                    console.log("error")
                     return;
                 }
                 
@@ -214,7 +210,6 @@ class ChromeApiService {
             chrome.runtime.sendMessage({ type: "GET_UNLOGGED_PREFERENCES" }, (response => {
                 try {
                     const unloggedPreferences = response.unloggedPreferences;
-                    console.log("unlogged", response)
                     resolve(unloggedPreferences);
                 } catch(error) {
                     reject(new Error(`Faile while trying to get the offline language: ${error.message}`))
@@ -228,10 +223,8 @@ class ChromeApiService {
         if (typeof language !== 'string') return;
 
         return new Promise((resolve, reject) => {
-            console.log("set unlogged language", language)
             chrome.runtime.sendMessage({ type: "SET_LANGUAGE", language: language }, (response => {
                 try {
-                    console.log(response);
                     resolve(response);
                 } catch(error) {
                     reject(new Error(`Faile while trying to set the offline language: ${error.message}`))
@@ -245,10 +238,8 @@ class ChromeApiService {
         if (typeof configuration !== 'object') return;
 
         return new Promise((resolve, reject) => {
-            console.log("setting acc configuration", configuration)
             chrome.runtime.sendMessage({ type: "UPDATE_USER_ACC", acc: configuration }, (response => {
                 try {
-                    console.log(response);
                     resolve(response);
                 } catch(error) {
                     reject(new Error(`Faile while trying to set acc configuration: ${error.message}`))
@@ -258,7 +249,6 @@ class ChromeApiService {
     }
 
     static getElderlyUserSiteConfiguration(site) {
-        console.log("asd????")
         return new Promise((resolve, reject) => {
 
             chrome.runtime.sendMessage({
@@ -279,7 +269,6 @@ class ChromeApiService {
                     return;
                 }
                 
-                console.log("The response is", response);
                 // Validar estructura de datos
                 if (!response?.data) {
                     reject(new Error("The data is missing from response"));
@@ -294,7 +283,6 @@ class ChromeApiService {
                 }
                 
                 try {
-                    console.log("response get site", response);
                     const parsedData = JSON.parse(responseData.configuration);
                     resolve(parsedData);
                 } catch (parseError) {

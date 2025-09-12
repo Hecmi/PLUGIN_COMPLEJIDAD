@@ -45,7 +45,7 @@ class ECARule {
                 evaluator.currentScope.declare(key, value);
             }
 
-            console.log("CURRENT SCOPE =", evaluator.currentScope);
+            // console.log("CURRENT SCOPE =", evaluator.currentScope);
             
             // Evaluar la condición
             const conditionResult = evaluator.evaluate(this.conditionAST);

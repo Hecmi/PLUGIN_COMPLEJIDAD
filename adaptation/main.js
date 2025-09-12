@@ -30,8 +30,6 @@ class AccessibilityManager {
         this.actions = [];
         this.rules = [];
         this.metrics = [];
-
-        console.log("lenguaje del centro de accesibilidad", this.language)
     }
 
     async initialize() {
@@ -173,15 +171,12 @@ class AccessibilityManager {
         this.updateLoaderStatus(Translator.t(this.language, "l.loadUserProfile"));
         
         try {
-            console.log("user attributes pre")
             const userAttributes = await ChromeApiService.getUserModelAttributes();
-            console.log("user attributes post", userAttributes)
             this.userAttributes = userAttributes.map(attr => ({
                 [attr.attributeCode]: attr.textValue
             }));
         } catch (error) {
             console.error("Error loading user profile:", error);
-            console.log("Error loading user profile:", error);
             this.userAttributes = [];
         }
     }
@@ -211,7 +206,6 @@ class AccessibilityManager {
 
     async setupRulesEngine() {
         try {
-            console.log("cargando reglas")
             this.engine = new ExpressionEngine();
             this.ecaEngine = new ECARulesEngine(this.rules);
             
@@ -227,10 +221,8 @@ class AccessibilityManager {
             this.engine = this.ecaEngine.engine;
             this.context = this.createInitialContext();
             
-            console.log("EL CONTEXTO GENERAL ES : ", this.context)
             // await this.processAllRules();
         } catch (error) {
-            console.error("Error setting up rules engine:", error);
             // Fallback a engine básico
             this.engine = new ExpressionEngine();
             this.context = this.createInitialContext();
@@ -254,11 +246,10 @@ class AccessibilityManager {
 
     async processAllRules() {
         if (!this.ecaEngine) return;
-        console.log("CONTEXT FOR RULES => ", this.context);
         for (const rule of this.rules) {
             try {
                 const ruleConditionResult = this.ecaEngine.evaluateRuleCondition(rule.name, this.context);
-                console.log(rule, ruleConditionResult);
+
                 if (!ruleConditionResult) continue;
 
                 await this.createAdaptationForRule(rule);
@@ -362,7 +353,6 @@ class AccessibilityManager {
 
     setupEventListeners() {
         // Listener para cambios de posición del panel
-        console.log("move panel position? ")
         document.addEventListener('panelPositionChanged', (event) => {
             if (this.notifications?.moveAllToPosition) {
                 this.notifications.moveAllToPosition(`top-${event.detail.inversedHorizontalPosition}`);
@@ -372,27 +362,22 @@ class AccessibilityManager {
         // Listener cuando no hay interacción con el panle posterior al cambio en alguna opción
         document.addEventListener('optionExtPanelInactivity', (event) => {
             const currentConfiguration = event.detail;
-            console.log("current configuration", currentConfiguration);
 
             chrome.runtime.sendMessage({
                 type: "SET_USER_SITE_CONFIGURATION",
                 configuration: currentConfiguration
             }, (response) => {
                 
-                console.log("save user site", response);
                 if (!response) return;
             })
         });
 
         // Listener para cambios de idioma
-        console.log("change language? ")
         document.addEventListener('extLanguageChange', (event) => {
             const language = event.detail.language;
             this.language = language;
             
-            console.log("cambiar a ", language)
             // if (this.isLogged == false) {
-                console.log("cambiar a en unlogged data", language)
                 ChromeApiService.setLanguage(language);
             // }
 
@@ -435,7 +420,6 @@ class AccessibilityManager {
                         ...this.context,
                         ...metricsValues
                     };
-                    console.log("CONTEXTO POST MÉTRICAS", this.context);
                 }
 
 
@@ -491,8 +475,6 @@ async function initializeApp() {
                 return null;
             });
 
-        console.log("site configuration: ", siteConfiguration);
-
         // Cargar el idioma del usuario en el perfil de usuario
         // (si no está registrado, tomarlo del navegador)
         let language = "es";
@@ -501,30 +483,25 @@ async function initializeApp() {
         
 
         if (userSession && userSession.user) {
-            console.log("sesion de usuario =", userSession)
             language = userSession.user.language;
             
             userACC = userSession[Constants.APP.ACC];
             showNotifications = userACC[Constants.APP.showNotifications];
             acceptNotifications = userACC[Constants.APP.acceptNotifications];
 
-            console.log("Selected language from user profile", language, showNotifications, acceptNotifications)
         } else {
             // Obtener datos de la sesión sin iniciar sesión
             const unloggedPreferences = await ChromeApiService.getUnloggedPreferences();
-            console.log("Preferencias unlogged", unloggedPreferences);
 
             if (unloggedPreferences) {
                 language = unloggedPreferences.language;
-                console.log("Selected language from unlogged", language);
             } else {
                 language = UserInfoService.getLanguage().lang;
-                console.log("Selected language from navigator", language);
             }
         }
         
         const isLogged = (userSession != null && userSession != undefined) ? true : false;
-        console.log("is logged? ", isLogged);
+
         const config = {
             language: language,
             translationPrefix: Constants.APP.translationsPrefix,
@@ -537,8 +514,6 @@ async function initializeApp() {
 
         const accessibilityManager = new AccessibilityManager(config);
         await accessibilityManager.initialize();
-        console.log("modal cargado =>", accessibilityManager.accessibilityPanel.modal)
-        console.log("modal cargado =>", accessibilityManager.accessibilityPanel.modal.shadowRoot)
         
         // for (let i = 0; i < 50; i++) {
 

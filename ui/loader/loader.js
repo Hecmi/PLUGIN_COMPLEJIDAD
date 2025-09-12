@@ -15,7 +15,6 @@ class Loader {
             fetch(chrome.runtime.getURL('ui/loader/loader.html')),
         ]);
 
-        console.log("loader response", loaderResponse)
         // Obtener el contenido del loader (html)
         const [loaderContent] = await Promise.all([
             loaderResponse.text()
@@ -35,7 +34,6 @@ class Loader {
             ${this.doc.querySelector('body').innerHTML}
         `;
 
-        console.log(this.shadowRoot);
         this.loadOverlay = this.shadowRoot.getElementById('loaderOverlay');
         this.loaderProcessDescription = this.shadowRoot.getElementById('loaderProcessDescription');
     }

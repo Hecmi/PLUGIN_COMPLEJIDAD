@@ -43,8 +43,6 @@ class OptionManager {
   }
 
   setupOptionButtons() {
-    console.log("load option manager")
-
     const resetAll = this.panel.shadowRoot.querySelector("#resetAll");
 
     if (resetAll) {
@@ -55,7 +53,6 @@ class OptionManager {
     }
 
     this.optionsConfig.forEach(option => {
-      console.log("jijija")
       const button = this.panel.shadowRoot.getElementById(option.id);
       if (!button) return;
 
@@ -110,7 +107,6 @@ class OptionManager {
 
         
         if (option.i18n) {
-          console.log("OPCIONES", option.i18n, currentIndex);
           const currentOption = option.i18n[currentIndex];
           Translator.setActiveState(valueSpan, currentOption);
         }
@@ -134,7 +130,7 @@ class OptionManager {
 
         if (option.action) {
           option.action(option.values[currentIndex], this.panel);
-          console.log(this.getCurrentConfigSaveable());
+          // console.log(this.getCurrentConfigSaveable());
         }
 
         // if (option.saveable) {
@@ -148,7 +144,6 @@ class OptionManager {
 
         // Reiniciar el tiempo al interactuar con algún botón
         this.resetInactivityTimer();
-        console.log("reset intactivity timer")
       });
     });
   }

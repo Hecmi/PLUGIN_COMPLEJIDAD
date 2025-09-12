@@ -691,7 +691,6 @@ const OPTION_CONFIG = [
       }
       
       const language = panel.language ?? "es";
-      console.log("LENGUAJE", language)
       // Prompt por defecto
       let prompt = `Read and process the following content from a web page.
         Your task is to generate an abstract summary. Therefore, you are not copying verbatim sentences, but rather synthesizing the main ideas in a clear, concise, and coherent manner.

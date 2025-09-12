@@ -7,7 +7,39 @@ const btnShowPassword = document.getElementById('showPassword');
 const lblShowPassword = document.getElementById('lbl-showPassword');
 const inputPassword = document.getElementById('loginPassword');
 
-let language = "es"//UserInfoService.getLanguage().lang;
+let language = "es";
+
+async function initializeLanguage() {
+    try {
+        // Obtener los datos de la sesión iniciada
+        const userSession = await ChromeApiService.getUserSession()
+            .catch((error) => {
+                console.log(error); 
+                return null;
+            });
+
+        // Cargar el idioma del usuario en el perfil de usuario
+        // (si no está registrado, tomarlo del navegador)
+        if (userSession && userSession.user) {
+            language = userSession.user.language;
+        } else {
+            // Obtener datos de la sesión sin iniciar sesión
+            const unloggedPreferences = await ChromeApiService.getUnloggedPreferences();
+
+            if (unloggedPreferences) {
+                language = unloggedPreferences.language;
+            } else {
+                language = UserInfoService.getLanguage().lang;
+            }
+        }
+        
+        console.log("LANGUAGE => ", language)
+        translatePage(language);
+
+    } catch (error) {
+        console.error("Fatal error in initialization:", error);
+    }
+}
 
 btnShowPassword.addEventListener('click', () => {
     if (btnShowPassword.checked) {
@@ -24,7 +56,7 @@ btnShowPassword.addEventListener('click', () => {
 btnTraducir.addEventListener('click', () => {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         const url = tabs[0].url;
-        const translated = `https://translate.google.com/translate?sl=auto&tl=es&u=${encodeURIComponent(url)}`;
+        const translated = `https://translate.google.com/translate?sl=auto&tl=${language}&u=${encodeURIComponent(url)}`;
         chrome.tabs.update(tabs[0].id, { url: translated });
     });
 });
@@ -61,7 +93,6 @@ btnIniciarSesion.addEventListener('click', () => {
                 window.location.reload();
                 translatePage();
             } else {
-                console.log("fake")
                 const badLogin = document.getElementById('spn-badLogin');
                 badLogin.classList.remove('hide');
             }
@@ -87,7 +118,7 @@ chrome.runtime.sendMessage({ type: "GET_SESSION" }, (response) => {
 
         document.getElementById('spn-btnCrearCuenta').setAttribute("data-i18n-active", "data-i18n-edit")
         
-        translatePage();
+        initializeLanguage().then().catch();
     } else {
         userInfoContainer.style.display = "none";
         loginFormContainer.style.display = "block";
@@ -95,10 +126,11 @@ chrome.runtime.sendMessage({ type: "GET_SESSION" }, (response) => {
 
         document.getElementById('spn-btnCrearCuenta').setAttribute("data-i18n-active", "data-i18n-create")
 
-        translatePage();
+        initializeLanguage().then().catch();
     }
 });
 
 function translatePage() {
+    console.log("TRACUIENDO PÁGINA", language)
     Translator.tPage(document, language);
 }
