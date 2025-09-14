@@ -45,6 +45,5 @@ class Constants {
 
     static addStyleTracker(key, tracker) {
         this.STYLES[key] = tracker;
-        console.log("ESTILOS", this.STYLES)
     }
 }

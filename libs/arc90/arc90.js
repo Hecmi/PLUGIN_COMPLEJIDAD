@@ -76,7 +76,6 @@ function Readability(doc, options) {
           return arg;
         });
         args.unshift("Reader: (Readability)");
-        console.log(...args);
       } else if (typeof dump !== "undefined") {
         var msg = Array.prototype.map
           .call(arguments, function (x) {

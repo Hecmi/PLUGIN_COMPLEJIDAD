@@ -2,7 +2,6 @@ const btnSave = document.getElementById("saveProfile");
 const frmProfile = document.getElementById("form-container");
 
 const sessionInfo = UserInfoService.getUserInfo();
-console.log(sessionInfo.connection)
 
 let sessionLanguage = "es";
 
@@ -10,7 +9,6 @@ async function getLanguage() {
     // Obtener los datos de la sesión iniciada
     const userSession = await ChromeApiService.getUserSession()
         .catch((error) => {
-            console.log(error); 
             return null;
         });
 
@@ -19,21 +17,17 @@ async function getLanguage() {
     let language = "es";
     if (userSession && userSession.user) {
         language = userSession.user.language || "es";
-        console.log("language from profile")
     } else {
         // Obtener datos de la sesión sin iniciar sesión
         const unloggedPreferences = await ChromeApiService.getUnloggedPreferences();
     
         if (unloggedPreferences) {
             language = unloggedPreferences.language;
-            console.log("language from preferences")
         } else {
             language = UserInfoService.getLanguage().lang;
-            console.log("language from navigator")
         }
     }
 
-    console.log("language", language);
     
     return language ? language : "es";
 }
@@ -47,7 +41,6 @@ async function init() {
         // o actualización
         chrome.storage.local.get(['sessionData'], (response) => {
             if (response && response.sessionData) {
-                console.log(response.sessionData)
 
                 chrome.runtime.sendMessage({
                     type: "GET_USER_MODEL_ATTRIBUTES"
@@ -67,7 +60,6 @@ async function init() {
                 chrome.runtime.sendMessage({
                     type: "GET_MODEL_ATTRIBUTES"
                 }, (response) => {
-                    console.log(response)
                     let modelAttributes = JSON.parse(response.data)
                     
                     modelAttributes.sort((a, b) => {
@@ -161,8 +153,6 @@ function setupEventListeners() {
             })
         });
         
-        console.log("default", defaultData)
-        console.log("explicit", explicitData)
         let name = defaultData.name;
         let password = defaultData.password;
         let email = defaultData.mail;
@@ -173,7 +163,6 @@ function setupEventListeners() {
                     type: "REGISTER_USER",
                     payload: defaultData,
                 }, (response) => {
-                    console.log("Usuario registrado (?", response);
                     
                     if (!response) return;
                     if (response.status && response.status == "error") {
@@ -224,7 +213,7 @@ function setupEventListeners() {
                             type: "LOGIN",
                             payload: defaultData                            
                         }, () => {
-                            console.log("Inicio de sesión jijija")
+
                         });
                     });
                 });
@@ -258,8 +247,6 @@ function setupEventListeners() {
                         return;
                     }
 
-                    console.log("Actualización de datos de usuario", response);
-
                     chrome.runtime.sendMessage({
                         type: "UPDATE_USER_ATTRIBUTES",
                         payload: explicitData,
@@ -282,7 +269,7 @@ function setupEventListeners() {
                                 password: password
                             }
                         }, () => {
-                            console.log("Inicio de sesión actualización jijija")
+
                         });
                     });
                 });

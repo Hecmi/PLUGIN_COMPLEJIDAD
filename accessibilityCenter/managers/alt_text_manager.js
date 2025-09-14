@@ -61,9 +61,7 @@ class AltTextManager {
   setMode(mode) {
     this.mode = mode;
     this.clearOverlays();
-
-    console.log("MODO EN ALT TEXT", mode);
-    
+        
     if (mode === 'overlay') {
       this.createOverlays();
     }

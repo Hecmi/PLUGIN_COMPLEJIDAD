@@ -1,5 +1,5 @@
 class AccessibilityPanel {
-  constructor(language = 'en') {
+  constructor(language = 'es') {
     this.language = language;
     this.activeOverlay = null;
     this.lastClickedButton = null;
@@ -70,6 +70,17 @@ class AccessibilityPanel {
       this.createPanel(optionPanelConfiguration);
     } catch (err) {
       console.error(`Error al intentar cargar el panel: ${err}`);
+    }
+  }
+
+  loadRecomendationsStatus(isUserLogged) {
+    if (isUserLogged) {
+      const loggedElements = this.shadowRoot.querySelectorAll('.logged');
+      loggedElements.forEach(el => el.classList.remove('hide'));
+
+    } else {
+      const unloggedElements = this.shadowRoot.querySelectorAll('.unlogged');
+      unloggedElements.forEach(el => el.classList.remove('hide'));
     }
   }
 

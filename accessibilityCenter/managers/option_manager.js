@@ -165,7 +165,7 @@ class OptionManager {
   resetAllOptions() {
     this.optionsConfig.forEach(config => {
       if (!config.saveable) return;
-      if (config.id !== 'resetAll') {
+      if (config.id !== 'resetAll' && config.id != 'toggleReadSelected' && config.id != 'toggleReadFullPage') {
         const button = this.panel.shadowRoot.getElementById(config.id);
         if (!button) return;
         

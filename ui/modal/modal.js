@@ -155,6 +155,7 @@ class ExtensionModal {
             .split(/\n\s*\n/)
             .map(p => `<p>${p.trim()}</p>`)
             .join("\n");
+
             
         const iframe = this.shadowRoot.getElementById("modal-body-content");
         if (iframe && iframe.tagName === "IFRAME") {

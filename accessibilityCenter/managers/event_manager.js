@@ -11,6 +11,7 @@ class EventManager {
     this.setupOptionButtons();
     this.setupResizeObserver();
     this.setupHighlightHoverEvents();
+    this.setupMyProfileClick();
   }
 
   setupHighlightHoverEvents() {
@@ -106,6 +107,15 @@ class EventManager {
     });
   }
 
+  setupMyProfileClick() {
+    const myProfile = this.panel.shadowRoot.getElementById("myProfile");
+    if (!myProfile) return;
+
+    myProfile.addEventListener('click', () => {
+      chrome.runtime.sendMessage({ type: "OPEN_PROFILE" });
+    });
+  }
+
   setupAccordionHeaders() {
     const accordionHeaders = this.panel.shadowRoot.querySelectorAll('.accordion-header');
     
@@ -191,11 +201,9 @@ class EventManager {
       button.addEventListener('click', () => {
         // Reiniciar los botones para marcar el único (sobre el que se da clic)
         if (this.panel.lastClickedButton && this.panel.lastClickedButton != button) {
-          console.log("reset butotns position")
           this.panel.shadowRoot.querySelectorAll('.option-column.active').forEach(el => el.classList.remove('active'));
           this.panel.shadowRoot.querySelectorAll('button.active').forEach(el => el.classList.remove('active'));
         }
-        console.log("position", button)
         if (lastLocationButton && lastLocationButton != button) {
           lastLocationButton.classList.remove('modified')
         }

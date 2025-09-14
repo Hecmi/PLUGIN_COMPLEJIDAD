@@ -39,6 +39,7 @@ class Translator {
             "aP.configuration": "Configuration",
             "aP.configurationDescription": "Configure the notifications and location of the access center according to your preferences.",
             "aP.locationDescription": "Select the location of the dashboard according to your preferences.",
+            "aP.myProfile": "My profile",
 
             // Tab de opciones de accesibilidad
             "aP.adaptationPresentation": "Adaptation of the presentation",
@@ -52,12 +53,13 @@ class Translator {
             // Tab de adaptaciones
             "aP.recommendations": "Recommendations",
             "aP.recommendationsDescription": "It is recommended to apply the suggested adaptations according to your user profile and the evaluation of the website (",
+            "aP.recommendationsDescriptionNotLogged": "To view adaptation recommendations, please log in and then restart the website.",
             "aP.showNotifications": "Show notifications",
             "aP.dontShowAccept": "Do not show and accept",
             "aP.dontShowReject": "Do not show and reject",
             "aP.acceptAll": "Accept all",
             "aP.rejectAll": "Reject all",
-            "aP.complex": "complex)",
+            "aP.complex": "complex).",
 
             // Herramientas del panel
             "aP.size": "Size",
@@ -214,8 +216,9 @@ class Translator {
             "aP.adaptationsTab": "Adaptaciones",
             "aP.notificationConfiguration": "Configuración de notificaciones",
             "aP.configuration": "Configuración",
-            "aP.configurationDescription": "Configura las notificaciones y ubicación del centro de accesibiidad acorde a tus preferencias.",
+            "aP.configurationDescription": "Configura las notificaciones y ubicación del centro de accesibilidad acorde a tus preferencias.",
             "aP.locationDescription": "Selecciona la ubicación del panel acorde a tus preferencias.",
+            "aP.myProfile": "Mi perfil",
 
             // Tab de opciones de accesibilidad
             "aP.adaptationPresentation": "Adaptación de la presentación",
@@ -229,12 +232,13 @@ class Translator {
             // Tab de adaptaciones
             "aP.recommendations": "Recomendaciones",
             "aP.recommendationsDescription": "Se recomienda aplicar las siguientes adaptaciones acordes a su perfil de usuario y la evaluación de la página web (",
+            "aP.recommendationsDescriptionNotLogged": "Para ver las recomendaciones de adaptación, por favor inicie sesión y luego reinicie la página web.",
             "aP.showNotifications": "Mostrar notificaciones",
             "aP.dontShowAccept": "No mostrar y aceptar",
             "aP.dontShowReject": "No mostrar y rechazar",
             "aP.acceptAll": "Aceptar todas",
             "aP.rejectAll": "Rechazar todas",
-            "aP.complex": "compleja)",
+            "aP.complex": "compleja).",
 
             // Herramientas del panel
             "aP.size": "Tamaño",

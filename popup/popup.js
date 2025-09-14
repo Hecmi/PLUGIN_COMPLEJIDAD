@@ -14,7 +14,6 @@ async function initializeLanguage() {
         // Obtener los datos de la sesión iniciada
         const userSession = await ChromeApiService.getUserSession()
             .catch((error) => {
-                console.log(error); 
                 return null;
             });
 
@@ -33,7 +32,6 @@ async function initializeLanguage() {
             }
         }
         
-        console.log("LANGUAGE => ", language)
         translatePage(language);
 
     } catch (error) {
@@ -86,7 +84,6 @@ btnIniciarSesion.addEventListener('click', () => {
           }
         },
         (response) => {
-            console.log(response)
             if (response.success == true) {
                 const badLogin = document.getElementById('spn-badLogin');
                 badLogin.classList.add('hide');
@@ -131,6 +128,5 @@ chrome.runtime.sendMessage({ type: "GET_SESSION" }, (response) => {
 });
 
 function translatePage() {
-    console.log("TRACUIENDO PÁGINA", language)
     Translator.tPage(document, language);
 }

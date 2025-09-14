@@ -20,12 +20,11 @@ let CACHE = {
 }
 
 const API_KEY_GEMINI_GEMMA = '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';
-const API_KEY_DEEPSEEK = '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';
+const API_KEY_DEEPSEEK = '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';
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
   const handleError = (error) => {
-    console.log(error);
     sendResponse({ success: false, error: error.message || error });
   };
 
@@ -561,6 +560,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     })
   }
 
+  if (message.type === "OPEN_PROFILE") {
+    chrome.tabs.create({
+      url: chrome.runtime.getURL('ui/profile/profile.html')
+    });
+  }
   return true;
 });
 

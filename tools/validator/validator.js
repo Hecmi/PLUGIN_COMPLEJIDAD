@@ -386,7 +386,6 @@ class Validators {
             break;
         case this.#config.INPUT_TYPES.RADIO:
              if (input.hasAttribute('data-validator-group-type')) {
-                console.log("pepe")
                 rules.groupSelection = true;
             } else {
                 rules.radioRequired = true;

@@ -159,6 +159,14 @@
       color: var(--dark-gray);
     }
 
+    .accessibility-panel .show {
+      display: block;
+    }
+
+    .accessibility-panel .hide {
+      display: none;
+    }
+
     .accessibility-panel.top-left {
       top: 20px;
       left: 20px;
@@ -1603,7 +1611,8 @@
       <div class="tab-content" data-tab-content="adaptations" id="adaptations-content">
         <div class="intro-message">
           <h2 data-i18n="aP.recommendations">Recomendaciones</h2>
-          <span data-i18n="aP.recommendationsDescription">Se recomienda aplicar las adaptaciones sugeridas según su perfil de usuario y la evaluación de la página web (</span><span class="complexity" id="span-complexity-level">0%</span> <span data-i18n="aP.complex">compleja)</span>
+          <span class="logged hide" data-i18n="aP.recommendationsDescription">Se recomienda aplicar las adaptaciones sugeridas según su perfil de usuario y la evaluación de la página web (</span><span class="complexity logged hide" id="span-complexity-level">0%</span> <span class="logged hide" data-i18n="aP.complex">compleja).</span>
+          <span class="unlogged hide" data-i18n="aP.recommendationsDescriptionNotLogged">Para ver las recomendaciones de adaptación, por favor inicie sesión y luego reinicie la página web.</span>
         </div>
         
         <div class="row">
@@ -1616,10 +1625,10 @@
           <div class="col-6 col-lg-6 col-xl-6 p-1">
             <button data-i18n="aP.dontShowReject" id="btn-not-show-reject-notifications" class="adaptation-button">No mostrar y rechazar</button>
           </div> -->
-          <div class="col-6 col-lg-6 col-xl-6 p-1">
+          <div class="col-6 col-lg-6 col-xl-6 p-1 logged hide">
             <button data-i18n="aP.acceptAll" id="btn-accept-all-notifications" class="adaptation-button">Aceptar todas</button>
           </div>
-          <div class="col-6 col-lg-6 col-xl-6 p-1">
+          <div class="col-6 col-lg-6 col-xl-6 p-1 logged hide">
             <button data-i18n="aP.rejectAll" id="btn-reject-all-notifications" class="adaptation-button">Rechazar todas</button>
           </div>
         </div>
@@ -1718,9 +1727,16 @@
                   </button>
                 </div>
               </div>
-            </div>
-        
+            </div>        
           </div>
+          <div class="reset-button-container">
+            <button class="reset-button" id="myProfile" aria-label="My profile">
+              <div class="reset-content">
+                <i class="fas fa-user"></i>
+                <a id="myProfile"><span data-i18n="aP.myProfile">Mi perfil</span></a>
+              </div>
+            </button>
+        </div>
         </div>
       </div>
     </div>

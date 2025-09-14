@@ -91,6 +91,7 @@ class AccessibilityManager {
             this.accessibilityPanel = new AccessibilityPanel(this.language);
             // this.accessibilityPanel.setTracker(Constants.STYLES[Constants.APP.panelTracker]);
             await this.accessibilityPanel.init(this.siteConfiguration);
+            this.accessibilityPanel.loadRecomendationsStatus(this.isLogged);
 
             this.applyEventsNotificationsOnPanel();
         } catch (error) {
@@ -463,7 +464,6 @@ async function initializeApp() {
         // Obtener los datos de la sesión iniciada
         const userSession = await ChromeApiService.getUserSession()
             .catch((error) => {
-                console.log(error); 
                 return null;
             });
 
@@ -471,7 +471,6 @@ async function initializeApp() {
         const site = PageLoadService.getPageInfo().urlFiltered;
         const siteConfiguration = await ChromeApiService.getElderlyUserSiteConfiguration(site)
             .catch((error) => {
-                console.log(error);
                 return null;
             });
 

@@ -310,6 +310,11 @@ class ChromeApiService {
                     reject(new Error("No response received from IA call"));
                     return;
                 }
+
+                if (response.error) {
+                    reject(new Error("There is not response while trying to call IA for summary"));
+                    return;
+                }
                 
                 try {
                     resolve(response);

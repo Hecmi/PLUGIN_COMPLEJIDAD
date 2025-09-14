@@ -1,26 +1,34 @@
 {
     "manifest_version": 3,
-    "name": "Complejidad",
+    "name": "Plugin de Accesibilidad",
     "version": "1.0",
-    "description": "...",
+    "description": "Adapta tu experiencia de navegación acorde a tus necesidades. Registrate para obtener recomendaciones para adaptar las páginas web. Para ello, presiona el ícono del plugin e ingresa los datos solicitados.",
     "permissions": [
       "activeTab",
       "tabCapture",
       "tabs",
       "downloads",
       "scripting",
-      "storage",
-      "devtools"
+      "storage"
     ],
     "host_permissions": [
-      "devtools://*",
       "<all_urls>"
     ],
     "background": {
       "service_worker": "background.js",
       "type": "module"
     },
+    "icons": {
+      "16": "ui/icons/logo-morph-16.png",
+      "48": "ui/icons/logo-morph-48.png",
+      "128": "ui/icons/logo-morph-128.png"
+    },
     "action": {
+      "default_icon": {
+        "16": "ui/icons/logo-morph-16.png",
+        "48": "ui/icons/logo-morph-48.png",
+        "128": "ui/icons/logo-morph-128.png"
+      },
       "default_popup": "popup/popup.html"
     },
     "content_scripts": [
