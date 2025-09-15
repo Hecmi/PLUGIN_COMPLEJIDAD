@@ -7,7 +7,7 @@ class Validators {
     REGEX: {
       email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
       phone: /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,3}[-\s.]?[0-9]{2,4}[-\s.]?[0-9]{2,4}$/,
-      password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+      password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\S]{8,}$/,
     },
     DEFAULT_MESSAGES: {
       // required: 'Este campo es obligatorio',
@@ -201,7 +201,7 @@ class Validators {
       this.showError(
         input, 
         rules.customMessages?.minLength?.(rules.minLength) || 
-        this.#config.DEFAULT_MESSAGES.minLength(rules.minLength())
+        this.#config.DEFAULT_MESSAGES.minLength(rules.minLength)
       );
     }
     return isValid;
@@ -215,7 +215,7 @@ class Validators {
       this.showError(
         input, 
         rules.customMessages?.maxLength?.(rules.maxLength) || 
-        this.#config.DEFAULT_MESSAGES.maxLength(rules.maxLength())
+        this.#config.DEFAULT_MESSAGES.maxLength(rules.maxLength)
       );
     }
     return isValid;
@@ -453,11 +453,19 @@ class Validators {
     let isValid = true;
     const inputs = form.querySelectorAll(this.queryElements);
     
-    // Primero validar todos los inputs normales
     inputs.forEach(input => {
-      if (!this.validateInput(input)) {
-        isValid = false;
-      }
+        if (input.hasAttribute("ispassword")) {
+            const passwordValid = this.#validatePassword(input.value, { password: true }, input);
+            if (!passwordValid) {
+                isValid = false;
+                return;
+            }
+        }
+        
+        // Validación normal para todos los campos
+        if (!this.validateInput(input)) {
+            isValid = false;
+        }
     });    
     
     return isValid;
