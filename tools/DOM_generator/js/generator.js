@@ -148,7 +148,6 @@ class Generator {
         return;
     }
 
-    console.log("DATA EN BASIC FIELD ", data)
    const fieldGroup = ElementCreator.create('div')
     .addClass('field-group')
     .buildChild('label', label => 
@@ -174,7 +173,8 @@ class Generator {
     .buildChild('div', wrapper => { 
       wrapper.addClass('input-wrapper');
 
-      wrapper.buildChild('input', input =>
+      wrapper.buildChild('input', input => {
+        console.log(input)
         input.makeInput(inputType)
           .setId(id)
           .setAttr('name', code)
@@ -182,6 +182,14 @@ class Generator {
           .setAttr('required', 'true')
           .setAttr('isDefault', isDefault)
           .setAttr('data-tab-id', container.id)
+
+          if (inputType == "text" || inputType == "email") {
+            input.setAttr('minlength', 3)
+              .setAttr('maxlength', 50)
+          } else if (inputType == "password") {
+            input.setAttr('isPassword', 'true')
+          }
+        } 
       );
     })
     .buildChild('div', checkboxWrapper => {
@@ -245,7 +253,6 @@ class Generator {
       textContent: option[Constants.OPTIONS.dataListed_ts][this.language]
     })) || [];
 
-    console.log("SELECT FIELD", id, code, value, cleanedOptions)
     const fieldGroup = ElementCreator.create('div')
       .addClass('field-group')
       .buildChild('label', label => 
@@ -444,7 +451,7 @@ function showDescriptionModal(title, content, closeText) {
     content,
     footerButtons: [{
       text: closeText,
-      className: 'button',
+      className: 'modal-button',
       onClick: () => close()
     }]
   });
@@ -461,7 +468,7 @@ function showBiModal(title, content, acceptText, closeText, onAccept, onReject) 
     content,
     footerButtons: [{
       text: acceptText,
-      className: 'button',
+      className: 'modal-button',
       onClick: () => {
         if (onReject && typeof onReject === 'function') {
           onAccept(close);
@@ -470,7 +477,7 @@ function showBiModal(title, content, acceptText, closeText, onAccept, onReject) 
     },
     {
       text: closeText,
-      className: 'button',
+      className: 'modal-button',
       onClick: () => {
         if (onReject && typeof onReject === 'function') {
           onReject(close);
