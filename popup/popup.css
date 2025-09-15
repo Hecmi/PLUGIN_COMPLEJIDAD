@@ -210,8 +210,6 @@ body {
     padding: 10px;
     background-color: var(--light-gray);
     color: var(--dark-gray);
-    border: none;
-    border-radius: var(--border-radius);
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
@@ -220,6 +218,9 @@ body {
     justify-content: center;
     gap: 8px;
     transition: background-color 0.2s;
+    border-style: solid;
+    border-radius: var(--border-radius);
+    border-color: #dddddd;
 }
 
 .btn-secondary:hover {
