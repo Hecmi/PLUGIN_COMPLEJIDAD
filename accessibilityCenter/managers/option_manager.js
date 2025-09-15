@@ -80,6 +80,9 @@ class OptionManager {
         this.panel.modifiedOptions.add(option.id);
       }
 
+      // Observar cambios en el botón y sus elementos internos
+      this.setupOptionObserver(button);
+
       button.addEventListener('click', () => {
         if (this.panel.shadowRoot.querySelector('.accessibility-panel').classList.contains('minimized')) return;
 
@@ -116,7 +119,10 @@ class OptionManager {
         column.classList.add('active');
         this.panel.lastClickedButton = button;
 
-        this.panel.updateActiveOverlay(column);
+        // Actualizar el overlay después de los cambios en el DOM
+        setTimeout(() => {
+          this.panel.updateActiveOverlay(column);
+        }, 0);
 
         if (currentIndex !== option.defaultIndex) {
           button.classList.add('modified');
@@ -145,6 +151,30 @@ class OptionManager {
         // Reiniciar el tiempo al interactuar con algún botón
         this.resetInactivityTimer();
       });
+    });
+  }
+
+  // Configurar observador para cambios en la opción
+  setupOptionObserver(button) {
+    if (!this.panel.optionResizeObserver) {
+      // Crear el observador si no existe
+      this.panel.optionResizeObserver = new ResizeObserver(entries => {
+        entries.forEach(entry => {
+          const optionElement = entry.target;
+          if (optionElement.classList.contains('active')) {
+            this.panel.updateActiveOverlay(optionElement.closest('.option-column'));
+          }
+        });
+      });
+    }
+
+    // Observar el botón y sus elementos internos
+    this.panel.optionResizeObserver.observe(button);
+    
+    // También observar elementos hijos que puedan afectar el tamaño
+    const children = button.querySelectorAll('*');
+    children.forEach(child => {
+      this.panel.optionResizeObserver.observe(child);
     });
   }
 

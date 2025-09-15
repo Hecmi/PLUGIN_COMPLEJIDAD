@@ -599,6 +599,10 @@
       display: flex;
       gap: 4px;
       margin-top: 4px;
+
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 80px;
     }
 
     .accessibility-panel .dot {
@@ -608,6 +612,8 @@
       background: var(--dot-default);
       opacity: 0.5;
       transition: all 0.2s ease;
+
+      flex-shrink: 0; 
     }
 
     .accessibility-panel .option-button.modified .dot {
