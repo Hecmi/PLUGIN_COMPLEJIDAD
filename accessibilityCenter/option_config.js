@@ -1,16 +1,3 @@
-// Deepseek 1
-// const apiKey = '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';
-
-// Deepseek 3.1
-// const apiKey = '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';
-
-// Gemini 2.5 flash
-// const apiKey = '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'
-
-// Gemma 3
-const apiKey = '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';
-
-
 const OPTION_CONFIG = [
   {
     id: 'fontSize',
@@ -580,7 +567,6 @@ const OPTION_CONFIG = [
           - A centrally located title representing the main page.
           - An introductory paragraph briefly presenting the content (also centered).
           - The content must be restructured into clear and orderly sections.
-          - A final section (footer) titled "Related Links" that includes relevant links in a list (with line breaks).
         8. Include images only if they are relevant and related to the text. Do not modify the source (URL) or the original alt attribute of the images.
         9. Do not include content related to advertising or that could be harmful to the user.
         10. Do not include bullet points or icons other than those specifically indicated in the content.
@@ -590,10 +576,7 @@ const OPTION_CONFIG = [
         14. Do not include bullet points, special characters and images.
 
         Content to use:
-        ${articleTextContent}
-
-        Available links (href and text):
-        ${JSON.stringify(enlaces, null, 2)}
+        ${articleTextContent.slice(0, 100000)}
       `;
 
       ChromeApiService.getUserSession()
@@ -633,9 +616,6 @@ const OPTION_CONFIG = [
     
               Content to use:
               ${articleTextContent}
-    
-              Available links (href and text):
-              ${JSON.stringify(enlaces, null, 2)}
               `;
           }
         }
@@ -646,10 +626,11 @@ const OPTION_CONFIG = [
         panel.loader.setProcessDescription(Translator.t(panel.language, "m.generatingSimplifiedPage"));
         panel.loader.show();
 
+        console.log(prompt)
         ChromeApiService.getIACallResponse(prompt)
         .then((response) => {
           if (!response) return;
-          panel.modal.setContentHTML(response);
+          panel.modal.setTextualContent(response);
           panel.modal.show();
         })
         .catch((error) => {
@@ -756,7 +737,7 @@ const OPTION_CONFIG = [
     texts: ['aP.none', 'aP.overImage', 'aP.followCursor'],
     i18n: ['none', 'overImage', 'followCursor'],
     defaultIndex: 0,
-    saveable: false,
+    saveable: true,
     action: (value, panel) => {
       panel.textAltManager.setMode(value);
     }
@@ -795,4 +776,3 @@ const OPTION_CONFIG = [
     }
   }
 ];
-
