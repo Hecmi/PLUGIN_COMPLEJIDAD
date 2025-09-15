@@ -37,7 +37,6 @@ body {
     min-height: 100vh;
 }
 
-/* Mejoras de accesibilidad en elementos interactivos */
 button, input, select, textarea, [tabindex]:not([tabindex="-1"]) {
     &:focus {
         outline: 3px solid var(--focus-color);
@@ -114,6 +113,26 @@ button, input, select, textarea, [tabindex]:not([tabindex="-1"]) {
     transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
     min-height: 44px;
     min-width: 44px;
+}
+
+.modal-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    min-height: 44px;
+    min-width: 44px;
+    background-color: #f5f4f4;
+    border-style: solid;
+    border-color: #ddd;
 }
 
 .button:hover {

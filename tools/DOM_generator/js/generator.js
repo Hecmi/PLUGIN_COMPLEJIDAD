@@ -444,7 +444,7 @@ function showDescriptionModal(title, content, closeText) {
     content,
     footerButtons: [{
       text: closeText,
-      className: 'button',
+      className: 'modal-button',
       onClick: () => close()
     }]
   });
@@ -461,7 +461,7 @@ function showBiModal(title, content, acceptText, closeText, onAccept, onReject) 
     content,
     footerButtons: [{
       text: acceptText,
-      className: 'button',
+      className: 'modal-button',
       onClick: () => {
         if (onReject && typeof onReject === 'function') {
           onAccept(close);
@@ -470,7 +470,7 @@ function showBiModal(title, content, acceptText, closeText, onAccept, onReject) 
     },
     {
       text: closeText,
-      className: 'button',
+      className: 'modal-button',
       onClick: () => {
         if (onReject && typeof onReject === 'function') {
           onReject(close);

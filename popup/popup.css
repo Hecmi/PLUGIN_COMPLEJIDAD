@@ -225,6 +225,7 @@ body {
 
 .btn-secondary:hover {
     background-color: #e0e0e0;
+    border-color: #bebebe;
 }
 
 .btn-logout {

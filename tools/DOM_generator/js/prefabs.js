@@ -32,6 +32,7 @@ function createDynamicModal(config) {
         closeButton: 'modal-close',
         body: 'modal-body',
         footer: 'modal-footer',
+        button: 'modal-button',
         ...classes
     };
 
@@ -86,7 +87,7 @@ function createDynamicModal(config) {
                 
                 footerButtons.forEach(btnConfig => {
                     footer.buildChild('button', btn => 
-                    btn.addClass(btnConfig.className || 'btn')
+                        btn.addClass(btnConfig.className || 'btn')
                         .setText(btnConfig.text)
                         .on('click', btnConfig.onClick)
                     );
