@@ -576,7 +576,7 @@ const OPTION_CONFIG = [
         14. Do not include bullet points, special characters and images.
 
         Content to use:
-        ${articleTextContent.slice(0, 100000)}
+        ${articleTextContent.slice(0, 10000)}
       `;
 
       ChromeApiService.getUserSession()
@@ -605,7 +605,6 @@ const OPTION_CONFIG = [
                 - A centrally located title representing the main page.
                 - An introductory paragraph briefly presenting the content (also centered).
                 - The content must be restructured into clear and orderly sections.
-                - A final section (footer) titled "Related Links" that includes relevant links in a list (with line breaks).
               8. Include images only if they are relevant and related to the text. Do not modify the source (URL) or the original alt attribute of the images.
               9. Do not include content related to advertising or that could be harmful to the user.
               10. Do not include bullet points or icons other than those specifically indicated in the content.
@@ -615,7 +614,7 @@ const OPTION_CONFIG = [
               14. Do not include bullet points, images or special characters on titles or paragraphs.
     
               Content to use:
-              ${articleTextContent}
+              ${articleTextContent.slice(0, 10000)}
               `;
           }
         }
@@ -776,3 +775,4 @@ const OPTION_CONFIG = [
     }
   }
 ];
+
