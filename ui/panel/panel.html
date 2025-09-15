@@ -1089,6 +1089,285 @@
       }
     }
   </style>
+  <style id="style-login-ext">
+  :host {
+      --primary-color: #2756D6;
+      --primary-dark: #0D47A1;
+      --secondary-color: #E65100;
+      --light-gray: #EEEEEE;
+      --medium-gray: #BDBDBD;
+      --dark-gray: #212121;
+      --white: #FFFFFF;
+      --off-white: #FAFAFA;
+      --error-color: #ff0000;
+      --success-color: #388E3C;
+      --border-radius: 8px;
+      --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+
+  body {
+      width: 320px;
+      padding: 0;
+      margin: 0;
+      background-color: var(--off-white);
+  }
+
+  .popup-container {
+      background-color: var(--white);
+      box-shadow: var(--box-shadow);
+      overflow: hidden;
+  }
+
+  .header {
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+  }
+
+  .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-color: var(--light-gray);
+  }
+
+  .header i {
+      font-size: 20px;
+      color: var(--primary-color);
+  }
+
+  .header h1 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--dark-gray);
+  }
+
+  .header .welcome {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--dark-gray);
+  }
+
+  #userInfoContainer {
+      padding: 16px;
+  }
+
+  .user-field {
+      margin-bottom: 16px;
+  }
+
+  .user-field label {
+      display: block;
+      font-size: 12px;
+      color: var(--dark-gray);
+      margin-bottom: 6px;
+      font-weight: 500;
+  }
+
+  .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--dark-gray);
+  }
+
+  .user-info i {
+      color: var(--primary-color);
+      width: 20px;
+      text-align: center;
+  }
+
+  .help-text {
+      font-size: 11px;
+      color: var(--medium-gray);
+      margin-top: 8px;
+      font-style: italic;
+  }
+
+  #loginFormContainer {
+      padding: 0px;
+  }
+
+  .form-group {
+      margin-bottom: 16px;
+  }
+
+  .form-group label {
+      display: block;
+      font-size: 13px;
+      color: var(--dark-gray);
+      margin-bottom: 8px;
+      font-weight: 500;
+  }
+
+  .form-group input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--medium-gray);
+      border-radius: var(--border-radius);
+      font-size: 14px;
+  }
+
+  .form-group input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+  }
+
+  .form-group .show-password {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--dark-gray);
+  }
+
+  .form-group .show-password input {
+      width: auto;
+      cursor: pointer;
+  }
+
+  .form-group .show-password label {
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-bottom: 0;
+  }
+
+  .btn-login {
+    width: 100%;
+    padding: 8px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+  }
+
+  .btn-login:hover {
+      background-color: var(--primary-dark);
+  }
+
+  .buttons-container {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border-top: 1px solid var(--light-gray);
+  }
+
+  .btn-primary {
+      padding: 10px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: var(--border-radius);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background-color 0.2s;
+  }
+
+  .btn-primary:hover {
+      background-color: var(--primary-dark);
+  }
+
+  .btn-secondary {
+      padding: 10px;
+      background-color: var(--light-gray);
+      color: var(--dark-gray);
+      border: none;
+      border-radius: var(--border-radius);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background-color 0.2s;
+  }
+
+  .btn-secondary:hover {
+      background-color: #e0e0e0;
+  }
+
+  .btn-logout {
+      padding: 10px;
+      background-color: var(--off-white);
+      color: var(--secondary-color);
+      border: 1px solid var(--medium-gray);
+      border-radius: var(--border-radius);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+  }
+
+  .btn-logout:hover {
+      background-color: #FFEBEE;
+      border-color: var(--secondary-color);
+  }
+
+  .hidden {
+      display: none !important;
+  }
+
+  .error-message {
+      color: var(--error-color);
+      font-size: 12px;
+      margin-top: 4px;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  @media (max-width: 340px) {
+      body {
+          width: 280px;
+      }
+      
+      .header {
+          padding: 12px 16px;
+      }
+      
+      .btn-primary, 
+      .btn-secondary,
+      .btn-logout {
+          padding: 8px 12px;
+          font-size: 13px;
+      }
+  }
+  </style>
 </head>
 <body>
   <div class="accessibility-panel minimized bottom-left" role="dialog" aria-labelledby="panel-title">
@@ -1612,19 +1891,43 @@
         <div class="intro-message">
           <h2 data-i18n="aP.recommendations">Recomendaciones</h2>
           <span class="logged hide" data-i18n="aP.recommendationsDescription">Se recomienda aplicar las adaptaciones sugeridas según su perfil de usuario y la evaluación de la página web (</span><span class="complexity logged hide" id="span-complexity-level">0%</span> <span class="logged hide" data-i18n="aP.complex">compleja).</span>
-          <span class="unlogged hide" data-i18n="aP.recommendationsDescriptionNotLogged">Para ver las recomendaciones de adaptación, por favor inicie sesión y luego reinicie la página web.</span>
+          <span class="unlogged hide"><span data-i18n="aP.recommendationsDescriptionNotLogged">Para ver las recomendaciones de adaptación, por favor inicie sesión en el formulario de la sección inferior. Al hacerlo se reiniciará la página.</span> <span data-i18n="aP.recommendationsDescriptionNotLoggedConfiguration">Si no tiene una cuenta acceda a la sección de configuración</span> <span>(</span><i class="fas fa-gear"></i><span>) </span>
+          <a href="#" id="aRegister" data-i18n="aP.orClickHere">o haga clic aquí.</a>
+          </span>
         </div>
         
         <div class="row">
-          <!-- <div class="col-12 col-lg-12 col-xl-12 p-1">
-            <button data-i18n="aP.showNotifications" id="btn-show-notifications" class="adaptation-button">Mostrar notificaciones</button>
-          </div>
-          <div class="col-6 col-lg-6 col-xl-6 p-1">
-            <button data-i18n="aP.dontShowAccept" id="btn-not-show-accept-notifications" class="adaptation-button">No mostrar y aceptar</button>
-          </div>
-          <div class="col-6 col-lg-6 col-xl-6 p-1">
-            <button data-i18n="aP.dontShowReject" id="btn-not-show-reject-notifications" class="adaptation-button">No mostrar y rechazar</button>
-          </div> -->
+          <div class="col-12">
+
+            <div id="loginFormContainer" class="unlogged hide">
+              <hr style="margin-bottom: 10px;">
+              <div class="form-group">
+                  <label data-i18n="pop.email" for="loginEmail">Correo electrónico</label>
+                  <input type="email" id="loginEmail" placeholder="email@gmail.com">
+              </div>
+              <div class="form-group">
+                  <label data-i18n="pop.password" for="loginPassword">Contraseña</label>
+                  <input type="password" id="loginPassword" placeholder="********">
+                  <span data-i18n="pop.badCredentials" id="spn-badLogin" class="error-message hide">Las credenciales ingresadas son incorrectas</span>
+                  <div class="show-password">
+                      <input type="checkbox" id="showPassword" aria-label="Mostrar contraseña">
+                      <label for="showPassword"
+                          id="lbl-showPassword"
+                          data-i18n-show="pop.showPassword"
+                          data-i18n-hide="pop.hidePassword"
+                          data-i18n-active="data-i18n-show"
+                      >
+                        Mostrar contraseña
+                      </label>
+                  </div>
+                </div>
+                <button id="btnIniciarSesion" class="btn-login">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span data-i18n="pop.login">Iniciar sesión</span>
+                </button>
+              </div>
+            </div>
+         
           <div class="col-6 col-lg-6 col-xl-6 p-1 logged hide">
             <button data-i18n="aP.acceptAll" id="btn-accept-all-notifications" class="adaptation-button">Aceptar todas</button>
           </div>

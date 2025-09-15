@@ -53,7 +53,9 @@ class Translator {
             // Tab de adaptaciones
             "aP.recommendations": "Recommendations",
             "aP.recommendationsDescription": "It is recommended to apply the suggested adaptations according to your user profile and the evaluation of the website (",
-            "aP.recommendationsDescriptionNotLogged": "To view adaptation recommendations, please log in and then restart the website.",
+            "aP.recommendationsDescriptionNotLogged": "To view adaptation recommendations, please log in using the form below. This will reset the page.",
+            "aP.recommendationsDescriptionNotLoggedConfiguration": "If you do not have an account, access the settings section",
+            "aP.orClickHere": "or click here.",
             "aP.showNotifications": "Show notifications",
             "aP.dontShowAccept": "Do not show and accept",
             "aP.dontShowReject": "Do not show and reject",
@@ -232,7 +234,9 @@ class Translator {
             // Tab de adaptaciones
             "aP.recommendations": "Recomendaciones",
             "aP.recommendationsDescription": "Se recomienda aplicar las siguientes adaptaciones acordes a su perfil de usuario y la evaluación de la página web (",
-            "aP.recommendationsDescriptionNotLogged": "Para ver las recomendaciones de adaptación, por favor inicie sesión y luego reinicie la página web.",
+            "aP.recommendationsDescriptionNotLogged": "Para ver las recomendaciones de adaptación, por favor inicie sesión en el formulario de la sección inferior. Al hacerlo se reiniciará la página.",
+            "aP.recommendationsDescriptionNotLoggedConfiguration": "Si no tiene una cuenta acceda a la sección de configuración",
+            "aP.orClickHere": "o haga clic aquí.",
             "aP.showNotifications": "Mostrar notificaciones",
             "aP.dontShowAccept": "No mostrar y aceptar",
             "aP.dontShowReject": "No mostrar y rechazar",

@@ -19,8 +19,7 @@ let CACHE = {
   unloggedPreferences: null,
 }
 
-const API_KEY_GEMINI_GEMMA = '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';
-const API_KEY_DEEPSEEK = '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';
+const API_KEY_DEEPSEEK = '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';
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 

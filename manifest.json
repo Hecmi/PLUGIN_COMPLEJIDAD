@@ -56,6 +56,7 @@
           "accessibilityCenter/managers/speech_manager.js",
           "accessibilityCenter/managers/zoom_manager.js",
           "accessibilityCenter/managers/event_manager.js",
+          "accessibilityCenter/managers/login_manager.js",
 
           "AST/tokenizer.js",
           "AST/AST_nodes.js",

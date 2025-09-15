@@ -20,6 +20,7 @@ class AccessibilityPanel {
     this.guideManager = new GuideManager();
     this.textAltManager = new AltTextManager(this);
     this.eventManager = new EventManager(this);
+    this.loginManager = new LoginManager();
 
     // Inicializar elementos adicionales
     this.modal = new ExtensionModal();
@@ -106,7 +107,7 @@ class AccessibilityPanel {
     
     const [faResponse, panelResponse] = await Promise.all([
       fetch(chrome.runtime.getURL('libs/fontawesome-free-6.7.2-web/css/all.min.css')),
-      fetch(chrome.runtime.getURL("ui/panel/panel.html"))
+      fetch(chrome.runtime.getURL("ui/panel/panel.html")),
     ]);
 
     const [faCSS, panelHTML] = await Promise.all([
@@ -129,6 +130,7 @@ class AccessibilityPanel {
       <style>${this.doc.querySelector('style#style-container-ext').textContent}</style>
       <style>${this.doc.querySelector('style#style-panel-ext').textContent}</style>
       <style>${this.doc.querySelector('style#style-notification-ext').textContent}</style>
+      <style>${this.doc.querySelector('style#style-login-ext').textContent}</style>
       ${this.doc.querySelector('body').innerHTML}
     `;
 
@@ -156,6 +158,9 @@ class AccessibilityPanel {
     this.eventManager.loadJs();
     // this.eventManager.setupEventListeners();
     this.eventManager.loadPanelLanguageChange();
+
+
+    this.loginManager.initializeElementEvents(this.shadowRoot);
   }
 
   setComplexityLevel(complexityLevel) {
