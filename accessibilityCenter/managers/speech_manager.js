@@ -37,7 +37,7 @@ class SpeechManager {
         if (activeButton) {
           const column = activeButton.closest('.option-column');
           if (column) {
-              this.panel.updateActiveOverlay(column);
+              //this.panel.updateActiveOverlay(column);
           }
         }
       });
@@ -138,7 +138,7 @@ class SpeechManager {
       
       const column = newButton.closest('.option-column');
       newButton.classList.add('modified');
-      this.panel.updateActiveOverlay(column);
+      //this.panel.updateActiveOverlay(column);
     });
 
     newDotsDiv.addEventListener('click', (e) => {
@@ -153,7 +153,7 @@ class SpeechManager {
       
       const column = newButton.closest('.option-column');
       newButton.classList.add('modified');
-      this.panel.updateActiveOverlay(column);
+      //this.panel.updateActiveOverlay(column);
     });
   }
 

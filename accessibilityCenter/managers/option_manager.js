@@ -6,6 +6,40 @@ class OptionManager {
 
     this.inactivityTimeout = null;
     this.inactivityDelay = 5000;
+    
+    // Crear observadores
+    this.setupObservers();
+  }
+
+  // Configurar observadores
+  setupObservers() {
+    // ResizeObserver para cambios de tamaño
+    this.panel.optionResizeObserver = new ResizeObserver(entries => {
+      entries.forEach(entry => {
+        const optionElement = entry.target;
+        const column = optionElement.closest('.option-column');
+        
+        if (column && column.classList.contains('active')) {
+          this.panel.updateActiveOverlay(column);
+        }
+      });
+    });
+
+    // MutationObserver para cambios en los dots y contenido
+    this.panel.optionMutationObserver = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        if (mutation.type === 'childList' || mutation.attributeName === 'class') {
+          const optionElement = mutation.target;
+          const button = optionElement.closest('button');
+          if (button && button.classList.contains('active')) {
+            const column = button.closest('.option-column');
+            if (column && column.classList.contains('active')) {
+              this.panel.updateActiveOverlay(column);
+            }
+          }
+        }
+      });
+    });
   }
 
   // Obtiene solo las opciones saveable
@@ -80,8 +114,8 @@ class OptionManager {
         this.panel.modifiedOptions.add(option.id);
       }
 
-      // Observar cambios en el botón y sus elementos internos
-      this.setupOptionObserver(button);
+      // Observar cambios en el botón y sus elementos
+      this.observeOptionElement(button);
 
       button.addEventListener('click', () => {
         if (this.panel.shadowRoot.querySelector('.accessibility-panel').classList.contains('minimized')) return;
@@ -119,10 +153,8 @@ class OptionManager {
         column.classList.add('active');
         this.panel.lastClickedButton = button;
 
-        // Actualizar el overlay después de los cambios en el DOM
-        setTimeout(() => {
-          this.panel.updateActiveOverlay(column);
-        }, 0);
+        // Actualizar el overlay inmediatamente
+        this.panel.updateActiveOverlay(column);
 
         if (currentIndex !== option.defaultIndex) {
           button.classList.add('modified');
@@ -136,17 +168,7 @@ class OptionManager {
 
         if (option.action) {
           option.action(option.values[currentIndex], this.panel);
-          // console.log(this.getCurrentConfigSaveable());
         }
-
-        // if (option.saveable) {
-        //   const event = new CustomEvent('optionExtPanelChange', {
-        //     detail: this.getCurrentConfigSaveable(),
-        //     bubbles: true,
-        //     composed: true
-        //   });
-        //   this.panel.dispatchEvent(event);
-        // }
 
         // Reiniciar el tiempo al interactuar con algún botón
         this.resetInactivityTimer();
@@ -154,33 +176,58 @@ class OptionManager {
     });
   }
 
-  // Configurar observador para cambios en la opción
-  setupOptionObserver(button) {
-    if (!this.panel.optionResizeObserver) {
-      // Crear el observador si no existe
-      this.panel.optionResizeObserver = new ResizeObserver(entries => {
-        entries.forEach(entry => {
-          const optionElement = entry.target;
-          if (optionElement.classList.contains('active')) {
-            this.panel.updateActiveOverlay(optionElement.closest('.option-column'));
-          }
-        });
+  // Observar cambios en elementos de opción
+  observeOptionElement(button) {
+    // Observar cambios de tamaño en el botón y elementos importantes
+    if (this.panel.optionResizeObserver) {
+      this.panel.optionResizeObserver.observe(button);
+      
+      const importantElements = [
+        button.querySelector('.dots-container'),
+        button.querySelector('.option-value'),
+        button.querySelector('.option-label')
+      ].filter(el => el !== null);
+      
+      importantElements.forEach(el => {
+        this.panel.optionResizeObserver.observe(el);
       });
     }
 
-    // Observar el botón y sus elementos internos
-    this.panel.optionResizeObserver.observe(button);
-    
-    // También observar elementos hijos que puedan afectar el tamaño
-    const children = button.querySelectorAll('*');
-    children.forEach(child => {
-      this.panel.optionResizeObserver.observe(child);
-    });
+    // Observar cambios en los dots y clases
+    if (this.panel.optionMutationObserver) {
+      const dotsContainer = button.querySelector('.dots-container');
+      if (dotsContainer) {
+        this.panel.optionMutationObserver.observe(dotsContainer, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+          attributeFilter: ['class']
+        });
+      }
+
+      // Observar cambios en el texto de la opción
+      const valueSpan = button.querySelector('.option-value');
+      if (valueSpan) {
+        this.panel.optionMutationObserver.observe(valueSpan, {
+          characterData: true,
+          subtree: true,
+          childList: true
+        });
+      }
+
+      // Observar cambios de clase en el botón mismo
+      this.panel.optionMutationObserver.observe(button, {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+    }
   }
 
   updateButtonText(button, option, index) {
     const valueSpan = button.querySelector('.option-value');
     if (!valueSpan) return;
+    
+    const previousText = valueSpan.textContent;
     
     if (option.i18n && index < option.i18n.length) {
       const currentOption = option.i18n[index];
@@ -190,6 +237,14 @@ class OptionManager {
     }
     
     Translator.tElState(valueSpan, this.panel.language);
+    
+    // Verificar si el texto realmente cambió antes de actualizar el overlay
+    if (valueSpan.textContent !== previousText && button.classList.contains('active')) {
+      const column = button.closest('.option-column');
+      if (column && column.classList.contains('active')) {
+        this.panel.updateActiveOverlay(column);
+      }
+    }
   }
 
   resetAllOptions() {
