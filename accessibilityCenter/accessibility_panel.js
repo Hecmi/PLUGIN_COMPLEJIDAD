@@ -13,6 +13,14 @@ class AccessibilityPanel {
     this.shadowRoot = null;
     
     // Inicializar managers
+    this.initializeManagers();
+    
+    // Inicializar elementos adicionales
+    this.modal = new ExtensionModal();
+    this.loader = null;
+  }
+
+  initializeManagers() {
     this.styleManager = new StyleManager();
     this.optionManager = new OptionManager(this);
     this.speechManager = new SpeechManager(this);
@@ -21,13 +29,8 @@ class AccessibilityPanel {
     this.textAltManager = new AltTextManager(this);
     this.eventManager = new EventManager(this);
     this.loginManager = new LoginManager();
-
-    // Inicializar elementos adicionales
-    this.modal = new ExtensionModal();
-    this.loader = null;
   }
 
-  
   setTracker(tracker) {
     this.tracker = tracker;
   }
@@ -42,12 +45,10 @@ class AccessibilityPanel {
     // Cargar la posición del panel definida por el usuario
     this.setPanelPosition(location);
 
-    // Sí las preferencias contienen el panel minimizado, activarlo
-    if (minimized) {
-      if (minimized == false) {
-        panel.classList.toggle('minimized');
-      }
-    } else {
+    // Aplicar estado minimizado si es necesario
+    if (minimized === false) {
+      panel.classList.toggle('minimized');
+    } else if (minimized !== true) {
       panel.classList.toggle('minimized'); 
     }
   }
@@ -59,7 +60,7 @@ class AccessibilityPanel {
     }
 
     // Verificar que chrome.runtime.getURL está disponible
-    if (!chrome.runtime || !chrome.runtime.getURL) {
+    if (!chrome.runtime?.getURL) {
       console.error('chrome.runtime.getURL no está disponible');
       return;
     }
@@ -75,48 +76,43 @@ class AccessibilityPanel {
   }
 
   loadRecomendationsStatus(isUserLogged) {
-    if (isUserLogged) {
-      const loggedElements = this.shadowRoot.querySelectorAll('.logged');
-      loggedElements.forEach(el => el.classList.remove('hide'));
-
-    } else {
-      const unloggedElements = this.shadowRoot.querySelectorAll('.unlogged');
-      unloggedElements.forEach(el => el.classList.remove('hide'));
-    }
+    const selector = isUserLogged ? '.logged' : '.unlogged';
+    const elements = this.shadowRoot.querySelectorAll(selector);
+    
+    elements.forEach(el => el.classList.remove('hide'));
   }
 
   async loadResources() {
-    // URL del archivo HTML
-    const panelUrl = chrome.runtime.getURL("ui/panel/panel.html");
+    // Cargar recursos en paralelo
+    const [faCSS, panelHTML] = await Promise.all([
+      this.fetchResource('libs/fontawesome-free-6.7.2-web/css/all.min.css'),
+      this.fetchResource('ui/panel/panel.html')
+    ]);
 
-    const linkFA = document.createElement('link');
-    linkFA.rel = 'stylesheet';
-    linkFA.id = "font-awesome-style-ext";
-    linkFA.href = chrome.runtime.getURL('libs/fontawesome-free-6.7.2-web/css/all.min.css');
-    document.head.appendChild(linkFA);
+    this.faCSS = faCSS;
+    this.doc = new DOMParser().parseFromString(panelHTML, 'text/html');
+    
+    // Añadir Font Awesome al documento principal
+    this.addFontAwesomeStyles();
+  }
 
-    // const linkPageStyle = document.createElement('style');
-    // linkPageStyle.id = "page-dynamic-styles-ext";
-    // document.head.appendChild(linkPageStyle);
-
-    const response = await fetch(panelUrl);
+  async fetchResource(path) {
+    const url = chrome.runtime.getURL(path);
+    const response = await fetch(url);
+    
     if (!response.ok) {
-      console.error(`Error al cargar: ${panelUrl} - ${response.status} ${response.statusText}`);
-      return;
+      throw new Error(`Error al cargar: ${url} - ${response.status} ${response.statusText}`);
     }
     
-    const [faResponse, panelResponse] = await Promise.all([
-      fetch(chrome.runtime.getURL('libs/fontawesome-free-6.7.2-web/css/all.min.css')),
-      fetch(chrome.runtime.getURL("ui/panel/panel.html")),
-    ]);
+    return response.text();
+  }
 
-    const [faCSS, panelHTML] = await Promise.all([
-      faResponse.text(),
-      panelResponse.text()
-    ]);
-
-    this.doc = new DOMParser().parseFromString(panelHTML, 'text/html');
-    this.faCSS = faCSS;
+  addFontAwesomeStyles() {
+    const linkFA = document.createElement('link');
+    linkFA.rel = 'stylesheet';
+    linkFA.id = 'font-awesome-style-ext';
+    linkFA.href = chrome.runtime.getURL('libs/fontawesome-free-6.7.2-web/css/all.min.css');
+    document.head.appendChild(linkFA);
   }
 
   createPanel(optionPanelConfiguration) {
@@ -125,20 +121,39 @@ class AccessibilityPanel {
     document.body.appendChild(wrapper);
 
     this.shadowRoot = wrapper.attachShadow({ mode: 'open' });
+    this.renderPanelContent();
+    
+    // Inicializar componentes del panel
+    this.initializePanelComponents(optionPanelConfiguration);
+  }
+
+  renderPanelContent() {
+    const styles = this.getPanelStyles();
     this.shadowRoot.innerHTML = `
       <style>${this.faCSS}</style>
-      <style>${this.doc.querySelector('style#style-container-ext').textContent}</style>
-      <style>${this.doc.querySelector('style#style-panel-ext').textContent}</style>
-      <style>${this.doc.querySelector('style#style-notification-ext').textContent}</style>
-      <style>${this.doc.querySelector('style#style-login-ext').textContent}</style>
+      <style>${styles}</style>
       ${this.doc.querySelector('body').innerHTML}
     `;
+  }
 
+  getPanelStyles() {
+    const styleIds = [
+      'style-container-ext',
+      'style-panel-ext', 
+      'style-notification-ext',
+      'style-login-ext'
+    ];
+    
+    return styleIds
+      .map(id => this.doc.querySelector(`style#${id}`)?.textContent || '')
+      .join('');
+  }
+
+  initializePanelComponents(optionPanelConfiguration) {
     // Crear elementos en el DOM principal para las guías
     this.guideManager.createGuideElements();
     
     // Inicializar el tracker CSS
-    // this.tracker = new CSSTracker(document.head.querySelector('#page-dynamic-styles-ext'));
     this.tracker = Constants.STYLES[Constants.APP.panelTracker];
     
     // Cargar estilos iniciales
@@ -149,17 +164,16 @@ class AccessibilityPanel {
     this.eventManager.loadTabPanelChange();
     this.eventManager.loadPanelLocation();
 
-    // Sí hay una configuraciópara el panel, colocarla
+    // Aplicar configuración del panel si existe
     if (optionPanelConfiguration) {
       this.initializeDefaultOptions(optionPanelConfiguration);
     }
 
-
+    // Cargar funcionalidades adicionales
     this.eventManager.loadJs();
-    // this.eventManager.setupEventListeners();
     this.eventManager.loadPanelLanguageChange();
 
-
+    // Inicializar eventos de login
     this.loginManager.initializeElementEvents(this.shadowRoot);
   }
 
@@ -191,77 +205,96 @@ class AccessibilityPanel {
     if (!position) return;
 
     const panel = this.shadowRoot.querySelector('.accessibility-panel');
-
+    const [vertical, horizontal] = position.split('-');
+    
+    // Verificar que la posición sea válida
+    if (!vertical || !horizontal) return;
+    
     // Remover todas las clases de posición primero
     panel.classList.remove('top-left', 'top-right', 'bottom-left', 'bottom-right');
-    const location = position.split('-');
     
-    // Verificar que se obtengan exactamente la posición vertical y horizontal
-    if (location.length != 2) return;
-    const vertical = location[0];
-    const horizontal = location[1];
-
     // Añadir la clase correspondiente a la posición seleccionada
     panel.classList.add(position);
     
     // Guardar la posición preferida
     chrome.runtime.sendMessage({
-      type: "SET_PANEL_CONFIGURATION",
+      type: 'SET_PANEL_CONFIGURATION',
       location: {
         position: position,
-        vertical: location[0],
-        horizontal: location[1]
+        vertical: vertical,
+        horizontal: horizontal
       }
     }, (response) => {
-      if (!response){
-          return;
-      }
-
-      // Disparar un evento para consumir en alguna otra sección del código
-      const inversedPanelPosition = horizontal == 'right' ? 'left' : 'right';
-      const event = new CustomEvent('panelPositionChanged', {
-        detail: {
-            panelPosition: position,
-            inversedHorizontalPosition: `${inversedPanelPosition}`
-        }
-      });
-      document.dispatchEvent(event);
+      if (!response) return;
+      
+      // Disparar evento de cambio de posición
+      this.dispatchPanelPositionChangedEvent(horizontal);
     });
+  }
+
+  dispatchPanelPositionChangedEvent(horizontal) {
+    const inversedPanelPosition = horizontal === 'right' ? 'left' : 'right';
+    const event = new CustomEvent('panelPositionChanged', {
+      detail: {
+        panelPosition: position,
+        inversedHorizontalPosition: inversedPanelPosition
+      }
+    });
+    
+    document.dispatchEvent(event);
   }
 
   updateActiveOverlay(column) {
     const panel = this.shadowRoot.querySelector('.accessibility-panel');
     if (panel.classList.contains('minimized')) return;
     
+    // Limpiar overlay existente
+    this.removeActiveOverlay();
+    
+    // Crear nuevo overlay
+    this.createActiveOverlay(column);
+  }
+
+  removeActiveOverlay() {
     if (this.activeOverlay) {
       this.activeOverlay.remove();
       this.activeOverlay = null;
     }
-    
+  }
+
+  createActiveOverlay(column) {
+    const optionsBox = column.closest('.options-box');
     this.activeOverlay = document.createElement('div');
+    
     this.activeOverlay.classList.add('active-overlay');
     this.activeOverlay.setAttribute('aria-hidden', 'true');
     
-    const optionsBox = column.closest('.options-box');
     optionsBox.appendChild(this.activeOverlay);
+    this.positionActiveOverlay(column, optionsBox);
+  }
 
-    // Obtener el contenedor de acordeón que tiene scroll
-    const accordionContent = column.closest('.accordion-content');
-
+  positionActiveOverlay(column, optionsBox) {
     const columnRect = column.getBoundingClientRect();
     const optionsBoxRect = optionsBox.getBoundingClientRect();
-    const borderWidth = parseFloat(getComputedStyle(optionsBox).borderWidth) || 2;
-    const overflow = parseFloat(getComputedStyle(this.shadowRoot.host).getPropertyValue('--active-overlay-overflow')) || 2;
     
-    // Ajustar la posición considerando el scroll del acordeón
+    const borderWidth = parseFloat(getComputedStyle(optionsBox).borderWidth) || 2;
+    const overflow = parseFloat(
+      getComputedStyle(this.shadowRoot.host)
+        .getPropertyValue('--active-overlay-overflow')
+    ) || 2;
+    
+    // Calcular posición y dimensiones
     const top = columnRect.top - optionsBoxRect.top - borderWidth - overflow;
     const left = columnRect.left - optionsBoxRect.left - borderWidth - overflow;
     const width = columnRect.width + 2 * overflow;
     const height = columnRect.height + 2 * overflow;
     
-    this.activeOverlay.style.top = `${top}px`;
-    this.activeOverlay.style.left = `${left}px`;
-    this.activeOverlay.style.width = `${width}px`;
-    this.activeOverlay.style.height = `${height}px`;
+    // Aplicar estilos
+    Object.assign(this.activeOverlay.style, {
+      top: `${top}px`,
+      left: `${left}px`,
+      width: `${width}px`,
+      height: `${height}px`
+    });
   }
 }
