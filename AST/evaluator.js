@@ -55,6 +55,9 @@ class Evaluator {
       document: typeof document !== 'undefined' ? document : null,
       localStorage: typeof localStorage !== 'undefined' ? localStorage : null,
       sessionStorage: typeof sessionStorage !== 'undefined' ? sessionStorage : null,
+
+      // Panel 
+      guideManager: GuideManager,
       
       ...BUILTIN_FUNCTIONS
     };
