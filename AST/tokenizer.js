@@ -1,1 +1,764 @@
-const _0x4c377e=_0x397c;(function(_0x3f6053,_0x251f8c){const _0x53a0e3=_0x397c,_0x2c3a77=_0x3f6053();while(!![]){try{const _0x20e9ca=parseInt(_0x53a0e3(0x142))/0x1*(-parseInt(_0x53a0e3(0x186))/0x2)+-parseInt(_0x53a0e3(0x12a))/0x3*(parseInt(_0x53a0e3(0x14a))/0x4)+parseInt(_0x53a0e3(0x166))/0x5+parseInt(_0x53a0e3(0x103))/0x6+-parseInt(_0x53a0e3(0x135))/0x7*(parseInt(_0x53a0e3(0x155))/0x8)+-parseInt(_0x53a0e3(0x130))/0x9*(parseInt(_0x53a0e3(0x195))/0xa)+-parseInt(_0x53a0e3(0x11d))/0xb*(-parseInt(_0x53a0e3(0x172))/0xc);if(_0x20e9ca===_0x251f8c)break;else _0x2c3a77['push'](_0x2c3a77['shift']());}catch(_0x132ac6){_0x2c3a77['push'](_0x2c3a77['shift']());}}}(_0xce03,0xad2b4));const linkPageStylePanel=document[_0x4c377e(0x17c)](_0x4c377e(0x106));function _0xce03(){const _0x5e5007=['2030343GmAQpL','operators','ternary','MULT_EQ','GTE','addEventListener','getSpecialStyles','PAREN','forEach','tbody','NEQ_ALT','LITERAL','IDENTIFIER','703641huHRzk','getImageData','tagName','symbolOperators','TRUE','string','UNDEFINED','return','2140IZZbjR','appendTo','KEYWORD','type','option','push','page-dynamic-styles-ext','remove','width','log','panelTracker','8hEgVtL','Unclosed\x20string\x20starting\x20at\x20position\x20','target','exp','getStandardStyles','NEW','else','keys','while','values','NOT','PLUS_EQ','round','\x20must\x20be\x20a\x20function\x20or\x20string','LTE','lastError','label','876075OCClqP','isWhitespace','ASSIGN','updateStyles','comma','setText','evaluate','NULL','important','runtime','DOT','test','13707348zxHzET','NUMBER','updateStylesheet','parseOperator','join','sendMessage','update','innerHTML','setProperty','parseString','createElement','\x27\x20at\x20position\x20','reduce','keywords','COMMA','assign','operator','data','entries','floor','2vPfjGO','parseNumber','math','true','querySelector','isRegexContext','sin','setAttribute','LET','textContent','TERNARY_QUESTION','querySelectorAll','addStyleTracker','await','keyword','825400aMqNza','right','screenshot','Unexpected\x20character:\x20\x27','addChild','comparison','specialStyles','colon','getContext','MINUS_EQ','ARROW','isDigit','INC','ceil','paren','assignment','head','value','src','parseRegex','for','setHtml','COALESCE','setAttr','undefined','isUnaryContext','createTextNode','2725278DpNVod','map','number','style','flat','sqrt','AND','DIV_EQ','false','has','table','SEPARATOR','logical','classList','APP','OPERATOR','function','Error\x20parsing\x20handler\x20for\x20event\x20','set','sort','cos','Handler\x20for\x20event\x20','STRING','min','COLON','FALSE','33XJDzDA','regex','add','left','parseIdentifier','continue','RETURN','thead','separator','max','isAlpha','null','tokenTypes','7179EkDFAn','select','break','length','removeProperties','size','117OzdiwG','error','text','isSpecialChar','appendChild'];_0xce03=function(){return _0x5e5007;};return _0xce03();}linkPageStylePanel['id']='page-panel-styles-ext',document['head'][_0x4c377e(0x134)](linkPageStylePanel);const tracker_panel=new CSSTracker(linkPageStylePanel);Constants[_0x4c377e(0x192)](Constants[_0x4c377e(0x111)][_0x4c377e(0x154)],tracker_panel);const linkPageStyle=document['createElement']('style');function _0x397c(_0x2c2060,_0x2fe6bf){const _0xce0338=_0xce03();return _0x397c=function(_0x397cb5,_0x3da7d2){_0x397cb5=_0x397cb5-0xeb;let _0x50b627=_0xce0338[_0x397cb5];return _0x50b627;},_0x397c(_0x2c2060,_0x2fe6bf);}linkPageStyle['id']=_0x4c377e(0x150),document[_0x4c377e(0xf8)][_0x4c377e(0x134)](linkPageStyle);const tracker=new CSSTracker(linkPageStyle),LANGUAGE_CONFIG={'keywords':{'LET':'let','IF':'if','ELSE':_0x4c377e(0x15b),'WHILE':_0x4c377e(0x15d),'FOR':_0x4c377e(0xfc),'TRUE':_0x4c377e(0x189),'FALSE':_0x4c377e(0x10b),'NULL':_0x4c377e(0x128),'UNDEFINED':_0x4c377e(0x100),'FUNCTION':_0x4c377e(0x113),'RETURN':_0x4c377e(0x149),'NEW':'new','OF':'of','CONTINUE':_0x4c377e(0x122),'BREAK':_0x4c377e(0x12c),'AWAIT':_0x4c377e(0x193),'ASYNC':'async'},'operators':{'NOT':'NOT','AND':'&&','OR':'||','EQ':'==','NEQ':'!=','NEQ_ALT':'<>','GTE':'>=','LTE':'<=','ASSIGN':'=','ARROW':'=>','COALESCE':'??','TERNARY_QUESTION':'?','PLUS_EQ':'+=','MINUS_EQ':'-=','MULT_EQ':'*=','DIV_EQ':'/=','INC':'++','DEC':'--'}},OPERATOR_CONFIG={'!':{'precedence':0x7,'associativity':_0x4c377e(0x196),'type':'logical','unary':!![]},'+':{'precedence':0x7,'associativity':'right','type':_0x4c377e(0x188),'unary':!![]},'-':{'precedence':0x7,'associativity':_0x4c377e(0x196),'type':_0x4c377e(0x188),'unary':!![]},'^':{'precedence':0x6,'associativity':_0x4c377e(0x196),'type':_0x4c377e(0x188)},'*':{'precedence':0x5,'associativity':_0x4c377e(0x120),'type':_0x4c377e(0x188)},'/':{'precedence':0x5,'associativity':_0x4c377e(0x120),'type':_0x4c377e(0x188)},'%':{'precedence':0x5,'associativity':_0x4c377e(0x120),'type':_0x4c377e(0x188)},'+':{'precedence':0x4,'associativity':_0x4c377e(0x120),'type':_0x4c377e(0x188)},'-':{'precedence':0x4,'associativity':_0x4c377e(0x120),'type':_0x4c377e(0x188)},'>':{'precedence':0x3,'associativity':'left','type':_0x4c377e(0xed)},'<':{'precedence':0x3,'associativity':_0x4c377e(0x120),'type':_0x4c377e(0xed)},[LANGUAGE_CONFIG['operators'][_0x4c377e(0x15f)]]:{'precedence':0x7,'associativity':_0x4c377e(0x196),'type':_0x4c377e(0x10f),'unary':!![]},[LANGUAGE_CONFIG[_0x4c377e(0x136)][_0x4c377e(0x139)]]:{'precedence':0x3,'associativity':_0x4c377e(0x120),'type':_0x4c377e(0xed)},[LANGUAGE_CONFIG[_0x4c377e(0x136)][_0x4c377e(0x163)]]:{'precedence':0x3,'associativity':_0x4c377e(0x120),'type':_0x4c377e(0xed)},[LANGUAGE_CONFIG[_0x4c377e(0x136)]['EQ']]:{'precedence':0x3,'associativity':_0x4c377e(0x120),'type':'comparison'},[LANGUAGE_CONFIG[_0x4c377e(0x136)]['NEQ']]:{'precedence':0x3,'associativity':_0x4c377e(0x120),'type':_0x4c377e(0xed)},[LANGUAGE_CONFIG[_0x4c377e(0x136)][_0x4c377e(0x13f)]]:{'precedence':0x3,'associativity':_0x4c377e(0x120),'type':_0x4c377e(0xed)},[LANGUAGE_CONFIG[_0x4c377e(0x136)][_0x4c377e(0x190)]]:{'precedence':0x3,'associativity':_0x4c377e(0x196),'type':_0x4c377e(0x137)},[LANGUAGE_CONFIG[_0x4c377e(0x136)]['TERNARY_OPERATOR']]:{'precedence':0x3,'associativity':_0x4c377e(0x196),'type':_0x4c377e(0x137)},[LANGUAGE_CONFIG[_0x4c377e(0x136)][_0x4c377e(0x109)]]:{'precedence':0x2,'associativity':_0x4c377e(0x120),'type':'logical'},[LANGUAGE_CONFIG[_0x4c377e(0x136)]['OR']]:{'precedence':0x1,'associativity':'left','type':_0x4c377e(0x10f)},[LANGUAGE_CONFIG[_0x4c377e(0x136)][_0x4c377e(0xfe)]]:{'precedence':0x3,'associativity':_0x4c377e(0x196),'type':'logical'},[LANGUAGE_CONFIG[_0x4c377e(0x136)][_0x4c377e(0x168)]]:{'precedence':0x0,'associativity':'right','type':_0x4c377e(0xf7)},[LANGUAGE_CONFIG['operators'][_0x4c377e(0x160)]]:{'precedence':0x0,'associativity':'right','type':_0x4c377e(0xf7)},[LANGUAGE_CONFIG[_0x4c377e(0x136)][_0x4c377e(0xf1)]]:{'precedence':0x0,'associativity':'right','type':'assignment'},[LANGUAGE_CONFIG['operators'][_0x4c377e(0x138)]]:{'precedence':0x0,'associativity':_0x4c377e(0x196),'type':_0x4c377e(0xf7)},[LANGUAGE_CONFIG[_0x4c377e(0x136)][_0x4c377e(0x10a)]]:{'precedence':0x0,'associativity':_0x4c377e(0x196),'type':'assignment'},[LANGUAGE_CONFIG[_0x4c377e(0x136)][_0x4c377e(0xf2)]]:{'precedence':0x0,'associativity':'right','type':'assignment'},[LANGUAGE_CONFIG['operators'][_0x4c377e(0xf4)]]:{'precedence':0x7,'associativity':'left','type':_0x4c377e(0x178),'unary':!![]},[LANGUAGE_CONFIG[_0x4c377e(0x136)]['DEC']]:{'precedence':0x7,'associativity':_0x4c377e(0x120),'type':_0x4c377e(0x178),'unary':!![]}},KEYWORDS=new Set(Object[_0x4c377e(0x15e)](LANGUAGE_CONFIG[_0x4c377e(0x17f)])),DOM_FUNCTIONS={'$':_0x448494=>{const _0x9fbe30=_0x4c377e,_0x40c7a1=document[_0x9fbe30(0x191)](_0x448494);if(!_0x40c7a1)return null;return _0x40c7a1;},'createElement':_0xfd9524=>{const _0x2f7cb1=_0x4c377e;return document[_0x2f7cb1(0x17c)](_0xfd9524);},'setAttr':(_0x1dfdf6,_0x48dcf4,_0x3b1ebf)=>{const _0x49a341=_0x4c377e;return _0x48dcf4 in _0x1dfdf6?_0x1dfdf6[_0x48dcf4]=_0x3b1ebf:_0x1dfdf6[_0x49a341(0x18d)](_0x48dcf4,_0x3b1ebf),_0x1dfdf6;},'setAttrs':(_0x1f7dd4,_0x31c6c9)=>{const _0x3399cb=_0x4c377e;return Object[_0x3399cb(0x184)](_0x31c6c9)[_0x3399cb(0x13d)](([_0x43f755,_0x27e45d])=>{const _0x51aca2=_0x3399cb;DOM_FUNCTIONS[_0x51aca2(0xff)](_0x1f7dd4,_0x43f755,_0x27e45d);}),_0x1f7dd4;},'setId':(_0x1501d1,_0x574306)=>{const _0x3ff401=_0x4c377e;return DOM_FUNCTIONS[_0x3ff401(0xff)](_0x1501d1,'id',_0x574306);},'setStyle':(_0x288c77,_0x529c00,_0x50ac32,_0x4fc1c0=!![])=>{const _0x5671b5=_0x4c377e;let _0x354f4e=_0x4fc1c0?_0x5671b5(0x16e):'';_0x288c77[_0x5671b5(0x106)][_0x5671b5(0x17a)](_0x529c00,_0x50ac32,_0x354f4e);},'setStyles':(_0x1bcbf2,_0x301e6a)=>{const _0x518a76=_0x4c377e;Object[_0x518a76(0x181)](_0x1bcbf2[_0x518a76(0x106)],_0x301e6a);},'addClass':(_0x4d9fac,_0x3bf243)=>{const _0x527dc2=_0x4c377e;return _0x4d9fac[_0x527dc2(0x110)][_0x527dc2(0x11f)](_0x3bf243),_0x4d9fac;},'setClasses':(_0x23aab9,_0x1dfe73)=>{const _0x4335b3=_0x4c377e;return _0x23aab9['className']=_0x1dfe73[_0x4335b3(0x176)]('\x20'),_0x23aab9;},'setText':(_0x366fa4,_0x39726e)=>{const _0x4455ff=_0x4c377e;return _0x366fa4[_0x4455ff(0x18f)]=_0x39726e,_0x366fa4;},'setHtml':(_0x3cc35e,_0x5700c2)=>{const _0x3b13d4=_0x4c377e;return _0x3cc35e[_0x3b13d4(0x179)]=_0x5700c2,_0x3cc35e;},'addChild':(_0x4bc4be,_0x590db8)=>{const _0x3fdf8a=_0x4c377e;if(_0x590db8 instanceof HTMLElement)_0x4bc4be[_0x3fdf8a(0x134)](_0x590db8);else typeof _0x590db8===_0x3fdf8a(0x147)&&_0x4bc4be[_0x3fdf8a(0x134)](document[_0x3fdf8a(0x102)](_0x590db8));return _0x4bc4be;},'addChildren':(_0x1c2af2,_0x173134)=>{const _0x2b1eb0=_0x4c377e;return _0x173134[_0x2b1eb0(0x13d)](_0x8187ad=>DOM_FUNCTIONS[_0x2b1eb0(0xec)](_0x1c2af2,_0x8187ad)),_0x1c2af2;},'makeInput':(_0x28a3c6,_0x314d77=_0x4c377e(0x132))=>{const _0x3ba28e=_0x4c377e;return _0x28a3c6['tagName']='input',DOM_FUNCTIONS[_0x3ba28e(0xff)](_0x28a3c6,_0x3ba28e(0x14d),_0x314d77),_0x28a3c6;},'makeLabel':(_0x58f560,_0x12839e,_0x3a2031)=>{const _0x4b1d66=_0x4c377e;return _0x58f560[_0x4b1d66(0x144)]=_0x4b1d66(0x165),DOM_FUNCTIONS['setAttr'](_0x58f560,_0x4b1d66(0xfc),_0x12839e),DOM_FUNCTIONS['setText'](_0x58f560,_0x3a2031||''),_0x58f560;},'makeSelect':(_0x4e72d4,_0x5c28ae=[])=>{const _0x36a3a9=_0x4c377e;return _0x4e72d4['tagName']=_0x36a3a9(0x12b),_0x5c28ae[_0x36a3a9(0x13d)](_0x10226d=>{const _0x1f5fe9=_0x36a3a9,_0x1cd723=document[_0x1f5fe9(0x17c)](_0x1f5fe9(0x14e));DOM_FUNCTIONS[_0x1f5fe9(0xff)](_0x1cd723,_0x1f5fe9(0xf9),_0x10226d[_0x1f5fe9(0xf9)]||_0x10226d),DOM_FUNCTIONS[_0x1f5fe9(0x16b)](_0x1cd723,_0x10226d[_0x1f5fe9(0x132)]||_0x10226d),DOM_FUNCTIONS[_0x1f5fe9(0xec)](_0x4e72d4,_0x1cd723);}),_0x4e72d4;},'makeTable':(_0x2f3190,_0x1a14ca=[],_0x19cc85=[])=>{const _0x1edced=_0x4c377e;_0x2f3190[_0x1edced(0x144)]=_0x1edced(0x10d);if(_0x1a14ca[_0x1edced(0x12d)]){const _0x1f70a5=document[_0x1edced(0x17c)](_0x1edced(0x124)),_0x25ba27=document['createElement']('tr');_0x1a14ca[_0x1edced(0x13d)](_0x433f84=>{const _0x22896a=_0x1edced,_0x1e1b1a=document[_0x22896a(0x17c)]('th');DOM_FUNCTIONS[_0x22896a(0x16b)](_0x1e1b1a,_0x433f84),DOM_FUNCTIONS[_0x22896a(0xec)](_0x25ba27,_0x1e1b1a);}),DOM_FUNCTIONS[_0x1edced(0xec)](_0x1f70a5,_0x25ba27),DOM_FUNCTIONS[_0x1edced(0xec)](_0x2f3190,_0x1f70a5);}if(_0x19cc85[_0x1edced(0x12d)]){const _0x1abd2a=document['createElement'](_0x1edced(0x13e));_0x19cc85[_0x1edced(0x13d)](_0x3eea72=>{const _0x14b537=_0x1edced,_0x3ed354=document[_0x14b537(0x17c)]('tr');_0x3eea72[_0x14b537(0x13d)](_0xb81eb5=>{const _0x2c058a=_0x14b537,_0x40e924=document[_0x2c058a(0x17c)]('td');DOM_FUNCTIONS['setText'](_0x40e924,_0xb81eb5),DOM_FUNCTIONS['addChild'](_0x3ed354,_0x40e924);}),DOM_FUNCTIONS[_0x14b537(0xec)](_0x1abd2a,_0x3ed354);}),DOM_FUNCTIONS['addChild'](_0x2f3190,_0x1abd2a);}return _0x2f3190;},'on':(_0x172e07,_0x34613f,_0x1c9633)=>{const _0x2b54b9=_0x4c377e;if(typeof _0x1c9633===_0x2b54b9(0x147)){const _0x1068c6=new ExpressionEngine();try{const _0x268d07=function(_0x5ab207){const _0x3e09c9=_0x2b54b9,_0x46a9de={'event':_0x5ab207,'target':_0x5ab207[_0x3e09c9(0x157)]};return _0x1068c6[_0x3e09c9(0x16c)](_0x1c9633,_0x46a9de);};return _0x172e07[_0x2b54b9(0x13a)](_0x34613f,_0x268d07),_0x172e07;}catch(_0x3d6971){return console[_0x2b54b9(0x131)](_0x2b54b9(0x114)+_0x34613f+':',_0x3d6971),_0x172e07;}}else return typeof _0x1c9633==='function'?(_0x172e07[_0x2b54b9(0x13a)](_0x34613f,_0x1c9633),_0x172e07):(console['error'](_0x2b54b9(0x118)+_0x34613f+_0x2b54b9(0x162)),_0x172e07);},'appendTo':(_0xae4624,_0x27f2d0)=>{const _0x6a973e=_0x4c377e,_0x5bc283=typeof _0x27f2d0==='string'?document[_0x6a973e(0x18a)](_0x27f2d0):_0x27f2d0;return _0x5bc283&&_0x5bc283[_0x6a973e(0x134)](_0xae4624),_0xae4624;}},CSS_FUNCTIONS={'set':(_0x521d79,_0x88130d)=>{const _0x48bde3=_0x4c377e;tracker[_0x48bde3(0x115)](_0x521d79,_0x88130d);},'remove':_0x32b314=>tracker[_0x4c377e(0x151)](_0x32b314),'removeProperties':(_0x46b669,_0x2386c1)=>tracker[_0x4c377e(0x12e)](_0x46b669,_0x2386c1),'updateStyles':()=>tracker[_0x4c377e(0x174)](),'getStandardStyles':()=>tracker['standardStyles'],'getSpecialStyles':()=>tracker[_0x4c377e(0xee)]},BUILTIN_FUNCTIONS={'tracker':tracker,'sqrt':Math[_0x4c377e(0x108)],'abs':Math['abs'],'round':Math[_0x4c377e(0x161)],'floor':Math[_0x4c377e(0x185)],'ceil':Math[_0x4c377e(0xf5)],'min':Math[_0x4c377e(0x11a)],'max':Math['max'],'log':Math[_0x4c377e(0x153)],'exp':Math[_0x4c377e(0x158)],'sin':Math[_0x4c377e(0x18c)],'cos':Math[_0x4c377e(0x117)],'tan':Math['tan'],'pow':Math['pow'],'random':Math['random'],'double':_0x4a5a09=>_0x4a5a09*0x2,'triple':_0x38b56b=>_0x38b56b*0x3,'sum':(..._0x248b73)=>_0x248b73['reduce']((_0x1c3551,_0x4c43f1)=>_0x1c3551+_0x4c43f1,0x0),'avg':(..._0x5a01e7)=>_0x5a01e7[_0x4c377e(0x17e)]((_0x5d3acd,_0xc7e8dc)=>_0x5d3acd+_0xc7e8dc,0x0)/_0x5a01e7[_0x4c377e(0x12d)],'len':_0x150cf9=>_0x150cf9[_0x4c377e(0x12d)],'print':(..._0x2d5260)=>{const _0x4619d5=_0x4c377e;return console[_0x4619d5(0x153)](..._0x2d5260),_0x2d5260[_0x4619d5(0x12d)]===0x1?_0x2d5260[0x0]:_0x2d5260;},'log':(..._0x268f09)=>{const _0x173f6d=_0x4c377e;return console[_0x173f6d(0x153)]('[LOG]',..._0x268f09),_0x268f09[_0x173f6d(0x12d)]===0x1?_0x268f09[0x0]:_0x268f09;},'$':DOM_FUNCTIONS['$'],'createEl':DOM_FUNCTIONS[_0x4c377e(0x17c)],'setAttr':DOM_FUNCTIONS[_0x4c377e(0xff)],'attrs':DOM_FUNCTIONS['setAttrs'],'text':DOM_FUNCTIONS[_0x4c377e(0x16b)],'html':DOM_FUNCTIONS[_0x4c377e(0xfd)],'onEvent':DOM_FUNCTIONS['on'],'appendTo':DOM_FUNCTIONS[_0x4c377e(0x14b)],'setStyle':CSS_FUNCTIONS['set'],'removeStyle':CSS_FUNCTIONS[_0x4c377e(0x151)],'removeStyleProperty':CSS_FUNCTIONS[_0x4c377e(0x12e)],'updateStyles':CSS_FUNCTIONS[_0x4c377e(0x169)],'getStandardStyles':CSS_FUNCTIONS[_0x4c377e(0x159)],'getSpecialStyles':CSS_FUNCTIONS[_0x4c377e(0x13b)],'getBlobSize':_0x19ac2c=>{const _0x16cbe8=_0x4c377e;return new Blob([_0x19ac2c])[_0x16cbe8(0x12f)];},'normalizeMatrix':_0x3b5fd0=>{const _0x2181f7=_0x4c377e;let _0x410078=Math[_0x2181f7(0x126)](..._0x3b5fd0[_0x2181f7(0x107)](),0x1);return _0x3b5fd0[_0x2181f7(0x104)](_0x269f01=>_0x269f01[_0x2181f7(0x104)](_0x4000bf=>_0x4000bf/_0x410078));},'capturePageImage':()=>{return new Promise((_0x4f3065,_0x377fd6)=>{const _0x1402b4=_0x397c;chrome[_0x1402b4(0x16f)][_0x1402b4(0x177)]({'type':'CAPTURE_TAB'},_0xc3928c=>{const _0x2a02ef=_0x1402b4;if(chrome['runtime']['lastError']){_0x377fd6(chrome['runtime'][_0x2a02ef(0x164)]);return;}const _0x50f7d8=_0xc3928c?.[_0x2a02ef(0x197)];if(_0x50f7d8)_0x4f3065(_0x50f7d8);else _0x377fd6(_0xc3928c?.[_0x2a02ef(0x131)]||'Bad\x20response');});});},'createImg':(_0x1d8b52,_0x51de57)=>{const _0x299a63=_0x4c377e,_0x1e9f5b=new Image();_0x1e9f5b['onload']=()=>{const _0x4ce86c=_0x397c;if(_0x51de57&&typeof _0x51de57==_0x4ce86c(0x113))_0x51de57(_0x1e9f5b);},_0x1e9f5b[_0x299a63(0xfa)]=_0x1d8b52;},'sum':_0xde0223=>{return _0xde0223['reduce']((_0x39c37e,_0x21fc07)=>_0x39c37e+_0x21fc07,0x0);},'mean':(_0x43fc61,_0x290073)=>{return _0x43fc61['reduce']((_0x937bc9,_0x32a776)=>_0x937bc9+_0x32a776,0x0)/_0x290073;},'variance':(_0x2b42b8,_0x4bec98,_0x1a3785)=>{const _0xa93d9b=_0x4c377e;return _0x2b42b8[_0xa93d9b(0x17e)]((_0x57c79f,_0x493cb1)=>_0x57c79f+(_0x493cb1-_0x4bec98)*(_0x493cb1-_0x4bec98),0x0)/_0x1a3785;},'rgbToArray':_0x3d3c3a=>{const _0x331f9d=_0x4c377e,_0x1f1260=_0x3d3c3a['match'](/\d+/g);return _0x1f1260?_0x1f1260[_0x331f9d(0x104)](Number):[0x0,0x0,0x0];},'precalculateCanvasColors':(_0x545f6c,_0x43cbcc=0x32)=>{const _0x537f69=_0x4c377e,_0x3ce5ec=_0x545f6c[_0x537f69(0xf0)]('2d',{'willReadFrequently':!![]}),_0x2d3ba7=[],_0x2399d2=_0x545f6c[_0x537f69(0x152)],_0x3bcf79=_0x545f6c['height'];for(let _0x19a267=0x0;_0x19a267<_0x3bcf79;_0x19a267+=_0x43cbcc){const _0x47bce0=[];for(let _0x4d45d5=0x0;_0x4d45d5<_0x2399d2;_0x4d45d5+=_0x43cbcc){const _0x57bebf=Math[_0x537f69(0x11a)](_0x43cbcc,_0x2399d2-_0x4d45d5),_0x2f7154=Math['min'](_0x43cbcc,_0x3bcf79-_0x19a267),_0x180865=_0x3ce5ec[_0x537f69(0x143)](_0x4d45d5,_0x19a267,_0x57bebf,_0x2f7154)[_0x537f69(0x183)];let _0x521717=0x0,_0x22f919=0x0,_0x12f5bc=0x0,_0x37bb6f=0x0;for(let _0x1fec49=0x0;_0x1fec49<_0x180865[_0x537f69(0x12d)];_0x1fec49+=0x4){_0x521717+=_0x180865[_0x1fec49],_0x22f919+=_0x180865[_0x1fec49+0x1],_0x12f5bc+=_0x180865[_0x1fec49+0x2],_0x37bb6f++;}_0x47bce0[_0x537f69(0x14f)]([_0x521717/_0x37bb6f,_0x22f919/_0x37bb6f,_0x12f5bc/_0x37bb6f]);}_0x2d3ba7[_0x537f69(0x14f)](_0x47bce0);}return{'colors':_0x2d3ba7,'cellSize':_0x43cbcc};},'getPrecalculatedColor':(_0x15af5b,_0x46480e)=>{const _0x530f4c=_0x4c377e,{colors:_0x18c40e,cellSize:_0x3a277e}=_0x15af5b,_0x481afb=Math[_0x530f4c(0x185)](_0x46480e['left']/_0x3a277e),_0x469fb6=Math['floor'](_0x46480e['top']/_0x3a277e);return _0x18c40e[_0x469fb6]&&_0x18c40e[_0x469fb6][_0x481afb]?_0x18c40e[_0x469fb6][_0x481afb]:[0xff,0xff,0xff];}};class Tokenizer{constructor(){const _0x25ad61=_0x4c377e;this[_0x25ad61(0x145)]=new Set(Object['keys'](OPERATOR_CONFIG)['filter'](_0x5941f7=>_0x5941f7[_0x25ad61(0x12d)]===0x1&&!/[a-zA-Z]/[_0x25ad61(0x171)](_0x5941f7))),this[_0x25ad61(0x17f)]=KEYWORDS,this[_0x25ad61(0x129)]={'NUMBER':_0x25ad61(0x105),'STRING':'string','IDENTIFIER':'identifier','OPERATOR':_0x25ad61(0x182),'PAREN':_0x25ad61(0xf6),'COMMA':_0x25ad61(0x16a),'DOT':'dot','COLON':_0x25ad61(0xef),'KEYWORD':_0x25ad61(0x194),'LITERAL':'literal','SEPARATOR':_0x25ad61(0x125)};}[_0x4c377e(0xf3)](_0x1b76b8){const _0x37692a=_0x4c377e;return/[0-9]/[_0x37692a(0x171)](_0x1b76b8);}[_0x4c377e(0x127)](_0x15c468){const _0x1942bd=_0x4c377e;return/[a-zA-Z_]/[_0x1942bd(0x171)](_0x15c468);}['isSpecialChar'](_0x312e7d){const _0x3d2f17=_0x4c377e;return/[@$]/[_0x3d2f17(0x171)](_0x312e7d);}[_0x4c377e(0x167)](_0x26cec3){const _0x3b4db6=_0x4c377e;return/\s/[_0x3b4db6(0x171)](_0x26cec3);}['tokenize'](_0x57597d){const _0x467e70=_0x4c377e,_0x5a33b9=[];let _0x1105f0=0x0;while(_0x1105f0<_0x57597d[_0x467e70(0x12d)]){const _0x3540a0=_0x57597d[_0x1105f0];if(this['isWhitespace'](_0x3540a0)){_0x1105f0++;continue;}if(_0x3540a0==='/'&&this[_0x467e70(0x18b)](_0x5a33b9)){const {token:_0x4f43b0,newCursor:_0x4df6cd}=this[_0x467e70(0xfb)](_0x57597d,_0x1105f0);_0x5a33b9[_0x467e70(0x14f)](_0x4f43b0),_0x1105f0=_0x4df6cd;continue;}if(this[_0x467e70(0xf3)](_0x3540a0)||_0x3540a0==='-'&&this['isDigit'](_0x57597d[_0x1105f0+0x1])&&this['isUnaryContext'](_0x5a33b9)){const {token:_0x150a2c,newCursor:_0x26648e}=this[_0x467e70(0x187)](_0x57597d,_0x1105f0);_0x5a33b9[_0x467e70(0x14f)](_0x150a2c),_0x1105f0=_0x26648e;continue;}if(_0x3540a0==='\x22'||_0x3540a0==='\x27'){const {token:_0x28fcf3,newCursor:_0x78611f}=this['parseString'](_0x57597d,_0x1105f0);_0x5a33b9[_0x467e70(0x14f)](_0x28fcf3),_0x1105f0=_0x78611f;continue;}if(_0x3540a0==='('||_0x3540a0===')'||_0x3540a0==='{'||_0x3540a0==='}'||_0x3540a0==='['||_0x3540a0===']'){_0x5a33b9[_0x467e70(0x14f)]({'type':this['tokenTypes'][_0x467e70(0x13c)],'value':_0x3540a0}),_0x1105f0++;continue;}if(_0x3540a0===','){_0x5a33b9[_0x467e70(0x14f)]({'type':this[_0x467e70(0x129)][_0x467e70(0x180)],'value':_0x3540a0}),_0x1105f0++;continue;}if(_0x3540a0==='.'){_0x5a33b9[_0x467e70(0x14f)]({'type':this['tokenTypes'][_0x467e70(0x170)],'value':_0x3540a0}),_0x1105f0++;continue;}if(_0x3540a0===';'){_0x5a33b9[_0x467e70(0x14f)]({'type':this['tokenTypes'][_0x467e70(0x10e)],'value':_0x3540a0}),_0x1105f0++;continue;}if(_0x3540a0===':'){_0x5a33b9[_0x467e70(0x14f)]({'type':this[_0x467e70(0x129)][_0x467e70(0x11b)],'value':_0x3540a0}),_0x1105f0++;continue;}const _0x5c4ef2=this[_0x467e70(0x175)](_0x57597d,_0x1105f0);if(_0x5c4ef2){_0x5a33b9[_0x467e70(0x14f)]({'type':this['tokenTypes'][_0x467e70(0x112)],'value':_0x5c4ef2}),_0x1105f0+=_0x5c4ef2['length'];continue;}if(this['isAlpha'](_0x3540a0)||this['isSpecialChar'](_0x3540a0)){const {token:_0x150c70,newCursor:_0xf18560}=this[_0x467e70(0x121)](_0x57597d,_0x1105f0);_0x5a33b9[_0x467e70(0x14f)](_0x150c70),_0x1105f0=_0xf18560;continue;}throw new Error(_0x467e70(0xeb)+_0x3540a0+_0x467e70(0x17d)+_0x1105f0);}return _0x5a33b9;}[_0x4c377e(0x18b)](_0x2d80c5){const _0x2fcfd0=_0x4c377e;if(_0x2d80c5[_0x2fcfd0(0x12d)]===0x0)return![];const _0x39c182=_0x2d80c5[_0x2d80c5[_0x2fcfd0(0x12d)]-0x1];return _0x39c182['type']===this['tokenTypes'][_0x2fcfd0(0x112)]||_0x39c182[_0x2fcfd0(0xf9)]==='('||_0x39c182['type']===this[_0x2fcfd0(0x129)][_0x2fcfd0(0x180)]||_0x39c182[_0x2fcfd0(0x14d)]===this[_0x2fcfd0(0x129)]['KEYWORD']&&(_0x39c182[_0x2fcfd0(0xf9)]===LANGUAGE_CONFIG['keywords'][_0x2fcfd0(0x18e)]||_0x39c182[_0x2fcfd0(0xf9)]===LANGUAGE_CONFIG[_0x2fcfd0(0x17f)][_0x2fcfd0(0x123)]);}[_0x4c377e(0x101)](_0x1b38ea){const _0x37b0d6=_0x4c377e;if(_0x1b38ea[_0x37b0d6(0x12d)]===0x0)return!![];const _0x4780d8=_0x1b38ea[_0x1b38ea[_0x37b0d6(0x12d)]-0x1];return _0x4780d8[_0x37b0d6(0x14d)]===this[_0x37b0d6(0x129)][_0x37b0d6(0x112)]||_0x4780d8['value']==='('||_0x4780d8[_0x37b0d6(0x14d)]===this[_0x37b0d6(0x129)][_0x37b0d6(0x180)];}[_0x4c377e(0xfb)](_0x3fca49,_0x197598){const _0x1ca873=_0x4c377e;let _0x51a20b=_0x197598+0x1,_0xaf0a5b='',_0x32a8e0='',_0xb8de1a=![];while(_0x51a20b<_0x3fca49[_0x1ca873(0x12d)]){const _0x1d800e=_0x3fca49[_0x51a20b];if(_0xb8de1a){_0xaf0a5b+='\x5c'+_0x1d800e,_0xb8de1a=![],_0x51a20b++;continue;}if(_0x1d800e==='\x5c'){_0xb8de1a=!![],_0x51a20b++;continue;}if(_0x1d800e==='/'){_0x51a20b++;break;}_0xaf0a5b+=_0x1d800e,_0x51a20b++;}while(_0x51a20b<_0x3fca49[_0x1ca873(0x12d)]){const _0x359309=_0x3fca49[_0x51a20b];if(/[gimyus]/[_0x1ca873(0x171)](_0x359309))_0x32a8e0+=_0x359309,_0x51a20b++;else break;}return{'token':{'type':_0x1ca873(0x11e),'pattern':_0xaf0a5b,'flags':_0x32a8e0,'value':new RegExp(_0xaf0a5b,_0x32a8e0)},'newCursor':_0x51a20b};}[_0x4c377e(0x187)](_0x57d62,_0x19a1de){const _0x5a8805=_0x4c377e;let _0x34b2ea=_0x19a1de,_0x57000a='',_0x395569=![];_0x57d62[_0x34b2ea]==='-'&&(_0x57000a+='-',_0x34b2ea++);while(_0x34b2ea<_0x57d62[_0x5a8805(0x12d)]){const _0x174ed6=_0x57d62[_0x34b2ea];if(this[_0x5a8805(0xf3)](_0x174ed6))_0x57000a+=_0x174ed6,_0x34b2ea++;else{if(_0x174ed6==='.'&&!_0x395569)_0x57000a+='.',_0x395569=!![],_0x34b2ea++;else break;}}return{'token':{'type':this[_0x5a8805(0x129)][_0x5a8805(0x173)],'value':parseFloat(_0x57000a),'raw':_0x57000a},'newCursor':_0x34b2ea};}[_0x4c377e(0x17b)](_0x4ab1a1,_0x1b4f53){const _0x2d3c4e=_0x4c377e,_0x4b7e0c=_0x4ab1a1[_0x1b4f53];let _0x559094=_0x1b4f53+0x1,_0x390575='',_0x29838e=![];while(_0x559094<_0x4ab1a1['length']){const _0x4cfa2a=_0x4ab1a1[_0x559094];if(_0x29838e){_0x390575+=_0x4cfa2a,_0x29838e=![],_0x559094++;continue;}if(_0x4cfa2a==='\x5c'){_0x29838e=!![],_0x559094++;continue;}if(_0x4cfa2a===_0x4b7e0c)return _0x559094++,{'token':{'type':this[_0x2d3c4e(0x129)][_0x2d3c4e(0x119)],'value':_0x390575},'newCursor':_0x559094};_0x390575+=_0x4cfa2a,_0x559094++;}throw new Error(_0x2d3c4e(0x156)+_0x1b4f53);}[_0x4c377e(0x175)](_0x2c6b4d,_0x13f1b1){const _0x70fb42=_0x4c377e,_0x304649=Object[_0x70fb42(0x15c)](OPERATOR_CONFIG)[_0x70fb42(0x116)]((_0x5478ea,_0x4df278)=>_0x4df278[_0x70fb42(0x12d)]-_0x5478ea['length']);for(const _0x18a1d4 of _0x304649){if(_0x2c6b4d['substring'](_0x13f1b1,_0x13f1b1+_0x18a1d4[_0x70fb42(0x12d)])===_0x18a1d4)return _0x18a1d4;}return null;}[_0x4c377e(0x121)](_0x3eb570,_0x159a78){const _0x197e41=_0x4c377e;let _0x3855da=_0x159a78,_0x416df7='';while(_0x3855da<_0x3eb570[_0x197e41(0x12d)]){const _0x15f4aa=_0x3eb570[_0x3855da];if(this[_0x197e41(0x127)](_0x15f4aa)||this[_0x197e41(0xf3)](_0x15f4aa)||this[_0x197e41(0x133)](_0x15f4aa))_0x416df7+=_0x15f4aa,_0x3855da++;else break;}if(_0x416df7===LANGUAGE_CONFIG[_0x197e41(0x17f)]['NEW'])return{'token':{'type':this[_0x197e41(0x129)][_0x197e41(0x14c)],'value':LANGUAGE_CONFIG[_0x197e41(0x17f)][_0x197e41(0x15a)]},'newCursor':_0x3855da};if(_0x416df7===LANGUAGE_CONFIG[_0x197e41(0x17f)][_0x197e41(0x146)]||_0x416df7===LANGUAGE_CONFIG[_0x197e41(0x17f)][_0x197e41(0x11c)])return{'token':{'type':this[_0x197e41(0x129)][_0x197e41(0x140)],'value':_0x416df7===LANGUAGE_CONFIG['keywords'][_0x197e41(0x146)]},'newCursor':_0x3855da};if(_0x416df7===LANGUAGE_CONFIG['keywords'][_0x197e41(0x16d)])return{'token':{'type':this[_0x197e41(0x129)][_0x197e41(0x140)],'value':null},'newCursor':_0x3855da};if(_0x416df7===LANGUAGE_CONFIG[_0x197e41(0x17f)][_0x197e41(0x148)])return{'token':{'type':this[_0x197e41(0x129)]['LITERAL'],'value':undefined},'newCursor':_0x3855da};if(this[_0x197e41(0x17f)][_0x197e41(0x10c)](_0x416df7))return{'token':{'type':this[_0x197e41(0x129)][_0x197e41(0x14c)],'value':_0x416df7},'newCursor':_0x3855da};const _0x237255=_0x416df7['toUpperCase']();if(OPERATOR_CONFIG[_0x237255])return{'token':{'type':this[_0x197e41(0x129)][_0x197e41(0x112)],'value':_0x237255},'newCursor':_0x3855da};return{'token':{'type':this[_0x197e41(0x129)][_0x197e41(0x141)],'value':_0x416df7},'newCursor':_0x3855da};}}
+const linkPageStylePanel = document.createElement('style');
+linkPageStylePanel.id = "page-panel-styles-ext";
+document.head.appendChild(linkPageStylePanel);
+
+const tracker_panel = new CSSTracker(linkPageStylePanel);
+Constants.addStyleTracker(Constants.APP.panelTracker, tracker_panel);
+
+const linkPageStyle = document.createElement('style');
+linkPageStyle.id = "page-dynamic-styles-ext";
+document.head.appendChild(linkPageStyle);
+
+const tracker = new CSSTracker(linkPageStyle);
+
+const LANGUAGE_CONFIG = {
+    keywords: {
+        LET: 'let',
+        IF: 'if',
+        ELSE: 'else',
+        WHILE: 'while',
+        FOR: 'for',
+        TRUE: 'true',
+        FALSE: 'false',
+        NULL: 'null',
+        UNDEFINED: 'undefined',
+        FUNCTION: 'function',
+        RETURN: 'return',
+        NEW: 'new',
+        OF: 'of',
+        CONTINUE: 'continue',
+        BREAK: 'break',
+        AWAIT: 'await',
+        ASYNC: 'async'
+    },
+    operators: {
+        NOT: 'NOT',
+        AND: '&&',
+        OR: '||',
+        EQ: '==',
+        NEQ: '!=',
+        NEQ_ALT: '<>',
+        GTE: '>=',
+        LTE: '<=',
+        ASSIGN: '=',
+        ARROW: '=>',
+        COALESCE: '??',
+        TERNARY_QUESTION: '?',
+        PLUS_EQ: '+=',
+        MINUS_EQ: '-=',
+        MULT_EQ: '*=',
+        DIV_EQ: '/=',
+        INC: '++',
+        DEC: '--',
+    }
+};
+
+const OPERATOR_CONFIG = {
+    '!': { precedence: 7, associativity: 'right', type: 'logical', unary: true },
+    '+': { precedence: 7, associativity: 'right', type: 'math', unary: true },
+    '-': { precedence: 7, associativity: 'right', type: 'math', unary: true },
+    '^': { precedence: 6, associativity: 'right', type: 'math' },
+    '*': { precedence: 5, associativity: 'left', type: 'math' },
+    '/': { precedence: 5, associativity: 'left', type: 'math' },
+    '%': { precedence: 5, associativity: 'left', type: 'math' },
+    '+': { precedence: 4, associativity: 'left', type: 'math' },
+    '-': { precedence: 4, associativity: 'left', type: 'math' },
+    '>': { precedence: 3, associativity: 'left', type: 'comparison' },
+    '<': { precedence: 3, associativity: 'left', type: 'comparison' },
+    [LANGUAGE_CONFIG.operators.NOT]: { precedence: 7, associativity: 'right', type: 'logical', unary: true },
+    [LANGUAGE_CONFIG.operators.GTE]: { precedence: 3, associativity: 'left', type: 'comparison' },
+    [LANGUAGE_CONFIG.operators.LTE]: { precedence: 3, associativity: 'left', type: 'comparison' },
+    [LANGUAGE_CONFIG.operators.EQ]: { precedence: 3, associativity: 'left', type: 'comparison' },
+    [LANGUAGE_CONFIG.operators.NEQ]: { precedence: 3, associativity: 'left', type: 'comparison' },
+    [LANGUAGE_CONFIG.operators.NEQ_ALT]: { precedence: 3, associativity: 'left', type: 'comparison' },
+    [LANGUAGE_CONFIG.operators.TERNARY_QUESTION]: { precedence: 3, associativity: 'right', type: 'ternary' },
+    [LANGUAGE_CONFIG.operators.TERNARY_OPERATOR]: { precedence: 3, associativity: 'right', type: 'ternary' },
+    [LANGUAGE_CONFIG.operators.AND]: { precedence: 2, associativity: 'left', type: 'logical' },
+    [LANGUAGE_CONFIG.operators.OR]: { precedence: 1, associativity: 'left', type: 'logical' },
+    [LANGUAGE_CONFIG.operators.COALESCE]: { precedence: 3, associativity: 'right', type: 'logical' },
+    [LANGUAGE_CONFIG.operators.ASSIGN]: { precedence: 0, associativity: 'right', type: 'assignment' },
+    [LANGUAGE_CONFIG.operators.PLUS_EQ]: { precedence: 0, associativity: 'right', type: 'assignment' },
+    [LANGUAGE_CONFIG.operators.MINUS_EQ]: { precedence: 0, associativity: 'right', type: 'assignment' },
+    [LANGUAGE_CONFIG.operators.MULT_EQ]: { precedence: 0, associativity: 'right', type: 'assignment' },
+    [LANGUAGE_CONFIG.operators.DIV_EQ]: { precedence: 0, associativity: 'right', type: 'assignment' },
+    [LANGUAGE_CONFIG.operators.ARROW]: { precedence: 0, associativity: 'right', type: 'assignment' },
+    [LANGUAGE_CONFIG.operators.INC]: { precedence: 7, associativity: 'left', type: 'update', unary: true },
+    [LANGUAGE_CONFIG.operators.DEC]: { precedence: 7, associativity: 'left', type: 'update', unary: true },
+};
+
+const KEYWORDS = new Set(Object.values(LANGUAGE_CONFIG.keywords));
+
+const DOM_FUNCTIONS = {
+  $: (selector) => {
+    const element = document.querySelectorAll(selector);
+    if (!element) return null;
+    return element;
+  },
+
+  createElement: (tagName) => {
+    return document.createElement(tagName);
+  },
+
+  setAttr: (element, name, value) => {
+    if (name in element) {
+      element[name] = value;
+    } else {
+      element.setAttribute(name, value);
+    }
+    return element;
+  },
+
+  setAttrs: (element, attributes) => {
+    Object.entries(attributes).forEach(([name, value]) => {
+      DOM_FUNCTIONS.setAttr(element, name, value);
+    });
+    return element;
+  },
+
+  setId: (element, id) => {
+    return DOM_FUNCTIONS.setAttr(element, 'id', id);
+  },
+
+  setStyle: (element, property, value, isMandatory = true) => {
+    let important = isMandatory ? 'important' : '';
+    element.style.setProperty(property, value, important);
+  },
+
+  setStyles: (element, styles) => {
+    Object.assign(element.style, styles);
+  },
+
+  addClass: (element, className) => {
+    element.classList.add(className);
+    return element;
+  },
+
+  setClasses: (element, classNames) => {
+    element.className = classNames.join(' ');
+    return element;
+  },
+
+  setText: (element, text) => {
+    element.textContent = text;
+    return element;
+  },
+
+  setHtml: (element, html) => {
+    element.innerHTML = html;
+    return element;
+  },
+
+  addChild: (parent, child) => {
+    if (child instanceof HTMLElement) {
+      parent.appendChild(child);
+    } else if (typeof child === 'string') {
+      parent.appendChild(document.createTextNode(child));
+    }
+    return parent;
+  },
+
+  addChildren: (parent, children) => {
+    children.forEach(child => DOM_FUNCTIONS.addChild(parent, child));
+    return parent;
+  },
+
+  makeInput: (element, type = 'text') => {
+    element.tagName = 'input';
+    DOM_FUNCTIONS.setAttr(element, 'type', type);
+    return element;
+  },
+
+  makeLabel: (element, forId, text) => {
+    element.tagName = 'label';
+    DOM_FUNCTIONS.setAttr(element, 'for', forId);
+    DOM_FUNCTIONS.setText(element, text || '');
+    return element;
+  },
+
+  makeSelect: (element, options = []) => {
+    element.tagName = 'select';
+    options.forEach(opt => {
+      const option = document.createElement('option');
+      DOM_FUNCTIONS.setAttr(option, 'value', opt.value || opt);
+      DOM_FUNCTIONS.setText(option, opt.text || opt);
+      DOM_FUNCTIONS.addChild(element, option);
+    });
+    return element;
+  },
+
+  makeTable: (element, headers = [], rows = []) => {
+    element.tagName = 'table';
+    
+    if (headers.length) {
+      const thead = document.createElement('thead');
+      const tr = document.createElement('tr');
+      
+      headers.forEach(header => {
+        const th = document.createElement('th');
+        DOM_FUNCTIONS.setText(th, header);
+        DOM_FUNCTIONS.addChild(tr, th);
+      });
+      
+      DOM_FUNCTIONS.addChild(thead, tr);
+      DOM_FUNCTIONS.addChild(element, thead);
+    }
+    
+    if (rows.length) {
+      const tbody = document.createElement('tbody');
+      
+      rows.forEach(row => {
+        const tr = document.createElement('tr');
+        
+        row.forEach(cell => {
+          const td = document.createElement('td');
+          DOM_FUNCTIONS.setText(td, cell);
+          DOM_FUNCTIONS.addChild(tr, td);
+        });
+        
+        DOM_FUNCTIONS.addChild(tbody, tr);
+      });
+      
+      DOM_FUNCTIONS.addChild(element, tbody);
+    }
+    
+    return element;
+  },
+
+  on: (element, event, handler) => {
+    if (typeof handler === 'string') {
+      const engine = new ExpressionEngine();
+      try {
+        const parsedHandler = function(e) {
+          const eventContext = {
+            event: e,
+            target: e.target
+          };
+          return engine.evaluate(handler, eventContext);
+        };
+        element.addEventListener(event, parsedHandler);
+        return element;
+      } catch (error) {
+        console.error(`Error parsing handler for event ${event}:`, error);
+        return element;
+      }
+    } else if (typeof handler === 'function') {
+      element.addEventListener(event, handler);
+      return element;
+    } else {
+      console.error(`Handler for event ${event} must be a function or string`);
+      return element;
+    }
+  },
+
+  appendTo: (element, parent) => {
+    const target = typeof parent === 'string' 
+      ? document.querySelector(parent) 
+      : parent;
+    
+    if (target) {
+      target.appendChild(element);
+    }
+    
+    return element;
+  }
+};
+
+const CSS_FUNCTIONS = {
+    set: (selector, rules) => { tracker.set(selector, rules); },
+    remove: (identifier) => tracker.remove(identifier),
+    removeProperties: (selector, properties) => tracker.removeProperties(selector, properties),
+    updateStyles: () => tracker.updateStylesheet(),
+    getStandardStyles: () => tracker.standardStyles,
+    getSpecialStyles: () => tracker.specialStyles,
+}
+
+
+const BUILTIN_FUNCTIONS = {
+    tracker: tracker,
+    sqrt: Math.sqrt,
+    abs: Math.abs,
+    round: Math.round,
+    floor: Math.floor,
+    ceil: Math.ceil,
+    min: Math.min,
+    max: Math.max,
+    log: Math.log,
+    exp: Math.exp,
+    sin: Math.sin,
+    cos: Math.cos,
+    tan: Math.tan,
+    pow: Math.pow,
+    random: Math.random,
+    double: x => x * 2,
+    triple: x => x * 3,
+    sum: (...args) => args.reduce((a, b) => a + b, 0),
+    avg: (...args) => args.reduce((a, b) => a + b, 0) / args.length,
+    len: arr => arr.length,
+    print: (...args) => {
+        console.log(...args);
+        return args.length === 1 ? args[0] : args;
+    },
+    log: (...args) => {
+        console.log('[LOG]', ...args);
+        return args.length === 1 ? args[0] : args;
+    },
+
+    $: DOM_FUNCTIONS.$,
+    createEl: DOM_FUNCTIONS.createElement,
+    setAttr: DOM_FUNCTIONS.setAttr,
+    attrs: DOM_FUNCTIONS.setAttrs,
+    text: DOM_FUNCTIONS.setText,
+    html: DOM_FUNCTIONS.setHtml,
+    onEvent: DOM_FUNCTIONS.on,
+    appendTo: DOM_FUNCTIONS.appendTo,
+
+    setStyle: CSS_FUNCTIONS.set,
+    removeStyle: CSS_FUNCTIONS.remove,
+    removeStyleProperty: CSS_FUNCTIONS.removeProperties,
+    updateStyles: CSS_FUNCTIONS.updateStyles,
+    getStandardStyles: CSS_FUNCTIONS.getStandardStyles,
+    getSpecialStyles: CSS_FUNCTIONS.getSpecialStyles,
+
+
+    getBlobSize: (element) => {
+        return new Blob([element]).size;
+    },
+    normalizeMatrix: (matrix) => {
+        let max = Math.max(...matrix.flat(), 1);
+        return matrix.map(row => row.map(value => value / max));
+    },
+    capturePageImage: () => {
+        return new Promise((resolve, reject) => {
+            chrome.runtime.sendMessage({ type: 'CAPTURE_TAB' }, (response) => {
+                if (chrome.runtime.lastError) {
+                    reject(chrome.runtime.lastError);
+                    return;
+                }
+                const screenshot = response?.screenshot; 
+                if (screenshot) resolve(screenshot);
+                else reject(response?.error || "Bad response")
+            });
+        });
+    },
+    createImg: (src, callback) => {
+        const img = new Image();
+        img.onload = () => {
+            if (callback && typeof callback == 'function') callback(img);
+        }
+        img.src = src;        
+    },
+
+    sum: (array) => {
+        return array.reduce((sum, value) => sum + value, 0);
+    },
+    mean: (array, length) => {
+        return array.reduce((sum, value) => sum + value, 0) / length;
+    },
+    variance: (array, mean, length) => {
+        return array.reduce((sum, value) => sum + (value - mean) * (value - mean), 0) / length;
+    },
+
+    rgbToArray: (rgbString) => {
+        const result = rgbString.match(/\d+/g);
+        return result ? result.map(Number) : [0, 0, 0];
+    },
+    precalculateCanvasColors: (canvas, cellSize = 50) => {
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+        const colors = [];
+        const width = canvas.width;
+        const height = canvas.height;
+        
+        for (let y = 0; y < height; y += cellSize) {
+            const row = [];
+            for (let x = 0; x < width; x += cellSize) {
+                const w = Math.min(cellSize, width - x);
+                const h = Math.min(cellSize, height - y);
+                const imgData = ctx.getImageData(x, y, w, h).data;
+
+                let r = 0, g = 0, b = 0;
+                let count = 0;
+                for (let i = 0; i < imgData.length; i += 4) {
+                    r += imgData[i];
+                    g += imgData[i + 1];
+                    b += imgData[i + 2];
+                    count++;
+                }
+                row.push([r / count, g / count, b / count]);
+            }
+            colors.push(row);
+        }
+        return { colors, cellSize };
+    },
+    getPrecalculatedColor: (precalcColors, rect) => {
+        const { colors, cellSize } = precalcColors;
+        const xIndex = Math.floor(rect.left / cellSize);
+        const yIndex = Math.floor(rect.top / cellSize);
+
+        return colors[yIndex] && colors[yIndex][xIndex] ? colors[yIndex][xIndex] : [255, 255, 255];
+    }
+};
+
+class Tokenizer {
+    constructor() {
+        this.symbolOperators = new Set(
+            Object.keys(OPERATOR_CONFIG).filter(op => op.length === 1 && !/[a-zA-Z]/.test(op))
+        );
+        this.keywords = KEYWORDS;
+        this.tokenTypes = {
+            NUMBER: 'number',
+            STRING: 'string',
+            IDENTIFIER: 'identifier',
+            OPERATOR: 'operator',
+            PAREN: 'paren',
+            COMMA: 'comma',
+            DOT: 'dot',
+            COLON: 'colon',
+            KEYWORD: 'keyword',
+            LITERAL: 'literal',
+            SEPARATOR: 'separator'
+        };
+    }
+
+    isDigit(char) {
+        return /[0-9]/.test(char);
+    }
+
+    isAlpha(char) {
+        return /[a-zA-Z_]/.test(char);
+    }
+
+    isSpecialChar(char) {
+        return /[@$]/.test(char);
+    }
+
+    isWhitespace(char) {
+        return /\s/.test(char);
+    }
+
+    tokenize(input) {
+        const tokens = [];
+        let cursor = 0;
+        
+        while (cursor < input.length) {
+            const char = input[cursor];
+            
+            if (this.isWhitespace(char)) {
+                cursor++;
+                continue;
+            }
+
+            if (char === '/' && this.isRegexContext(tokens)) {
+                const { token, newCursor } = this.parseRegex(input, cursor);
+                tokens.push(token);
+                cursor = newCursor;
+                continue;
+            }
+            
+            if (this.isDigit(char) || (char === '-' && this.isDigit(input[cursor + 1]) && this.isUnaryContext(tokens))) {
+                const { token, newCursor } = this.parseNumber(input, cursor);
+                tokens.push(token);
+                cursor = newCursor;
+                continue;
+            }
+            
+            if (char === '"' || char === "'") {
+                const { token, newCursor } = this.parseString(input, cursor);
+                tokens.push(token);
+                cursor = newCursor;
+                continue;
+            }
+            
+            if (char === '(' || char === ')' || char === '{' || char === '}' || char === '[' || char === ']') {
+                tokens.push({ type: this.tokenTypes.PAREN, value: char });
+                cursor++;
+                continue;
+            }
+            
+            if (char === ',') {
+                tokens.push({ type: this.tokenTypes.COMMA, value: char });
+                cursor++;
+                continue;
+            }
+            
+            if (char === '.') {
+                tokens.push({ type: this.tokenTypes.DOT, value: char });
+                cursor++;
+                continue;
+            }
+            
+            if (char === ';') {
+                tokens.push({ type: this.tokenTypes.SEPARATOR, value: char });
+                cursor++;
+                continue;
+            }
+            
+            if (char === ':') {
+                tokens.push({ type: this.tokenTypes.COLON, value: char });
+                cursor++;
+                continue;
+            }
+            
+            const operator = this.parseOperator(input, cursor);
+            if (operator) {
+                tokens.push({ type: this.tokenTypes.OPERATOR, value: operator });
+                cursor += operator.length;
+                continue;
+            }
+            
+            if (this.isAlpha(char) || this.isSpecialChar(char)) {
+                const { token, newCursor } = this.parseIdentifier(input, cursor);
+                tokens.push(token);
+                cursor = newCursor;
+                continue;
+            }
+            
+            throw new Error(`Unexpected character: '${char}' at position ${cursor}`);
+        }
+        
+        return tokens;
+    }
+
+    isRegexContext(tokens) {
+        if (tokens.length === 0) return false;
+        const lastToken = tokens[tokens.length - 1];
+        return (
+            lastToken.type === this.tokenTypes.OPERATOR ||
+            lastToken.value === '(' ||
+            lastToken.type === this.tokenTypes.COMMA ||
+            lastToken.type === this.tokenTypes.KEYWORD && 
+                (lastToken.value === LANGUAGE_CONFIG.keywords.LET ||
+                 lastToken.value === LANGUAGE_CONFIG.keywords.RETURN)
+        );
+    }
+
+    isUnaryContext(tokens) {
+        if (tokens.length === 0) return true;
+        const lastToken = tokens[tokens.length - 1];
+        return (
+            lastToken.type === this.tokenTypes.OPERATOR ||
+            lastToken.value === '(' ||
+            lastToken.type === this.tokenTypes.COMMA
+        );
+    }
+
+    parseRegex(input, start) {
+        // Saltar la "/"
+        let cursor = start + 1;
+        let pattern = '';
+        let flags = '';
+        let escaped = false;
+        
+        // Parsear el patrón
+        while (cursor < input.length) {
+            const char = input[cursor];
+            
+            if (escaped) {
+                pattern += '\\' + char;
+                escaped = false;
+                cursor++;
+                continue;
+            }
+            
+            if (char === '\\') {
+                escaped = true;
+                cursor++;
+                continue;
+            }
+            
+            if (char === '/') {
+                cursor++;
+                break;
+            }
+            
+            pattern += char;
+            cursor++;
+        }
+        
+        while (cursor < input.length) {
+            const char = input[cursor];
+            if (/[gimyus]/.test(char)) {
+                flags += char;
+                cursor++;
+            } else {
+                break;
+            }
+        }
+        
+        return {
+            token: {
+                type: 'regex',
+                pattern,
+                flags,
+                value: new RegExp(pattern, flags)
+            },
+            newCursor: cursor
+        };
+    }
+
+    parseNumber(input, start) {
+        let cursor = start;
+        let value = '';
+        let isDecimal = false;
+        
+        if (input[cursor] === '-') {
+            value += '-';
+            cursor++;
+        }
+        
+        while (cursor < input.length) {
+            const char = input[cursor];
+            
+            if (this.isDigit(char)) {
+                value += char;
+                cursor++;
+            } else if (char === '.' && !isDecimal) {
+                value += '.';
+                isDecimal = true;
+                cursor++;
+            } else {
+                break;
+            }
+        }
+    
+        return {
+            token: { 
+                type: this.tokenTypes.NUMBER, 
+                value: parseFloat(value),
+                raw: value
+            },
+            newCursor: cursor
+        };
+    }
+
+    parseString(input, start) {
+        const quoteChar = input[start];
+        let cursor = start + 1;
+        let value = '';
+        let escaped = false;
+        
+        while (cursor < input.length) {
+            const char = input[cursor];
+            
+            if (escaped) {
+                value += char;
+                escaped = false;
+                cursor++;
+                continue;
+            }
+            
+            if (char === '\\') {
+                escaped = true;
+                cursor++;
+                continue;
+            }
+            
+            if (char === quoteChar) {
+                cursor++;
+                return {
+                    token: { type: this.tokenTypes.STRING, value },
+                    newCursor: cursor
+                };
+            }
+            value += char;
+            cursor++;
+        }
+    
+        throw new Error(`Unclosed string starting at position ${start}`);
+    }
+
+    parseOperator(input, start) {
+        const operators = Object.keys(OPERATOR_CONFIG).sort((a, b) => b.length - a.length);
+        for (const op of operators) {
+            if (input.substring(start, start + op.length) === op) {
+                return op;
+            }
+        }
+        return null;
+    }
+
+    parseIdentifier(input, start) {
+        let cursor = start;
+        let value = '';
+        
+        while (cursor < input.length) {
+            const char = input[cursor];
+            
+            if (this.isAlpha(char) || this.isDigit(char) || this.isSpecialChar(char)) {
+                value += char;
+                cursor++;
+            } else {
+                break;
+            }
+        }
+
+        if (value === LANGUAGE_CONFIG.keywords.NEW) {
+            return {
+                token: { 
+                    type: this.tokenTypes.KEYWORD, 
+                    value: LANGUAGE_CONFIG.keywords.NEW
+                },
+                newCursor: cursor
+            };
+        }
+        
+        if (value === LANGUAGE_CONFIG.keywords.TRUE || value === LANGUAGE_CONFIG.keywords.FALSE) {
+            return {
+                token: { 
+                    type: this.tokenTypes.LITERAL, 
+                    value: value === LANGUAGE_CONFIG.keywords.TRUE 
+                },
+                newCursor: cursor
+            };
+        }
+        
+        if (value === LANGUAGE_CONFIG.keywords.NULL) {
+            return {
+                token: { 
+                    type: this.tokenTypes.LITERAL, 
+                    value: null 
+                },
+                newCursor: cursor
+            };
+        }
+        
+        if (value === LANGUAGE_CONFIG.keywords.UNDEFINED) {
+            return {
+                token: { 
+                    type: this.tokenTypes.LITERAL, 
+                    value: undefined 
+                },
+                newCursor: cursor
+            };
+        }
+        
+        // console.log("tokenizando ", value)
+        if (this.keywords.has(value)) {
+            return {
+                token: { 
+                    type: this.tokenTypes.KEYWORD, 
+                    value 
+                },
+                newCursor: cursor
+            };
+        }
+        
+        const upperValue = value.toUpperCase();
+        if (OPERATOR_CONFIG[upperValue]) {
+            return {
+                token: { 
+                    type: this.tokenTypes.OPERATOR, 
+                    value: upperValue 
+                },
+                newCursor: cursor
+            };
+        }
+        
+        return {
+            token: { 
+                type: this.tokenTypes.IDENTIFIER, 
+                value 
+            },
+            newCursor: cursor
+        };
+    }
+}
